@@ -2,6 +2,13 @@ from django.db import models
 from django_countries.fields import CountryField
 
 
+class Venue(models.Model):
+    address = models.ForeignKey('Address', null=True, blank=False,
+                                on_delete=models.SET_NULL)
+    name = models.CharField(blank=False, null=False, max_length=50)
+    capacity = models.IntegerField(blank=False, null=False)
+
+
 class Address(models.Model):
     class Meta:
         verbose_name_plural = "Addresses"
