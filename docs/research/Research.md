@@ -1,8 +1,8 @@
 # Research
 
-## eventbrite
+## Eventbrite
 
-[Visit eventbrite](https://www.eventbrite.co.uk/)
+[Visit Eventbrite](https://www.eventbrite.co.uk/)
 
 ![Eventbright homepage](eventbrite-homepage.webp)
 
@@ -45,3 +45,16 @@ Likes:
 
 Dislikes:
 * Text not easy to read on video banner
+## TicketSource
+
+[Visit TicketSource](https://www.ticketsource.co.uk/)
+
+![TicketSource homepage](ticketsource-homepage.webp)
+
+TicketSource is straight forward with it's purpose. It makes selling tickets for events easy and categorizes said events by location.
+
+Likes:
+* Call to action to create event.
+* Also has a personalized homepage where you arrive at the site tailored to your location.
+* 
+    ![TicketSource tailored to location](ticketsource-liverpool-homepage.webp)
