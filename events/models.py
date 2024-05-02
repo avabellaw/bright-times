@@ -1,5 +1,21 @@
 from django.db import models
 from django_countries.fields import CountryField
+from django.contrib.auth.models import User
+
+
+class Event(models.Model):
+    venue = models.ForeignKey("Venue", null=False, blank=False,
+                              on_delete=models.CASCADE)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(blank=False, null=False, max_length=50)
+    desc = models.CharField(blank=False, null=False, max_length=1000)
+    price = models.DecimalField(blank=False, null=False, 
+                                max_digits=4, decimal_places=2)
+    image_url = models.CharField(blank=False, null=False, max_length=100)
+    start_date_time = models.DateTimeField(blank=False, null=False,
+                                           auto_now=False, auto_now_add=False)
+    start_date_time = models.DateTimeField(blank=False, null=False,
+                                           auto_now=False, auto_now_add=False)
 
 
 class Venue(models.Model):
