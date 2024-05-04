@@ -1,0 +1,14 @@
+/* Header */
+
+header {
+    background-color: #9DDCFF;
+}
+
+ul.navbar-nav {
+    margin-left: auto;
+}
+
+.navbar {
+    font-size: 1.2em;
+    font-weight: 500;
+}
