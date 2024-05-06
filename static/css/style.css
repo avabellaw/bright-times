@@ -1,14 +1,51 @@
 /* Header */
 
-header {
-    background-color: #9DDCFF;
-}
+    header {
+        background-color: #9DDCFF;
+    }
 
-ul.navbar-nav {
-    margin-left: auto;
-}
+    ul.navbar-nav {
+        margin-left: auto;
+    }
 
-.navbar {
-    font-size: 1.2em;
-    font-weight: 500;
-}
+    .navbar {
+        font-size: 1.2em;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+
+    .account-dropdown-container > a.dropdown-toggle {
+        text-transform: none;
+    }
+
+    .page-header > h1 {
+        margin-bottom: 0.5em;
+    }
+
+    .profile-icon {
+        margin-left: var(--bs-navbar-nav-link-padding-x);
+        margin-right: calc(var(--bs-navbar-nav-link-padding-x)* -0.1);
+    }
+
+    .account-dropdown-container {
+        display: flex;
+        align-items: center;
+        border: 1px solid #f0f8ff78;
+        border-radius: 10%;
+        margin: 0 0.4em;
+    }
+
+/* End Header */
+
+/* General styles */
+
+
+/* End General styles */
+
+/* Allauth */
+
+    /* Login page */
+
+    /* End Login page */
+
+/* End Allauth */
