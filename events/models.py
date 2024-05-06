@@ -30,6 +30,14 @@ class Venue(models.Model):
 
     managers = models.ManyToManyField(User, through='VenueManager')
 
+    def save(self, *args, **kwargs):
+        """Override the save method to create the original VenueManager"""
+        venue_manager = VenueManager(user=self.created_by, venue=self)
+        venue_manager.save()
+        
+        # Continue with default save function
+        super().save(*args, **kwargs)
+
 
 class VenueManager(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
