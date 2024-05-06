@@ -28,6 +28,13 @@ class Venue(models.Model):
     name = models.CharField(blank=False, null=False, max_length=50)
     capacity = models.IntegerField(blank=False, null=False)
 
+    managers = models.ManyToManyField(User, through='VenueManager')
+
+
+class VenueManager(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
+
 
 class Address(models.Model):
     class Meta:
