@@ -73,6 +73,10 @@ I will include the following pages:
 
 Under the header, there will be hierarchical navigation.
 
+### The data
+
+I decided to seperate the address from Venue to better organise the data. I considered a one-to-one relationship, however, a one-to-many relationship would enable a different venue under the same address to use the existing address record. Therefore, it allows for the future introduction of this feature. While aknowedging that this is a rare case, this would avoid duplicate address records.
+
 ## Skeleton plane
 
 ## Surface plane
