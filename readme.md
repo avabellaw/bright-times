@@ -1,4 +1,4 @@
-# Bright Times - Milestone Project 2
+# Bright Times - Milestone Project 4
 
 Bright Times is a platform for exploring and keeping up-to-date on new and upcoming events. 
 
