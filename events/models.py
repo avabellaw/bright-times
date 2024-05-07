@@ -6,7 +6,8 @@ from django.contrib.auth.models import User
 class Event(models.Model):
     venue = models.ForeignKey("Venue", null=False, blank=False,
                               on_delete=models.CASCADE)
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_by_venue_manager = models.ForeignKey("VenueManager",
+                                                 on_delete=models.CASCADE)
     name = models.CharField(blank=False, null=False, max_length=50)
     desc = models.CharField(blank=False, null=False, max_length=1000)
     price = models.DecimalField(blank=False, null=False,
@@ -20,6 +21,27 @@ class Event(models.Model):
                                            auto_now=False, auto_now_add=False)
     end_date_time = models.DateTimeField(blank=False, null=False,
                                          auto_now=False, auto_now_add=False)
+
+    def save(self, created_by=None, *args, **kwargs):
+        """
+        Overide the save method
+
+        If the event is being created, set the created_by attribute to the 
+        the venue manager who created the event.        
+        """
+
+        try:
+            self.created_by
+        except AttributeError:
+            self.created_by = created_by
+
+        if not self.pk:
+            self.created_by_venue_manager = VenueManager.objects.get(
+                                                       venue=self.venue,
+                                                       user=self.created_by
+                                                    )
+
+        super().save(*args, **kwargs)
 
 
 class Venue(models.Model):

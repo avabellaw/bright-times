@@ -77,6 +77,11 @@ Under the header, there will be hierarchical navigation.
 
 I decided to seperate the address from Venue to better organise the data. I considered a one-to-one relationship, however, a one-to-many relationship would enable a different venue under the same address to use the existing address record. Therefore, it allows for the future introduction of this feature. While aknowedging that this is a rare case, this would avoid duplicate address records.
 
+The original idea was to use a user ID to set the Event's created by. If you wanted the venue manager, you just use the user ID. However, a user can also have a ticket and therefore I believe it makes it more clear if created_by is set to the venue manager who created the event.
+
+Django doesn't support composite primary keys so the junction table VenueManager still has a primary key. I have set the meta so that the combination of User ID and Venue ID is unique. The primary key will be useful for indexing in future anyway.
+This will allow me to filter by userID and VenueID and get a result as if using a composite ID.
+
 ## Skeleton plane
 
 ## Surface plane
