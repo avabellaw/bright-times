@@ -33,13 +33,22 @@ class Venue(models.Model):
     def __str__(self):
         return f'{self.name} - "{self.address}"'
 
-    def save(self, *args, **kwargs):
-        """Override the save method to create the original VenueManager"""
+    def save(self, created_by=None, *args, **kwargs):
+        """Override the save method to create the original VenueManager
+
+        The attribute created_by is passed in by the test case. 
+        Otherwise created_by is blank.
+        """
 
         just_created = not self.pk
 
         # Save the Venue
         super().save(*args, **kwargs)
+
+        try:
+            self.created_by
+        except AttributeError:
+            self.created_by = created_by
 
         # Create venue manager if just created
         if just_created:
