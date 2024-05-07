@@ -40,7 +40,7 @@
                                         <a class="nav-link" href="#">Events</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Create Event</a>
+                                        <a class="nav-link" href="{% url 'create_event' %}">Create Event</a>
                                     </li>
                                     <li class="nav-item {% if user.is_authenticated %}dropdown{% endif %}">
                                         {% if not user.is_authenticated %}

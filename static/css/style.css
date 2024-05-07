@@ -2,6 +2,7 @@
 
     header {
         background-color: #9DDCFF;
+        margin-bottom: 2em;
     }
 
     ul.navbar-nav {
@@ -20,6 +21,7 @@
 
     .page-header > h1 {
         margin-bottom: 0.5em;
+        text-align: center;
     }
 
     .profile-icon {

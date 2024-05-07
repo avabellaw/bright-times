@@ -34,7 +34,7 @@ class Venue(models.Model):
         """Override the save method to create the original VenueManager"""
         venue_manager = VenueManager(user=self.created_by, venue=self)
         venue_manager.save()
-        
+
         # Continue with default save function
         super().save(*args, **kwargs)
 
@@ -48,16 +48,15 @@ class Address(models.Model):
     class Meta:
         verbose_name_plural = "Addresses"
 
-    full_name = models.CharField(blank=False, null=False, max_length=70)
     street_address1 = models.CharField(blank=False, null=False,
                                        max_length=40)
     street_address2 = models.CharField(blank=True, null=True,
                                        max_length=40)
     city = models.CharField(blank=False, null=False, max_length=100)
     postcode = models.CharField(blank=False, null=False, max_length=20)
+    county = models.CharField(blank=False, null=False, max_length=100)
     country = CountryField(blank_label="(select country)",
                            blank=False, null=False)
-    county = models.CharField(blank=False, null=False, max_length=100)
 
     def __str__(self):
         return f'{self.full_name}, {self.street_address1}, \

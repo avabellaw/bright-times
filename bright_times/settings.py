@@ -47,6 +47,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Crispy forms
+    'crispy_bootstrap4',
+    'crispy_forms',
+
     # Allauth
     'allauth',
     'allauth.account',
@@ -65,10 +69,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
     # Allauth
     'allauth.account.middleware.AccountMiddleware',
 ]
+
+# Cripsy forms settings
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Allauth settings
 SITES_ENABLED = True
