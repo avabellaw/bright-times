@@ -15,9 +15,22 @@ class VenueAdmin(admin.ModelAdmin):
         if not change:  # If object not being updated, therefore created
             obj.created_by = request.user
         return super().save_model(request, obj, form, change)
+    
+    
+class EventAdmin(admin.ModelAdmin):
+    """
+    Admin class for Event model
+    """
+    def save_model(self, request, obj, form, change):
+        """
+        Override save model method to store the user who created it
+        """
+        if not change:  # If object not being updated, therefore created
+            obj.created_by = request.user
+        return super().save_model(request, obj, form, change)
 
 
-admin.site.register(Event)
+admin.site.register(Event, EventAdmin)
 admin.site.register(Venue, VenueAdmin)
 admin.site.register(Address)
 admin.site.register(VenueManager)
