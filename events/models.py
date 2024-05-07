@@ -9,7 +9,7 @@ class Event(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(blank=False, null=False, max_length=50)
     desc = models.CharField(blank=False, null=False, max_length=1000)
-    price = models.DecimalField(blank=False, null=False, 
+    price = models.DecimalField(blank=False, null=False,
                                 max_digits=4, decimal_places=2)
     image_url = models.CharField(blank=False, null=False, max_length=100)
     created_on = models.DateField(auto_now_add=True)
@@ -30,13 +30,20 @@ class Venue(models.Model):
 
     managers = models.ManyToManyField(User, through='VenueManager')
 
+    def __str__(self):
+        return f'{self.name} - "{self.address}"'
+
     def save(self, *args, **kwargs):
         """Override the save method to create the original VenueManager"""
-        venue_manager = VenueManager(user=self.created_by, venue=self)
-        venue_manager.save()
 
-        # Continue with default save function
+        just_created = not self.pk
+
+        # Save the Venue
         super().save(*args, **kwargs)
+
+        # Create venue manager if just created
+        if just_created:
+            VenueManager.objects.create(user=self.created_by, venue=self)
 
 
 class VenueManager(models.Model):
@@ -59,5 +66,16 @@ class Address(models.Model):
                            blank=False, null=False)
 
     def __str__(self):
-        return f'{self.full_name}, {self.street_address1}, \
+        return f'{self.street_address1}, \
                 {self.city}, {self.postcode}, {self.country}'
+
+
+def get_venue_attached_to_address(address):
+    venues = Venue.objects.filter(address=address)
+    if venues.count() > 1:
+        venues = f'[Multiple Venues: {venues}]'
+    elif venues.count() == 1:
+        venues = f'[Venue: {venues.first().name}]'
+    else:
+        venues = '[No Venue]'
+    return venues
