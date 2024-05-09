@@ -25,7 +25,7 @@
                 <div class="col">
                     <h2 class="venue-section-header">Your Venues:</h2>
                     <hr>
-                    <section class="venue-input-fields">
+                    <section class="input-fields">
                         <form action="{% url 'create_event' %}" method="post">
                             {% csrf_token %}
                             {% for venue in venues %}
@@ -55,11 +55,11 @@
             <div class="col">
                 <form action="{% url 'choose_or_create_venue' %}" method="post">
                     {% csrf_token %}
-                    <section class="venue-input-fields">
+                    <section class="input-fields">
                         <h3>Venue Details:</h3>
                         {{ venue_form|crispy }}
                     </section>
-                    <section class="venue-input-fields">
+                    <section class="input-fields">
                         <h3>Venue Address:</h3>
                         {{ address_form|crispy }}
                     </section>

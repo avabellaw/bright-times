@@ -1,6 +1,27 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {{ block.super }}
+    - Create Event
+{% endblock %}
 
 {% block content %}
-    <h1>Create event</h1>
-    <p>Venue: {{ venue.name }}</p>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="page-header">
+                    <h1>Create event</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h2>Venue: {{ venue.name }}</h2>
+                <section class="input-fields">
+                    {{ event_form|crispy }}
+                </section>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import AddressForm, VenueForm
+from .forms import AddressForm, VenueForm, EventForm
 from django.contrib.auth.decorators import login_required
 from .models import Event, Venue, VenueManager
 from django.contrib import messages
@@ -71,10 +71,13 @@ def create_event(request, venue_id=None):
         messages.error(request, "You're not a manager of this venue.")
         raise PermissionDenied
 
+    event_form = EventForm()
+
     template = 'events/create_event.html'
 
     context = {
         'venue': venue,
+        'event_form': event_form,
     }
 
     return render(request, template, context)

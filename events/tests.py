@@ -39,7 +39,7 @@ class EventTestCase(TestCase):
 
         self.assertIsNotNone(event)
 
-    def test_event_creation_page_can_be_accessed(self):
+    def test_access_to_event_creation_page(self):
         client = Client()
 
         client.login(username=self.user.username, password='doe')
@@ -48,7 +48,7 @@ class EventTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
-    def test_unauthorized_event_creation(self):
+    def test_unauthorized_access_to_event_creation_page(self):
         client = Client()
 
         response = client.get(reverse('create_event', args=[self.venue.id]))
