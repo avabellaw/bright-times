@@ -26,7 +26,7 @@
                     <h2 class="venue-section-header">Your Venues:</h2>
                     <hr>
                     <section class="input-fields">
-                        <form action="{% url 'create_event' %}" method="post">
+                        <form action="{% url 'select_venue' %}" method="post">
                             {% csrf_token %}
                             {% for venue in venues %}
                                 <input type="radio"

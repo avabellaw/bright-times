@@ -18,9 +18,13 @@
         <div class="row">
             <div class="col">
                 <h2>Venue: {{ venue.name }}</h2>
-                <section class="input-fields">
-                    {{ event_form|crispy }}
-                </section>
+                <form action="{% url 'create_event' venue.id %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <section class="input-fields">
+                        {{ event_form|crispy }}
+                        <button type="submit">Create Event</button>
+                    </section>
+                </form>
             </div>
         </div>
     </div>

@@ -42,7 +42,7 @@ def choose_or_create_venue(request):
 
             return redirect('create_event', venue_id=venue.id)
         else:
-            messages.error(request, 'Please correct the errors below.')
+            messages.error(request, 'Please correct the form errors.')
     else:
         address_form = AddressForm()
         venue_form = VenueForm()
@@ -59,10 +59,13 @@ def choose_or_create_venue(request):
 
 
 @login_required
-def create_event(request, venue_id=None):
-    if venue_id is None:
-        venue_id = int(request.POST.get('choose-venue'))
+def select_venue_and_create_event(request):
+    venue_id = int(request.POST.get('choose-venue'))
+    return redirect('create_event', venue_id=venue_id)
 
+
+@login_required
+def create_event(request, venue_id):
     venue = Venue.objects.get(id=venue_id)
 
     try:
@@ -71,7 +74,23 @@ def create_event(request, venue_id=None):
         messages.error(request, "You're not a manager of this venue.")
         raise PermissionDenied
 
-    event_form = EventForm()
+    if request.POST:
+        event_form = EventForm(request.POST, request.FILES)
+
+        if event_form.is_valid():
+            event = event_form.save(commit=False)
+            event.venue = venue
+            event.save(created_by=request.user)
+
+            MESSAGE = f'Event "{event.name}" created successfully.'
+
+            messages.success(request, MESSAGE)
+
+            return redirect('events')
+        else:
+            messages.error(request, 'Please correct the form errors.')
+    else:
+        event_form = EventForm()
 
     template = 'events/create_event.html'
 

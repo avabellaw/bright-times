@@ -7,8 +7,9 @@ urlpatterns = [
     # Create an event
     path('create/<int:venue_id>', views.create_event, name='create_event'),
 
-    # Create an event with venue_id in post request
-    path('create/', views.create_event, name='create_event'),
+    # Select venue and go to event creation page
+    path('select-venue/', views.select_venue_and_create_event,
+         name='select_venue'),
 
     # Choose or create a venue
     path('choose-or-create-venue/<str:create_venue>/',
