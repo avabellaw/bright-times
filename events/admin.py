@@ -15,8 +15,8 @@ class VenueAdmin(admin.ModelAdmin):
         if not change:  # If object not being updated, therefore created
             obj.created_by = request.user
         return super().save_model(request, obj, form, change)
-    
-    
+
+
 class EventAdmin(admin.ModelAdmin):
     """
     Admin class for Event model

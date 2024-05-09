@@ -5,7 +5,7 @@ from .models import Venue, Address
 class VenueForm(forms.ModelForm):
     class Meta():
         model = Venue
-        exclude = ['address']
+        exclude = ['address', 'managers']
 
 
 class AddressForm(forms.ModelForm):

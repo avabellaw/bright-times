@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container venue-container">
         <div class="row">
             <div class="col">
                 <div class="page-header">
@@ -23,21 +23,25 @@
         {% if venues %}
             <div class="row">
                 <div class="col">
-                    <h2>Your Venues:</h2>
-                    {% for venue in venues %}
-                        <input type="radio"
-                               name="choose-venue"
-                               id="{{ venue.id }}"
-                               value="{{ venue.name }}">
-                        <label for="{{ venue.id }}">{{ venue.name }}</label>
-                        <br>
-                    {% endfor %}
+                    <h2 class="venue-section-header">Your Venues:</h2>
+                    <hr>
+                    <section class="venue-input-fields">
+                        {% for venue in venues %}
+                            <input type="radio"
+                                   name="choose-venue"
+                                   id="{{ venue.id }}"
+                                   value="{{ venue.name }}">
+                            <label for="{{ venue.id }}">{{ venue.name }}</label>
+                            <br>
+                        {% endfor %}
+                    </section>
                 </div>
             </div>
-            <hr>
+            <br>
             <div class="row">
                 <div class="col">
-                    <h2>Create a new venue:</h2>
+                    <h2 class="venue-section-header">Create a new venue:</h2>
+                    <hr>
                 </div>
             </div>
         {% endif %}
@@ -46,9 +50,15 @@
             <div class="col">
                 <form action="{% url 'choose_or_create_venue' %}" method="post">
                     {% csrf_token %}
-                    {{ venue_form|crispy }}
-                    {{ address_form|crispy }}
-                    <button type="submit">Create Venue</button>
+                    <section class="venue-input-fields">
+                        <h3>Venue Details:</h3>
+                        {{ venue_form|crispy }}
+                    </section>
+                    <section class="venue-input-fields">
+                        <h3>Venue Address:</h3>
+                        {{ address_form|crispy }}
+                        <button type="submit">Create Venue</button>
+                    </section>
                 </form>
             </div>
         </div>
