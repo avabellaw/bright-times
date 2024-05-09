@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {{ block.super }}
+    - Choose or Create Venue
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="page-header">
+                    {% if venues %}
+                        <h1>Which venue is hosting your event:</h1>
+                    {% else %}
+                        <h1>Create a venue for your event:</h1>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <!-- If VenueManager has venues already -->
+        {% if venues %}
+            <div class="row">
+                <div class="col">
+                    <h2>Your Venues:</h2>
+                    {% for venue in venues %}
+                        <input type="radio"
+                               name="choose-venue"
+                               id="{{ venue.id }}"
+                               value="{{ venue.name }}">
+                        <label for="{{ venue.id }}">{{ venue.name }}</label>
+                        <br>
+                    {% endfor %}
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <h2>Create a new venue:</h2>
+                </div>
+            </div>
+        {% endif %}
+        <!-- Show create a new venue section regardless -->
+        <div class="row">
+            <div class="col">
+                <form action="{% url 'choose_or_create_venue' %}" method="post">
+                    {% csrf_token %}
+                    {{ venue_form|crispy }}
+                    {{ address_form|crispy }}
+                    <button type="submit">Create Venue</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
