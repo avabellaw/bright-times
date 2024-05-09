@@ -80,16 +80,23 @@
         border: 1px var(--outline-colour) solid;
         padding: 0.4em;
         background-color: #00AFFA;
+        position: relative;
     }
 
     /* City tag */
     .event-card_img > .city-tag {
-        background: #000000cf;
+        background: #000000b9;
         color: white;
         width: fit-content;
-        padding: 0.1em 0.3em;
+        padding: 0.2em 0.4em;
         border-radius: 5px;
         font-size: 0.8em;
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin-left: 0.7em;
+        margin-bottom: 0.7em;
     }
 
     .event-card_img > .city-tag > p {

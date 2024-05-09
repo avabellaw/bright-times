@@ -12,7 +12,8 @@ class Event(models.Model):
     desc = models.CharField(blank=False, null=False, max_length=1000)
     price = models.DecimalField(blank=False, null=False,
                                 max_digits=4, decimal_places=2)
-    image_url = models.CharField(blank=False, null=False, max_length=100)
+    image = models.ImageField(upload_to='event_images/',
+                              blank=False, null=False)
     created_on = models.DateField(auto_now_add=True)
     ticket_end_date_time = models.DateTimeField(blank=False, null=False,
                                                 auto_now=False,
@@ -21,6 +22,9 @@ class Event(models.Model):
                                            auto_now=False, auto_now_add=False)
     end_date_time = models.DateTimeField(blank=False, null=False,
                                          auto_now=False, auto_now_add=False)
+
+    def __str__(self):
+        return f'{self.name}, at {self.venue.name}'
 
     def save(self, created_by=None, *args, **kwargs):
         """
