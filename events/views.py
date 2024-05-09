@@ -18,10 +18,8 @@ def events(request):
     return render(request, template, context)
 
 
+@login_required
 def create_event(request):
-    if not request.user.is_authenticated:
-        messages.error(request, 'Please log in to create an event')
-        return redirect('account_login')
     address_form = AddressForm()
     venue_form = VenueForm()
 
