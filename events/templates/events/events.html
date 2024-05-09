@@ -20,7 +20,9 @@
                     <div class="event-card">
                         <div class="event-card_img">
                             <img src="" alt="">
-                            <div class="city-tag">{{ event.venue.address.city }}</div>
+                            <div class="city-tag">
+                                <p>{{ event.venue.address.city }}</p>
+                            </div>
                         </div>
                         <article class="event-card_content">
                             <header>
@@ -56,8 +58,8 @@
                                 </p>
                             </section>
                             <footer>
-                                <p>X Tickets left</p>
-                                <a href="" class="btn btn-primary">BUY TICKETS</a>
+                                <p class="tickets-left">X Tickets left</p>
+                                <a href="" class="btn btn-dark">BUY TICKETS</a>
                             </footer>
                         </article>
                     </div>
