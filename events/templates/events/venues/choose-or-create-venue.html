@@ -26,14 +26,19 @@
                     <h2 class="venue-section-header">Your Venues:</h2>
                     <hr>
                     <section class="venue-input-fields">
-                        {% for venue in venues %}
-                            <input type="radio"
-                                   name="choose-venue"
-                                   id="{{ venue.id }}"
-                                   value="{{ venue.name }}">
-                            <label for="{{ venue.id }}">{{ venue.name }}</label>
-                            <br>
-                        {% endfor %}
+                        <form action="{% url 'create_event' %}" method="post">
+                            {% csrf_token %}
+                            {% for venue in venues %}
+                                <input type="radio"
+                                       name="choose-venue"
+                                       id="{{ venue.id }}"
+                                       value="{{ venue.id }}">
+                                <label for="{{ venue.id }}">{{ venue.name }}</label>
+                                <br>
+                            {% endfor %}
+
+                            <button type="submit">Choose Venue</button>
+                        </form>
                     </section>
                 </div>
             </div>
@@ -48,19 +53,16 @@
         <!-- Show create a new venue section regardless -->
         <div class="row">
             <div class="col">
-                <form action="{% url 'choose_or_create_venue' create_venue=True %}" method="post">
+                <form action="{% url 'choose_or_create_venue' %}" method="post">
                     {% csrf_token %}
-
                     <section class="venue-input-fields">
                         <h3>Venue Details:</h3>
                         {{ venue_form|crispy }}
                     </section>
-                    
                     <section class="venue-input-fields">
                         <h3>Venue Address:</h3>
                         {{ address_form|crispy }}
                     </section>
-
                     <button type="submit">Create Venue</button>
                 </form>
             </div>

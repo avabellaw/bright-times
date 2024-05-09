@@ -17,29 +17,31 @@ def events(request):
 
     return render(request, template, context)
 
+
 @login_required
-def choose_or_create_venue(request, create_venue=False):
+def choose_or_create_venue(request):
     # Venues associated with the current user/venue manager
     venues = Venue.objects.filter(managers=request.user)
 
+    # Only new venue form information will be posted
+    # Venue ID will be posted to create_event view
     if request.POST:
-        if create_venue:
-            venue_form = VenueForm(request.POST)
-            address_form = AddressForm(request.POST)
+        venue_form = VenueForm(request.POST)
+        address_form = AddressForm(request.POST)
 
-            if venue_form.is_valid() and address_form.is_valid():
-                address = address_form.save()
-                venue = venue_form.save(commit=False)
-                venue.address = address
-                venue.save(created_by=request.user)
+        if venue_form.is_valid() and address_form.is_valid():
+            address = address_form.save()
+            venue = venue_form.save(commit=False)
+            venue.address = address
+            venue.save(created_by=request.user)
 
-                MESSAGE = f'Venue "{venue.name}" created successfully.'
+            MESSAGE = f'Venue "{venue.name}" created successfully.'
 
-                messages.success(request, MESSAGE)
+            messages.success(request, MESSAGE)
 
-                return redirect('create_event', venue_id=venue.id)
-            else:
-                messages.error(request, 'Please correct the errors below.')
+            return redirect('create_event', venue_id=venue.id)
+        else:
+            messages.error(request, 'Please correct the errors below.')
     else:
         address_form = AddressForm()
         venue_form = VenueForm()
@@ -56,7 +58,10 @@ def choose_or_create_venue(request, create_venue=False):
 
 
 @login_required
-def create_event(request, venue_id):
+def create_event(request, venue_id=None):
+    if venue_id is None:
+        venue_id = int(request.POST.get('choose-venue'))
+
     venue = Venue.objects.get(id=venue_id)
 
     template = 'events/create_event.html'
