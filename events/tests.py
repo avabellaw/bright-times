@@ -3,6 +3,8 @@ from .models import Venue, VenueManager, Address, Event
 from django.contrib.auth.models import User
 from datetime import timedelta
 from django.utils import timezone
+from django.test import Client
+from django.urls import reverse
 
 
 date_now = timezone.now()
@@ -14,20 +16,52 @@ date_future_plus_week = date_future + timedelta(days=7)
 class EventTestCase(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='jane', password='doe')
+        self.user2 = User.objects.create_user(username='john', password='doe')
+
         self.venue = Venue(address=get_generic_address(), name='Test Venue',
                            capacity=1)
         self.venue.save(created_by=self.user)
 
+        self.venue2 = Venue(address=get_generic_address(), name='Test Venue 2',
+                            capacity=2)
+        self.venue2.save(created_by=self.user2)
+
     def test_event_created(self):
-        event = Event(venue=self.venue, name='Test Event',
-                      desc='Test Description', price=1.00,
-                      image_url='http://www.test.com',
+        event = Event(venue=self.venue, 
+                      name='Test Event',
+                      desc='Test Description', 
+                      price=1.00,
+                      image='default.png',
                       ticket_end_date_time=date_future_day_before,
                       start_date_time=date_future,
                       end_date_time=date_future_plus_week)
         event.save(created_by=self.user)
 
         self.assertIsNotNone(event)
+
+    def test_event_creation_page_can_be_accessed(self):
+        client = Client()
+
+        client.login(username=self.user.username, password='doe')
+
+        response = client.get(reverse('create_event', args=[self.venue.id]))
+
+        self.assertEqual(response.status_code, 200)
+
+    def test_unauthorized_event_creation(self):
+        client = Client()
+
+        response = client.get(reverse('create_event', args=[self.venue.id]))
+
+        # Test is redirected to login page
+        self.assertEqual(response.status_code, 302)
+
+        client.login(username=self.user.username, password='doe')
+
+        response = client.get(reverse('create_event', args=[self.venue2.id]))
+
+        # User should not be able to use User2's venue
+        self.assertEqual(response.status_code, 403)
 
 
 class VenueTestCase(TestCase):

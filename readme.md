@@ -100,3 +100,7 @@ Blue. The color of trust, blue conveys tranquility, serenity, and peace.
 * Location icon from [flaticon by Shastry](https://www.flaticon.com/free-icon/map_9120063?term=venue&page=1&position=79&origin=search&related_id=9120063)
 * Calendar icon from [fontawesome](https://fontawesome.com/icons/calendar?f=classic&s=regular)
 * Venue icon from [thenounproject by Vicons Design](https://thenounproject.com/icon/venue-79187/)
+
+## Code
+
+* Test a view from [docs.djangoproject](https://docs.djangoproject.com/en/5.0/intro/tutorial05/#test-a-view)

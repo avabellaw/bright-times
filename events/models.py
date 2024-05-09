@@ -33,6 +33,8 @@ class Event(models.Model):
         If the event is being created, set the created_by attribute to the 
         the venue manager who created the event.        
         """
+        
+        self.created_by = created_by
 
         # If event was just created, set the created_by field
         if not self.pk:
