@@ -48,17 +48,20 @@
         <!-- Show create a new venue section regardless -->
         <div class="row">
             <div class="col">
-                <form action="{% url 'choose_or_create_venue' %}" method="post">
+                <form action="{% url 'choose_or_create_venue' create_venue=True %}" method="post">
                     {% csrf_token %}
+
                     <section class="venue-input-fields">
                         <h3>Venue Details:</h3>
                         {{ venue_form|crispy }}
                     </section>
+                    
                     <section class="venue-input-fields">
                         <h3>Venue Address:</h3>
                         {{ address_form|crispy }}
-                        <button type="submit">Create Venue</button>
                     </section>
+
+                    <button type="submit">Create Venue</button>
                 </form>
             </div>
         </div>

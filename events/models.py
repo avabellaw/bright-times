@@ -34,12 +34,10 @@ class Event(models.Model):
         the venue manager who created the event.        
         """
 
-        try:
-            self.created_by
-        except AttributeError:
-            self.created_by = created_by
-
+        # If event was just created, set the created_by field
         if not self.pk:
+            check_created_by_is_set(created_by)
+
             self.created_by_venue_manager = VenueManager.objects.get(
                                                        venue=self.venue,
                                                        user=self.created_by
@@ -71,14 +69,17 @@ class Venue(models.Model):
         # Save the Venue
         super().save(*args, **kwargs)
 
-        try:
-            self.created_by
-        except AttributeError:
-            self.created_by = created_by
-
         # Create venue manager if just created
         if just_created:
-            VenueManager.objects.create(user=self.created_by, venue=self)
+            check_created_by_is_set(created_by)
+
+            VenueManager.objects.create(user=created_by, venue=self)
+
+
+def check_created_by_is_set(created_by):
+    if created_by is None:
+        raise ValueError('created_by must be passed as an arugment \
+            when creating a venue.')
 
 
 class VenueManager(models.Model):
