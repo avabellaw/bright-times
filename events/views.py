@@ -3,6 +3,7 @@ from .forms import AddressForm, VenueForm
 from django.contrib.auth.decorators import login_required
 from .models import Event, Venue, VenueManager
 from django.contrib import messages
+from django.core.exceptions import PermissionDenied
 
 
 def events(request):
@@ -63,6 +64,12 @@ def create_event(request, venue_id=None):
         venue_id = int(request.POST.get('choose-venue'))
 
     venue = Venue.objects.get(id=venue_id)
+
+    try:
+        VenueManager.objects.get(venue=venue, user=request.user)
+    except VenueManager.DoesNotExist:
+        messages.error(request, "You're not a manager of this venue.")
+        raise PermissionDenied
 
     template = 'events/create_event.html'
 
