@@ -92,3 +92,11 @@ I wanted to use a bright colour. Either yellow/orange to represent the sun or a 
 Yellow. Bright and sunny, yellow is the color of optimism.
 Green. This is the color of growth and health.
 Blue. The color of trust, blue conveys tranquility, serenity, and peace.
+
+# Credits
+
+## Images
+
+* Location icon from [flaticon by Shastry](https://www.flaticon.com/free-icon/map_9120063?term=venue&page=1&position=79&origin=search&related_id=9120063)
+* Calendar icon from [fontawesome](https://fontawesome.com/icons/calendar?f=classic&s=regular)
+* Venue icon from [thenounproject by Vicons Design](https://thenounproject.com/icon/venue-79187/)

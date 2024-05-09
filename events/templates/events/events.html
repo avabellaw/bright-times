@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block title %}BrightTimes - Events{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -14,28 +17,49 @@
         <div class="row">
             {% for event in events %}
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card text-center">
-                        <div class="card-header">Hosted at {{ event.venue.name }}</div>
-                        <div class="card-body">
-                            <h5 class="card-title">{{ event.name }}</h5>
-                            <strong>
-                                <p class="card-text">{{ event.start_date_time }}</p>
-                            </strong>
-                            <strong>Ticket price</strong>
-                            <p class="card-text">
-                                {% with price=event.price %}
-                                    {% if price == 0.00 %}
-                                        Free
-                                    {% else %}
-                                        {{ price }}
-                                    {% endif %}
-                                {% endwith %}
-                            </p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <div class="event-card">
+                        <div class="event-card_img">
+                            <img src="" alt="">
+                            <div class="city-tag">{{ event.venue.address.city }}</div>
                         </div>
-                        <div class="card-footer text-muted">
-                            <em>Posted on {{ event.created_on }}</em>
-                        </div>
+                        <article class="event-card_content">
+                            <header>
+                                <h3 class="event-card_title">{{ event.name }}</h3>
+                            </header>
+                            <section class="event-card_details">
+                                <p class="date">
+                                    <img src="{% static 'font-awesome/calendar-regular.svg' %}"
+                                         width="16"
+                                         height="16"
+                                         alt="Date and time">
+                                    {{ event.start_date_time }}
+                                </p>
+                                <p class="venue">
+                                    <img src="{% static 'icons/venue.webp' %}"
+                                         width="16"
+                                         height="16"
+                                         alt="Venue">
+                                    {{ event.venue.name }}
+                                </p>
+                                <p class="price">
+                                    <img src="{% static 'font-awesome/tag-solid.svg' %}"
+                                         width="16"
+                                         height="16"
+                                         alt="Ticket price">
+                                    {% with price=event.price %}
+                                        {% if price == 0.00 %}
+                                            Free
+                                        {% else %}
+                                            £{{ price }}
+                                        {% endif %}
+                                    {% endwith %}
+                                </p>
+                            </section>
+                            <footer>
+                                <p>X Tickets left</p>
+                                <a href="" class="btn btn-primary">BUY TICKETS</a>
+                            </footer>
+                        </article>
                     </div>
                 </div>
             {% endfor %}
