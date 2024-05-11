@@ -4,6 +4,9 @@ from django.contrib.auth.decorators import login_required
 from .models import Event, Venue, VenueManager
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
+from django.conf import settings
+
+ToastMessage = settings.TOAST_MESSAGE
 
 
 def events(request):
@@ -42,7 +45,7 @@ def choose_or_create_venue(request):
 
             return redirect('create_event', venue_id=venue.id)
         else:
-            messages.error(request, 'Please correct the form errors.')
+            ToastMessage.form_validation_error(request)
     else:
         address_form = AddressForm()
         venue_form = VenueForm()
@@ -71,7 +74,7 @@ def create_event(request, venue_id):
     try:
         VenueManager.objects.get(venue=venue, user=request.user)
     except VenueManager.DoesNotExist:
-        messages.error(request, "You're not a manager of this venue.")
+        ToastMessage.not_a_manager(request)
         raise PermissionDenied
 
     if request.POST:
@@ -88,7 +91,7 @@ def create_event(request, venue_id):
 
             return redirect('events')
         else:
-            messages.error(request, 'Please correct the form errors.')
+            ToastMessage.form_validation_error(request)
     else:
         event_form = EventForm()
 

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from django.contrib import messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -172,3 +173,19 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Standard toast messages
+class ToastMessage:
+
+    @staticmethod
+    def form_validation_error(request):
+        messages.error(request, 'Please correct the form errors.')
+
+    @staticmethod
+    def not_a_manager(request):
+        messages.error(request, 'You are not a manager of this venue.')
+
+
+# The variable is singular to aid readbility when using the methods
+TOAST_MESSAGE = ToastMessage
