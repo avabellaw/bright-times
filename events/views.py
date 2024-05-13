@@ -5,6 +5,7 @@ from .models import Event, Venue, VenueManager
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.conf import settings
+from templates.includes.decorators import login_required_message
 
 ToastMessage = settings.TOAST_MESSAGE
 
@@ -22,7 +23,7 @@ def events(request):
     return render(request, template, context)
 
 
-@login_required
+@login_required_message
 def choose_or_create_venue(request):
     # Venues associated with the current user/venue manager
     venues = Venue.objects.filter(managers=request.user)
@@ -61,13 +62,13 @@ def choose_or_create_venue(request):
     return render(request, template, context)
 
 
-@login_required
+@login_required_message
 def select_venue_and_create_event(request):
     venue_id = int(request.POST.get('choose-venue'))
     return redirect('create_event', venue_id=venue_id)
 
 
-@login_required
+@login_required_message
 def create_event(request, venue_id):
     venue = Venue.objects.get(id=venue_id)
 

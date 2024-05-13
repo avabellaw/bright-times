@@ -186,6 +186,10 @@ class ToastMessage:
     def not_a_manager(request):
         messages.error(request, 'You are not a manager of this venue.')
 
+    @staticmethod
+    def login_required(request):
+        messages.error(request, 'You need to login to view this page.')
+
 
 # The variable is singular to aid readbility when using the methods
 TOAST_MESSAGE = ToastMessage
