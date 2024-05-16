@@ -1,16 +1,40 @@
 from django.test import TestCase
-from .models import Venue, VenueManager, Address, Event
 from django.contrib.auth.models import User
 from datetime import timedelta
 from django.utils import timezone
 from django.test import Client
 from django.urls import reverse
 
+from .models import Venue, VenueManager, Address, Event, Ticket
+
 
 date_now = timezone.now()
 date_future = date_now + timedelta(days=7)
 date_future_day_before = date_future - timedelta(days=1)
 date_future_plus_week = date_future + timedelta(days=7)
+
+
+class TicketTestCase(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username='jane', password='doe')
+        self.user.save()
+        self.venue = Venue(address=get_generic_address(),
+                           name='Test Venue', capacity=1)
+        self.venue.save(created_by=self.user)
+        self.event = create_test_event(self.venue, self.user)
+
+    def test_can_user_buy_ticket(self):
+        client = Client()
+
+        client.login(username=self.user.username, password='doe')
+
+        client.post(reverse('buy-ticket', args=[self.event.id]),
+                    data={'quantity': '1'})
+
+        ticket_count = Ticket.objects.filter(event=self.event,
+                                             user=self.user).count()
+
+        self.assertEqual(ticket_count, 1)
 
 
 class EventTestCase(TestCase):
@@ -27,15 +51,7 @@ class EventTestCase(TestCase):
         self.venue2.save(created_by=self.user2)
 
     def test_event_created(self):
-        event = Event(venue=self.venue, 
-                      name='Test Event',
-                      desc='Test Description', 
-                      price=1.00,
-                      image='default.png',
-                      ticket_end_date_time=date_future_day_before,
-                      start_date_time=date_future,
-                      end_date_time=date_future_plus_week)
-        event.save(created_by=self.user)
+        event = create_test_event(self.venue, self.user)
 
         self.assertIsNotNone(event)
 
@@ -87,7 +103,21 @@ class VenueTestCase(TestCase):
         venuemanager = VenueManager.objects.get(venue=venue)
         self.assertIsNotNone(venuemanager)
 
+
 def get_generic_address():
     return Address.objects.create(street_address1='Street1', city='City',
                                   postcode='ee45 9JR', county='CountryLand',
                                   country='GB')
+
+
+def create_test_event(venue, user):
+    event = Event(venue=venue,
+                  name='Test Event',
+                  desc='Test Description',
+                  price=1.00,
+                  image='default.png',
+                  ticket_end_date_time=date_future_day_before,
+                  start_date_time=date_future,
+                  end_date_time=date_future_plus_week)
+    event.save(created_by=user)
+    return event
