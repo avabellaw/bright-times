@@ -20,7 +20,13 @@
                 <h2>Hosted at {{ event.venue.name }}</h2>
                 <p>{{ event.desc }}</p>
                 <h3>Date and time of event</h3>
-                <p>{{ event.datetime }}</p>
+                <p>
+                    <strong>Start: </strong>
+                    {{ event.start_date_time }}
+                    <br>
+                    <strong>End: </strong>
+                    {{ event.end_date_time }}
+                </p>
                 <h3>Location</h3>
                 <p>
                     <strong>{{ event.venue.name }}</strong>
