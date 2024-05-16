@@ -16,6 +16,10 @@ def events(request):
 
     template = 'events/events.html'
 
+    # Add tickets left
+    for event in events:
+        event.tickets_left = event.venue.capacity
+
     context = {
         'events': events,
     }
