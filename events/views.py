@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.conf import settings
 from templates.includes.decorators import login_required_message
+from .helpers import get_tickets_left_for_event
 
 ToastMessage = settings.TOAST_MESSAGE
 
@@ -18,7 +19,7 @@ def events(request):
 
     # Add tickets left
     for event in events:
-        event.tickets_left = event.venue.capacity
+        event.tickets_left = get_tickets_left_for_event(event)
 
     context = {
         'events': events,
