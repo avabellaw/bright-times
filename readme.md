@@ -104,3 +104,7 @@ Blue. The color of trust, blue conveys tranquility, serenity, and peace.
 ## Code
 
 * Test a view from [docs.djangoproject](https://docs.djangoproject.com/en/5.0/intro/tutorial05/#test-a-view)
+
+## GitHub
+
+* How to use GitHub roadmap from [GitHub docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-roadmap-layout)
