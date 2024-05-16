@@ -29,6 +29,18 @@ def events(request):
     return render(request, template, context)
 
 
+def event_details(request, event_id):
+    event = Event.objects.get(id=event_id)
+
+    template = 'events/event-details.html'
+
+    context = {
+        'event': event,
+    }
+
+    return render(request, template, context)
+
+
 @login_required_message
 def choose_or_create_venue(request):
     # Venues associated with the current user/venue manager

@@ -23,4 +23,8 @@ urlpatterns = [
 
     # Buy a ticket
     path('buy-ticket/<int:event_id>', views.buy_ticket, name='buy-ticket'),
+
+    # Event details
+    path('event-details/<int:event_id>', views.event_details,
+         name='event-details'),
 ]

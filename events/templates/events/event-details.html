@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}BrightTimes - {{ event.name }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="event-header">
+                    <div class="event-hero-img">
+                        <img class="img img-responsive" src="{{ event.image.url }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <h1>{{ event.name }}</h1>
+                <h2>Hosted at {{ event.venue.name }}</h2>
+            </div>
+            <div id="event-details_buy-tickets" class="fixed-bottom col-md-4">
+                <p>BUY TICKETS</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

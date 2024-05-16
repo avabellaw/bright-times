@@ -58,6 +58,33 @@
 
 /* Events */
 
+    /* Event detail */
+
+    .event-hero-img {
+        width: 100%;
+        height: 300px;
+        padding: 0 8%;
+        margin-bottom: 2em;
+    }
+
+    .event-hero-img > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .event-header > h1 {
+        text-transform: capitalize;
+    }
+
+    @media screen and (min-width: 768px) {
+        #event-details_buy-tickets {
+            position: static;
+        }
+    }
+
+    /* End Event detail */
+
     /* Event cards */
 
     .event-cards-container {
@@ -78,10 +105,16 @@
         width: 250px;
         margin: auto;
         max-width: 100%;
+        position: relative;
 
         /* Event card variables */
         --outline-colour: #545454;
         --card-border-radius: 9px;
+    }
+
+    a#buy-tickets {
+        /* Position buy tickets link above .stretched-link (event details) */
+        z-index: 11;
     }
 
     .event-card_img {
