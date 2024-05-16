@@ -18,12 +18,34 @@
             <div class="col-12 col-md-8">
                 <h1>{{ event.name }}</h1>
                 <h2>Hosted at {{ event.venue.name }}</h2>
+                <p>{{ event.desc }}</p>
+                <h3>Date and time of event</h3>
+                <p>{{ event.datetime }}</p>
+                <h3>Location</h3>
+                <p>
+                    <strong>{{ event.venue.name }}</strong>
+                    <br>
+                    {{ event.venue.address.street_address1 }},
+                    <br>
+                    {{ event.venue.address.street_address2 }},
+                    <br>
+                    {{ event.venue.address.city }},
+                    <br>
+                    {{ event.venue.address.county }},
+                    <br>
+                    {{ event.venue.address.postcode }}.
+                    <br>
+                    {{ event.venue.address.country }}
+                </p>
             </div>
             <div id="event-details_buy-tickets" class="fixed-bottom col-md-4">
                 <h4>£{{ event.price }}</h4>
                 <a id="buy-tickets" href="{% url 'buy-ticket' event.id %}" class="btn btn-dark">BUY TICKETS</a>
                 <p class="tickets-left text-muted">{{ event.tickets_left }} Tickets left</p>
+                <br>
+                <small>Tickets end on {{ event.ticket_end_date_time }}</small>
             </div>
         </div>
+        <div id="event-details_buy-tickets_whitespace"></div>
     </div>
 {% endblock %}

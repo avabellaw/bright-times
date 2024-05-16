@@ -60,6 +60,11 @@
 
     /* Event detail */
 
+    body {
+        /* Fixed-bottom buy tickets height */
+        --buy-tickets-height: 12em;
+    }
+
     .event-hero-img {
         width: 100%;
         height: 300px;
@@ -84,6 +89,12 @@
         row-gap: 0.3em;
         padding: 1.2em 0;
         box-shadow: black 1px 1px 10px -2px;
+        height: var(--buy-tickets-height);
+        background-color: white;
+    }
+
+    #event-details_buy-tickets_whitespace {
+        height: var(--buy-tickets-height);
     }
 
     #event-details_buy-tickets > .btn {
@@ -100,6 +111,11 @@
             position: static;
             padding: 0;
             box-shadow: none;
+            height: fit-content;
+        }
+
+        #event-details_buy-tickets_whitespace {
+            display: none;
         }
     }
 
