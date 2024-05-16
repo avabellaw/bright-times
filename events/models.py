@@ -33,7 +33,7 @@ class Event(models.Model):
         If the event is being created, set the created_by attribute to the 
         the venue manager who created the event.        
         """
-        
+
         self.created_by = created_by
 
         # If event was just created, set the created_by field
@@ -41,9 +41,9 @@ class Event(models.Model):
             check_created_by_is_set(created_by)
 
             self.created_by_venue_manager = VenueManager.objects.get(
-                                                       venue=self.venue,
-                                                       user=self.created_by
-                                                    )
+                venue=self.venue,
+                user=self.created_by
+            )
 
         super().save(*args, **kwargs)
 
@@ -106,6 +106,11 @@ class Address(models.Model):
     def __str__(self):
         return f'{self.street_address1}, \
                 {self.city}, {self.postcode}, {self.country}'
+
+
+class Ticket(models.Model):
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 def get_venue_attached_to_address(address):
