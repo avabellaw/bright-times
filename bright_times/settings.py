@@ -190,6 +190,21 @@ class ToastMessage:
     def login_required(request):
         messages.error(request, 'You need to login to view this page.')
 
+    @staticmethod
+    def min_max_tickets_error(request, num_of_tickets_attempted):
+        if num_of_tickets_attempted < 1:
+            messages.error(request, 'You must buy at least 1 ticket.')
+        else:
+            messages.error(request, 'You can only buy a maximum of 10 tickets.')
+
+    @staticmethod
+    def user_reached_max_tickets(request):
+        messages.error(request, f'You have reached the maximum number of \
+            tickets ({MAX_TICKETS_PER_USER}) you can buy for this event.')
+
 
 # The variable is singular to aid readbility when using the methods
 TOAST_MESSAGE = ToastMessage
+
+# Tickets
+MAX_TICKETS_PER_USER = 10
