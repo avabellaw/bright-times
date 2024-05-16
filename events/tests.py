@@ -4,6 +4,7 @@ from datetime import timedelta
 from django.utils import timezone
 from django.test import Client
 from django.urls import reverse
+from django.conf import settings
 
 from .models import Venue, VenueManager, Address, Event, Ticket
 
@@ -23,18 +24,28 @@ class TicketTestCase(TestCase):
         self.venue.save(created_by=self.user)
         self.event = create_test_event(self.venue, self.user)
 
+        self.client = Client()
+
+        self.client.login(username=self.user.username, password='doe')
+
     def test_can_user_buy_ticket(self):
-        client = Client()
-
-        client.login(username=self.user.username, password='doe')
-
-        client.post(reverse('buy-ticket', args=[self.event.id]),
-                    data={'quantity': '1'})
+        self.client.post(reverse('buy-ticket', args=[self.event.id]),
+                         data={'quantity': '1'})
 
         ticket_count = Ticket.objects.filter(event=self.event,
                                              user=self.user).count()
 
         self.assertEqual(ticket_count, 1)
+
+    def test_user_cannot_buy_more_than_max_tickets(self):
+        max_tickets = settings.MAX_TICKETS_PER_USER
+        self.client.post(reverse('buy-ticket', args=[self.event.id]),
+                         data={'quantity': f'{max_tickets + 1}'})
+
+        ticket_count = Ticket.objects.filter(event=self.event,
+                                             user=self.user).count()
+
+        self.assertEqual(ticket_count, 0)
 
 
 class EventTestCase(TestCase):
