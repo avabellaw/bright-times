@@ -20,7 +20,9 @@
                 <h2>Hosted at {{ event.venue.name }}</h2>
             </div>
             <div id="event-details_buy-tickets" class="fixed-bottom col-md-4">
-                <p>BUY TICKETS</p>
+                <h4>£{{ event.price }}</h4>
+                <a id="buy-tickets" href="{% url 'buy-ticket' event.id %}" class="btn btn-dark">BUY TICKETS</a>
+                <p class="tickets-left text-muted">{{ event.tickets_left }} Tickets left</p>
             </div>
         </div>
     </div>

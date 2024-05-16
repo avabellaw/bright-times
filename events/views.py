@@ -6,7 +6,7 @@ from django.core.exceptions import PermissionDenied
 from django.conf import settings
 from templates.includes.decorators import login_required_message
 
-from .helpers import get_tickets_left_for_event
+from .helpers import add_tickets_left_to_events
 from .models import Event, Venue, VenueManager, Ticket
 
 ToastMessage = settings.TOAST_MESSAGE
@@ -18,9 +18,7 @@ def events(request):
 
     template = 'events/events.html'
 
-    # Add tickets left
-    for event in events:
-        event.tickets_left = get_tickets_left_for_event(event)
+    add_tickets_left_to_events(events)
 
     context = {
         'events': events,
@@ -33,6 +31,8 @@ def event_details(request, event_id):
     event = Event.objects.get(id=event_id)
 
     template = 'events/event-details.html'
+
+    add_tickets_left_to_events([event])
 
     context = {
         'event': event,

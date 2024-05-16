@@ -77,9 +77,29 @@
         text-transform: capitalize;
     }
 
+    #event-details_buy-tickets {
+        text-align: center;
+        flex-direction: column;
+        display: flex;
+        row-gap: 0.3em;
+        padding: 1.2em 0;
+        box-shadow: black 1px 1px 10px -2px;
+    }
+
+    #event-details_buy-tickets > .btn {
+        margin: auto;
+        padding: 0.4em 2em;
+    }
+
+    #event-details_buy-tickets > p {
+        margin: 0;
+    }
+
     @media screen and (min-width: 768px) {
         #event-details_buy-tickets {
             position: static;
+            padding: 0;
+            box-shadow: none;
         }
     }
 
