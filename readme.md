@@ -109,6 +109,7 @@ Blue. The color of trust, blue conveys tranquility, serenity, and peace.
 ## Code
 
 * Test a view from [docs.djangoproject](https://docs.djangoproject.com/en/5.0/intro/tutorial05/#test-a-view)
+* How to use JQuery datetimepicker from [xdsoft.net](https://xdsoft.net/jqplugins/datetimepicker/) 
 
 ## GitHub
 
