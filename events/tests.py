@@ -47,6 +47,19 @@ class TicketTestCase(TestCase):
 
         self.assertEqual(ticket_count, 0)
 
+    def test_user_cannot_buy_more_than_max_ticket_overall(self):
+        max_tickets = settings.MAX_TICKETS_PER_USER
+        self.client.post(reverse('buy-ticket', args=[self.event.id]),
+                         data={'quantity': f'{max_tickets}'})
+
+        self.client.post(reverse('buy-ticket', args=[self.event.id]),
+                         data={'quantity': '1'})
+
+        ticket_count = Ticket.objects.filter(event=self.event,
+                                             user=self.user).count()
+
+        self.assertEqual(ticket_count, max_tickets)
+
 
 class EventTestCase(TestCase):
     def setUp(self):
