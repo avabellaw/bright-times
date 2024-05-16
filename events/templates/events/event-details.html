@@ -5,6 +5,13 @@
 
 {% block additonal_css %}
     <link rel="stylesheet" href="{% static 'event-styles.css' %}">
+    <style>
+        /* Styles added here due to django static file limitations in css */
+        .event-hero-img_background {
+            background: url("{{ event.image.url }}") no-repeat center;
+            background-size: cover;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -13,6 +20,7 @@
             <div class="col">
                 <div class="event-header">
                     <div class="event-hero-img">
+                        <div class="event-hero-img_background"></div>
                         <img class="img img-responsive" src="{{ event.image.url }}" alt="">
                     </div>
                 </div>
