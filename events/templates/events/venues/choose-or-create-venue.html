@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
+{% block additonal_css %}
+    <link rel="stylesheet" href="{% static 'event-styles.css' %}">
+{% endblock %}
+
 {% block title %}
     {{ block.super }}
     - Choose or Create Venue
