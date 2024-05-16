@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
 from .forms import AddressForm, VenueForm, EventForm
 from django.contrib.auth.decorators import login_required
-from .models import Event, Venue, VenueManager
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.conf import settings
 from templates.includes.decorators import login_required_message
+
 from .helpers import get_tickets_left_for_event
+from .models import Event, Venue, VenueManager, Ticket
 
 ToastMessage = settings.TOAST_MESSAGE
 
@@ -62,6 +63,46 @@ def choose_or_create_venue(request):
         'venues': venues,
         'address_form': address_form,
         'venue_form': venue_form,
+    }
+
+    return render(request, template, context)
+
+
+@login_required_message
+def buy_ticket(request, event_id):
+    event = Event.objects.get(id=event_id)
+
+    if request.POST:
+        quantity = int(request.POST.get('quantity'))
+
+        tickets_owned = Ticket.objects.filter(event=event,
+                                              user=request.user).count()
+
+        # Check if user has reached max tickets
+        if tickets_owned + quantity > settings.MAX_TICKETS_PER_USER:
+            ToastMessage.user_reached_max_tickets(request)
+            return redirect('buy-ticket', event_id=event_id)
+
+        # Check if quantity is valid
+        if quantity < 1 or quantity > settings.MAX_TICKETS_PER_USER:
+            ToastMessage.min_max_tickets_error(request, quantity)
+            return redirect('buy-ticket', event_id=event_id)
+
+        # Purchase tickets at quantity selected
+        for _ in range(quantity):
+            ticket = Ticket.objects.create(event=event, user=request.user)
+            ticket.save()
+
+        MESSAGE = f'Ticket for "{event.name}" purchased successfully.'
+
+        messages.success(request, MESSAGE)
+
+        return redirect('events')
+
+    template = 'events/tickets/buy-ticket.html'
+
+    context = {
+        'event': event,
     }
 
     return render(request, template, context)

@@ -20,4 +20,7 @@ urlpatterns = [
     path('choose-or-create-venue/',
          views.choose_or_create_venue,
          name='choose_or_create_venue'),
+
+    # Buy a ticket
+    path('buy-ticket/<int:event_id>', views.buy_ticket, name='buy-ticket'),
 ]

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}BrightTimes - Buy Ticket{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="page-header">
+                    <h1>Buy for {{ event.name }}</h1>
+                    <h2>Hosted at {{ event.venue.name }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="{% url 'buy-ticket' event.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <h3>Price of ticket: {{ event.price }}</h3>
+
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1" required>
+
+                        <p>Total cost: </p>
+
+                        <button type="submit" class="btn btn-primary mt-3">Buy ticket</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
