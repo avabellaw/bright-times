@@ -6,10 +6,15 @@ class EventForm(forms.ModelForm):
     class Meta():
         model = Event
         exclude = ['venue', 'created_by_venue_manager']
+
+        datetime_attributes = {'type': 'datetime-local',
+                               'class': 'datetimepicker'}
+
         widgets = {
-            'start_date_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
-            'end_date_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
-            'ticket_end_date_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'start_date_time': forms.DateTimeInput(attrs=datetime_attributes),
+            'end_date_time': forms.DateTimeInput(attrs=datetime_attributes),
+            'ticket_end_date_time': forms.DateTimeInput(
+                attrs=datetime_attributes),
         }
 
 
