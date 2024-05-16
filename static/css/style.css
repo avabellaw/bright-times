@@ -60,6 +60,14 @@
 
     /* Event cards */
 
+    .event-cards-container {
+        margin-top: 1.5rem;
+    }
+
+    .event-cards-container > .row {
+        --bs-gutter-y: 1.5rem;
+    }
+
     .event-card {
         border-radius: 9px;
         overflow: hidden;
@@ -72,6 +80,7 @@
         --outline-colour: #545454;
         --card-border-radius: 9px;
         width: 250px;
+        margin: auto;
     }
 
     .event-card_img {
