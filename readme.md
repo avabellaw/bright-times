@@ -8,6 +8,10 @@ This projects demonstrates my ability to create a full-stack application with ec
 
 ![]()
 
+## Frameworks, etc used
+
+* JQuery datetimepicker
+
 ## User Experience (UX)
 
 ### Project Goals
