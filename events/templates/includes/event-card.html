@@ -1,0 +1,50 @@
+{% load static %}
+
+<div class="col-12 col-sm-6 col-md-4 col-lg-3">
+    <div class="event-card">
+        <div class="event-card_img">
+            <img class="img img-responsive w-100" src="{{ event.image.url }}" alt="">
+            <div class="city-tag">
+                <p>{{ event.venue.address.city }}</p>
+            </div>
+        </div>
+        <article class="event-card_content">
+            <header>
+                <h3 class="event-card_title">{{ event.name }}</h3>
+            </header>
+            <section class="event-card_details">
+                <p class="date">
+                    <img src="{% static 'font-awesome/calendar-regular.svg' %}"
+                         width="16"
+                         height="16"
+                         alt="Date and time">
+                    {{ event.start_date_time }}
+                </p>
+                <p class="venue">
+                    <img src="{% static 'icons/venue.webp' %}"
+                         width="16"
+                         height="16"
+                         alt="Venue">
+                    {{ event.venue.name }}
+                </p>
+                <p class="price">
+                    <img src="{% static 'font-awesome/tag-solid.svg' %}"
+                         width="16"
+                         height="16"
+                         alt="Ticket price">
+                    {% with price=event.price %}
+                        {% if price == 0.00 %}
+                            Free
+                        {% else %}
+                            £{{ price }}
+                        {% endif %}
+                    {% endwith %}
+                </p>
+            </section>
+            <footer>
+                <p class="tickets-left">{{ event.tickets_left }} Tickets left</p>
+                <a href="{% url 'buy-ticket' event.id %}" class="btn btn-dark">BUY TICKETS</a>
+            </footer>
+        </article>
+    </div>
+</div>

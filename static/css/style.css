@@ -75,12 +75,13 @@
         display: flex;
         flex-direction: column;
         row-gap: 0.3em;
+        width: 250px;
+        margin: auto;
+        max-width: 100%;
 
         /* Event card variables */
         --outline-colour: #545454;
         --card-border-radius: 9px;
-        width: 250px;
-        margin: auto;
     }
 
     .event-card_img {
