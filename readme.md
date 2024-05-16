@@ -82,7 +82,12 @@ The original idea was to use a user ID to set the Event's created by. If you wan
 Django doesn't support composite primary keys so the junction table VenueManager still has a primary key. I have set the meta so that the combination of User ID and Venue ID is unique. The primary key will be useful for indexing in future anyway.
 This will allow me to filter by userID and VenueID and get a result as if using a composite ID.
 
+
 ## Skeleton plane
+
+I decided to keep not seperate venue into a seperate app. This can be done in future but, at present, venue is simple enough to not require it. A venue is used to create an event.
+
+A ticket is a simple model linking an event with a user. I have decided not to seperate this either.
 
 ## Surface plane
 
