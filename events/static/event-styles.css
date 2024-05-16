@@ -22,6 +22,14 @@ body {
     text-transform: capitalize;
 }
 
+#event-desc {
+    padding: 1em 0;
+}
+
+article#event-details > section {
+    margin-bottom: 2.5em;
+}
+
 #event-details_buy-tickets {
     text-align: center;
     flex-direction: column;

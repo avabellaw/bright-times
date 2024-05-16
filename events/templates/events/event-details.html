@@ -20,11 +20,11 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-8">
-                <article>
+                <article id="event-details">
                     <header>
                         <h1>{{ event.name }}</h1>
-                        <h2>Hosted at {{ event.venue.name }}</h2>
-                        <p>{{ event.desc }}</p>
+                        <h2 class="text-muted">Hosted at {{ event.venue.name }}</h2>
+                        <p id="event-desc">{{ event.desc }}</p>
                     </header>
 
                     <section>
