@@ -21,10 +21,11 @@
                                 <li class="breadcrumb-item active" aria-current="page">{{ breadcrumb }}</li>
                             {% else %}
                                 <li class="breadcrumb-item">{{ breadcrumb }}</li>
-                            {% endfor %}
-                        </ol>
-                    </nav>
-                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </ol>
+                </nav>
             </div>
         </div>
-    {% endblock %}
+    </div>
+{% endblock %}
