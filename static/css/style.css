@@ -4,7 +4,7 @@
         font-family: "Inter", sans-serif;
     }
 
-    header.page-header {
+    .nav-container {
         background-color: #9DDCFF;
         margin-bottom: 2em;
     }

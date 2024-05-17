@@ -20,73 +20,77 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
         {% block additonal_css %}{% endblock %}
-
         <title>
+
             {% block title %}BrightTimes{% endblock %}
         </title>
     </head>
     <body>
-        <header class="page-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <nav class="navbar navbar-expand-lg navbar-light">
-                            <a class="navbar-brand" href="{% url 'home' %}">BrightTimes</a>
-                            <button class="navbar-toggler"
-                                    type="button"
-                                    data-toggle="collapse"
-                                    data-target="#navbarNav"
-                                    aria-controls="navbarNav"
-                                    aria-expanded="false"
-                                    aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarNav">
-                                <ul class="navbar-nav">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'events' %}">Events</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'choose_or_create_venue' %}">Create Event</a>
-                                    </li>
-                                    <li class="nav-item {% if user.is_authenticated %}dropdown{% endif %}">
-                                        {% if not user.is_authenticated %}
-                                            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-                                        {% else %}
-                                            <div class="account-dropdown-container">
-                                                <img src="{% static 'font-awesome/user-solid.svg' %}"
-                                                     class="profile-icon"
-                                                     width="16"
-                                                     height="16"
-                                                     alt="">
-                                                <a class="nav-link dropdown-toggle"
-                                                   href="#"
-                                                   role="button"
-                                                   data-bs-toggle="dropdown"
-                                                   aria-expanded="false">{{ user.username }}</a>
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">Profile</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">My tickets</a>
-                                                    </li>
-                                                    <li>
-                                                        <hr class="dropdown-divider">
-                                                    </li>
-                                                    <li>
-                                                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        {% endif %}
-                                    </li>
-                                </ul>
-                            </div>
-                        </nav>
+        <header>
+            <div class="nav-container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <nav class="navbar navbar-expand-lg navbar-light">
+                                <a class="navbar-brand" href="{% url 'home' %}">BrightTimes</a>
+                                <button class="navbar-toggler"
+                                        type="button"
+                                        data-toggle="collapse"
+                                        data-target="#navbarNav"
+                                        aria-controls="navbarNav"
+                                        aria-expanded="false"
+                                        aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbarNav">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'events' %}">Events</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'choose_or_create_venue' %}">Create Event</a>
+                                        </li>
+                                        <li class="nav-item {% if user.is_authenticated %}dropdown{% endif %}">
+                                            {% if not user.is_authenticated %}
+                                                <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                                            {% else %}
+                                                <div class="account-dropdown-container">
+                                                    <img src="{% static 'font-awesome/user-solid.svg' %}"
+                                                         class="profile-icon"
+                                                         width="16"
+                                                         height="16"
+                                                         alt="">
+                                                    <a class="nav-link dropdown-toggle"
+                                                       href="#"
+                                                       role="button"
+                                                       data-bs-toggle="dropdown"
+                                                       aria-expanded="false">{{ user.username }}</a>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a class="dropdown-item" href="#">Profile</a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="#">My tickets</a>
+                                                        </li>
+                                                        <li>
+                                                            <hr class="dropdown-divider">
+                                                        </li>
+                                                        <li>
+                                                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            {% endif %}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            {% block additional_header %}{% endblock %}
         </header>
         <!-- Django.contrib messages -->
         {% if messages %}
