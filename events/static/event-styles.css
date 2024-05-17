@@ -5,6 +5,19 @@ body {
     --buy-tickets-height: 10em;
 }
 
+.nav-container {
+    margin-bottom: 0;
+}
+
+#breadcrumbs-container {
+    margin-top: 1.1em;
+    margin-bottom: 2em;
+}
+
+#breadcrumbs-container>hr {
+    margin-top: 0em;
+}
+
 #event-details-container {
     padding: 0 5%;
 }

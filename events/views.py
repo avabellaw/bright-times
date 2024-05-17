@@ -36,6 +36,7 @@ def event_details(request, event_id):
 
     context = {
         'event': event,
+        'breadcrumbs': [event.name],
     }
 
     return render(request, template, context)
