@@ -5,6 +5,10 @@ body {
     --buy-tickets-height: 10em;
 }
 
+#event-details-container {
+    padding: 0 5%;
+}
+
 .event-hero-img {
     width: 100%;
     height: 400px;

@@ -26,6 +26,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="container" id="event-details-container">
         <div class="row">
             <div class="col-12 col-md-8">
                 <article id="event-details">
@@ -34,7 +36,6 @@
                         <h2 class="text-muted">Hosted at {{ event.venue.name }}</h2>
                         <p id="event-desc">{{ event.desc }}</p>
                     </header>
-
                     <section>
                         <h3>Date and time of event</h3>
                         <p>
@@ -45,7 +46,6 @@
                             {{ event.end_date_time }}
                         </p>
                     </section>
-
                     <section>
                         <h3>Location</h3>
                         <p>
@@ -72,7 +72,9 @@
                    href="{% url 'buy-ticket' event.id %}"
                    class="btn btn-dark">BUY TICKETS</a>
                 <p class="tickets-left text-muted d-none d-md-block">{{ event.tickets_left }} Tickets left</p>
-                <small>Tickets end on:<br>{{ event.ticket_end_date_time }}</small>
+                <small>Tickets end on:
+                    <br>
+                {{ event.ticket_end_date_time }}</small>
             </div>
         </div>
         <div id="event-details_buy-tickets_whitespace"></div>
