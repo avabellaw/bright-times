@@ -67,13 +67,12 @@
                 </article>
             </div>
             <div id="event-details_buy-tickets" class="fixed-bottom col-md-4">
-                <h4>£{{ event.price }}</h4>
+                <h5 class="m-0">£{{ event.price }}</h5>
                 <a id="buy-tickets"
                    href="{% url 'buy-ticket' event.id %}"
                    class="btn btn-dark">BUY TICKETS</a>
-                <p class="tickets-left text-muted">{{ event.tickets_left }} Tickets left</p>
-                <br>
-                <small>Tickets end on {{ event.ticket_end_date_time }}</small>
+                <p class="tickets-left text-muted d-none d-md-block">{{ event.tickets_left }} Tickets left</p>
+                <small>Tickets end on:<br>{{ event.ticket_end_date_time }}</small>
             </div>
         </div>
         <div id="event-details_buy-tickets_whitespace"></div>

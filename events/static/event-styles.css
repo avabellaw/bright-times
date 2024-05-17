@@ -2,12 +2,12 @@
 
 body {
     /* Fixed-bottom buy tickets height */
-    --buy-tickets-height: 12em;
+    --buy-tickets-height: 10em;
 }
 
 .event-hero-img {
     width: 100%;
-    height: 300px;
+    height: 400px;
     padding: 0 12%;
     margin-bottom: 2em;
     overflow: hidden;
@@ -48,10 +48,14 @@ article#event-details > section {
     flex-direction: column;
     display: flex;
     row-gap: 0.3em;
-    padding: 1.2em 0;
+    padding: 1em 0;
     box-shadow: black 1px 1px 10px -2px;
     height: var(--buy-tickets-height);
     background-color: white;
+}
+
+#event-details_buy-tickets> .tickets-left {
+    margin-top: 0.4em;
 }
 
 #event-details_buy-tickets_whitespace {
@@ -69,10 +73,11 @@ article#event-details > section {
 
 @media screen and (min-width: 768px) {
     #event-details_buy-tickets {
-        position: static;
+        position: sticky;
         padding: 0;
         box-shadow: none;
         height: fit-content;
+        top: 2em;
     }
 
     #event-details_buy-tickets_whitespace {
