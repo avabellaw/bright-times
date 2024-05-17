@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'home',
     'events',
     'user_profile.apps.UserProfileConfig',  # Install user_profile app signals
+    'payments.apps.PaymentsConfig',  # Stripe payments app
 ]
 
 MIDDLEWARE = [
