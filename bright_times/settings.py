@@ -14,18 +14,15 @@ from pathlib import Path
 import os
 from django.contrib import messages
 
+if os.path.exists('env.py') and os.environ.get('DEVELOPMENT'):
+    import env  # noqa
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7m6aj)+3ysdh301_--0l=5&)yyly*^u@r#2jqzvfnlfo(=*1t+'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.environ['DEVELOPMENT'] else False
 
 ALLOWED_HOSTS = []
 
