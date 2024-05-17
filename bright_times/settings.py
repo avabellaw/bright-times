@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     # Project apps
     'home',
     'events',
+    'user_profile.apps.UserProfileConfig',  # Install user_profile app signals
 ]
 
 MIDDLEWARE = [
