@@ -22,6 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
+# Stripe
+STRIPE_PUBLISHABLE_KEY = os.environ['STRIPE_PUB_KEY']
+STRIPE_SECRET_KEY = ['STRIPE_SECRET_KEY']
+
 DEBUG = True if os.environ['DEVELOPMENT'] else False
 
 ALLOWED_HOSTS = []
