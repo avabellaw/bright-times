@@ -14,8 +14,10 @@ from pathlib import Path
 import os
 from django.contrib import messages
 
-if os.path.exists('env.py') and os.environ.get('DEVELOPMENT'):
+if os.path.exists('env.py'):
     import env  # noqa
+
+DEBUG = True if 'DEVELOPMENT' in os.environ else False
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,10 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # Stripe
-STRIPE_PUBLISHABLE_KEY = os.environ['STRIPE_PUB_KEY']
-STRIPE_SECRET_KEY = ['STRIPE_SECRET_KEY']
-
-DEBUG = True if os.environ['DEVELOPMENT'] else False
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUB_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 
 ALLOWED_HOSTS = []
 
