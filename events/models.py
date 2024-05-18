@@ -108,11 +108,6 @@ class Address(models.Model):
                 {self.city}, {self.postcode}, {self.country}'
 
 
-class Ticket(models.Model):
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-
 def get_venue_attached_to_address(address):
     venues = Venue.objects.filter(address=address)
     if venues.count() > 1:

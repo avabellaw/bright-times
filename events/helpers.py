@@ -1,4 +1,4 @@
-from .models import Ticket
+from tickets.models import Ticket
 
 
 def get_tickets_left_for_event(event):

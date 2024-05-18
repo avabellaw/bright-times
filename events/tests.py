@@ -4,61 +4,14 @@ from datetime import timedelta
 from django.utils import timezone
 from django.test import Client
 from django.urls import reverse
-from django.conf import settings
 
-from .models import Venue, VenueManager, Address, Event, Ticket
+from .models import Venue, VenueManager, Address, Event
 
 
 date_now = timezone.now()
 date_future = date_now + timedelta(days=7)
 date_future_day_before = date_future - timedelta(days=1)
 date_future_plus_week = date_future + timedelta(days=7)
-
-
-class TicketTestCase(TestCase):
-    def setUp(self):
-        self.user = User.objects.create_user(username='jane', password='doe')
-        self.user.save()
-        self.venue = Venue(address=get_generic_address(),
-                           name='Test Venue', capacity=1)
-        self.venue.save(created_by=self.user)
-        self.event = create_test_event(self.venue, self.user)
-
-        self.client = Client()
-
-        self.client.login(username=self.user.username, password='doe')
-
-    def test_can_user_buy_ticket(self):
-        self.client.post(reverse('buy-ticket', args=[self.event.id]),
-                         data={'quantity': '1'})
-
-        ticket_count = Ticket.objects.filter(event=self.event,
-                                             user=self.user).count()
-
-        self.assertEqual(ticket_count, 1)
-
-    def test_user_cannot_buy_more_than_max_tickets(self):
-        max_tickets = settings.MAX_TICKETS_PER_USER
-        self.client.post(reverse('buy-ticket', args=[self.event.id]),
-                         data={'quantity': f'{max_tickets + 1}'})
-
-        ticket_count = Ticket.objects.filter(event=self.event,
-                                             user=self.user).count()
-
-        self.assertEqual(ticket_count, 0)
-
-    def test_user_cannot_buy_more_than_max_ticket_overall(self):
-        max_tickets = settings.MAX_TICKETS_PER_USER
-        self.client.post(reverse('buy-ticket', args=[self.event.id]),
-                         data={'quantity': f'{max_tickets}'})
-
-        self.client.post(reverse('buy-ticket', args=[self.event.id]),
-                         data={'quantity': '1'})
-
-        ticket_count = Ticket.objects.filter(event=self.event,
-                                             user=self.user).count()
-
-        self.assertEqual(ticket_count, max_tickets)
 
 
 class EventTestCase(TestCase):

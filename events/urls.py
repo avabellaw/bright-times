@@ -21,9 +21,6 @@ urlpatterns = [
          views.choose_or_create_venue,
          name='choose_or_create_venue'),
 
-    # Buy a ticket
-    path('buy-ticket/<int:event_id>', views.buy_ticket, name='buy-ticket'),
-
     # Event details
     path('event-details/<int:event_id>', views.event_details,
          name='event-details'),
