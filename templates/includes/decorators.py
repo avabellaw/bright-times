@@ -23,7 +23,7 @@ def login_required_message(view_func):
 
 def must_be_venue_manager(view_func):
     def wrapper(request, *args, **kwargs):
-        venue_manager = VenueManager.objects.get(user=request.user)
+        venue_manager = VenueManager.objects.filter(user=request.user)
         if not venue_manager:
             ToastMessage.must_be_a_venue_manager(request)
             return HttpResponseRedirect(reverse('choose_or_create_venue'))
