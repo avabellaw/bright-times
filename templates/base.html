@@ -20,8 +20,9 @@
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
         {% block additonal_css %}{% endblock %}
-        <title>
 
+        {% block additional_head %}{% endblock %}
+        <title>
             {% block title %}BrightTimes{% endblock %}
         </title>
     </head>

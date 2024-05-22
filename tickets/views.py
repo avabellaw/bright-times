@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Ticket
 from events.models import Event
-from django.contrib import messages
 from django.conf import settings
 from templates.includes.decorators import login_required_message
+import stripe
+from decimal import Decimal
+from django.http import JsonResponse
 
 ToastMessage = settings.TOAST_MESSAGE
 
@@ -28,21 +30,61 @@ def buy_ticket(request, event_id):
             ToastMessage.min_max_tickets_error(request, quantity)
             return redirect('buy-ticket', event_id=event_id)
 
+
         # Purchase tickets at quantity selected
-        for _ in range(quantity):
-            ticket = Ticket.objects.create(event=event, user=request.user)
-            ticket.save()
+        # for _ in range(quantity):
+        #     ticket = Ticket.objects.create(event=event, user=request.user)
+        #     ticket.save()
 
-        MESSAGE = f'Ticket for "{event.name}" purchased successfully.'
+        # create_stripe_payment(request, event, quantity)
 
-        messages.success(request, MESSAGE)
+        # MESSAGE = f'Ticket for "{event.name}" purchased successfully.'
 
-        return redirect('events')
+        # messages.success(request, MESSAGE)
 
-    template = 'events/tickets/buy-ticket.html'
+        request.session['ticket_order'] = {
+            'total': str(event.price * quantity)
+            }
+        return redirect('checkout', event_id=event_id)
+
+    template = 'tickets/buy-ticket.html'
 
     context = {
         'event': event,
     }
 
     return render(request, template, context)
+
+
+def checkout(request, event_id):
+    stripe_pub_key = settings.STRIPE_PUBLISHABLE_KEY
+
+    context = {
+        'stripe_pub_key': stripe_pub_key,
+        'event_id': event_id,
+    }
+
+    template = 'tickets/checkout.html'
+
+    return render(request, template, context)
+
+
+def create_payment_intent(request):
+    ticket_order = request.session.get('ticket_order')
+    order_total = Decimal(ticket_order.get('total'))
+    print("order total: ", order_total)
+
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+
+    try:
+        # Create a PaymentIntent with the order amount and currency
+        intent = stripe.PaymentIntent.create(
+            amount=int(order_total * 100),
+            currency='GBP',
+        )
+        return JsonResponse({
+            'clientSecret': intent['client_secret']
+        })
+    except Exception as e:
+        print("ERROR:", e)
+        return JsonResponse(error=str(e)), 403
