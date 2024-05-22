@@ -102,6 +102,12 @@ Yellow. Bright and sunny, yellow is the color of optimism.
 Green. This is the color of growth and health.
 Blue. The color of trust, blue conveys tranquility, serenity, and peace.
 
+# Stripe payments
+
+I followed the Stripe documentation and a guide by testdriven as [mentioned in the code credits](#Code).
+
+I also used the walkthrough project for additional guidence.
+
 # Credits
 
 ## Images
@@ -115,7 +121,7 @@ Blue. The color of trust, blue conveys tranquility, serenity, and peace.
 * Test a view from [docs.djangoproject](https://docs.djangoproject.com/en/5.0/intro/tutorial05/#test-a-view)
 * How to use JQuery datetimepicker from [xdsoft.net](https://xdsoft.net/jqplugins/datetimepicker/) 
 * Create a user profile when a user is created from [medium.com](https://medium.com/@abdullafajal/automating-user-profile-creation-with-default-data-using-django-signals-50abef9ce529)
-* Implemented stripe payments using the [stripe documentation](https://docs.stripe.com/checkout/quickstart?lang=python) and this guide from [testdriven.io](https://testdriven.io/blog/django-stripe-tutorial/)
+* Implemented stripe payments using the [stripe documentation for checkouts](https://docs.stripe.com/checkout/quickstart?lang=python), [stripe documentation for payment intents](https://docs.stripe.com/api/payment_intents/create), and this guide from [testdriven.io](https://testdriven.io/blog/django-stripe-tutorial/)
 
 ## GitHub
 
