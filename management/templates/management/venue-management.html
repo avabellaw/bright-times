@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% }
 
 {% block title %}
@@ -19,7 +18,28 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col"></div>
+            <div class="col">
+                <table class="table management-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Capacity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for venue in venues %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ venue.name }}</td>
+                                <td>{{ venue.address }}</td>
+                                <td>{{ venue.capacity }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 {% endblock %}
