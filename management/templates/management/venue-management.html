@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
-{% }
+{% load static %}
 
 {% block title %}
     {{ block.super }}
     - Venue Management
+{% endblock %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'management/css/styles.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -32,9 +36,27 @@
                         {% for venue in venues %}
                             <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
-                                <td>{{ venue.name }}</td>
-                                <td>{{ venue.address }}</td>
-                                <td>{{ venue.capacity }}</td>
+                                <td>
+                                    <input type="text"
+                                           name="venue_name"
+                                           id="venue_name"
+                                           value="{{ venue.name }}"
+                                           readonly>
+                                </td>
+                                <td>
+                                    <input type="text"
+                                           name="venue_address"
+                                           id="venue_address"
+                                           value="{{ venue.address }}"
+                                           readonly>
+                                </td>
+                                <td>
+                                    <input type="number"
+                                           name="venue_capacity"
+                                           id="venue_capacity"
+                                           value="{{ venue.capacity }}"
+                                           readonly>
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
