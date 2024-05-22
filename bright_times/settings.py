@@ -205,6 +205,11 @@ class ToastMessage:
         messages.error(request, f'You have reached the maximum number of \
             tickets ({MAX_TICKETS_PER_USER}) you can buy for this event.')
 
+    @staticmethod
+    def must_be_a_venue_manager(request):
+        messages.error(request, 'You must be a venue manager to view this \
+            page.')
+
 
 # The variable is singular to aid readbility when using the methods
 TOAST_MESSAGE = ToastMessage

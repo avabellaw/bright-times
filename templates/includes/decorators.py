@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from events.models import VenueManager
 
 ToastMessage = settings.TOAST_MESSAGE
 
@@ -15,6 +16,17 @@ def login_required_message(view_func):
         if not request.user.is_authenticated:
             ToastMessage.login_required(request)
             return HttpResponseRedirect(reverse('account_login'))
+        else:
+            return view_func(request, *args, **kwargs)
+    return wrapper
+
+
+def must_be_venue_manager(view_func):
+    def wrapper(request, *args, **kwargs):
+        venue_manager = VenueManager.objects.get(user=request.user)
+        if not venue_manager:
+            ToastMessage.must_be_a_venue_manager(request)
+            return HttpResponseRedirect(reverse('choose_or_create_venue'))
         else:
             return view_func(request, *args, **kwargs)
     return wrapper

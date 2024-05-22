@@ -11,11 +11,6 @@ urlpatterns = [
     path('select-venue/', views.select_venue_and_create_event,
          name='select_venue'),
 
-    # Choose or create a venue
-    path('choose-or-create-venue/<str:create_venue>/',
-         views.choose_or_create_venue,
-         name='choose_or_create_venue'),
-
     # Get choose or create venue page
     path('choose-or-create-venue/',
          views.choose_or_create_venue,
