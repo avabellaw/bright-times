@@ -10,7 +10,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('events/', include('events.urls')),
     path('tickets/', include('tickets.urls')),
-    path('manage/', include('management.urls')),
+    path('management/', include('management.urls')),
 ]
 
 

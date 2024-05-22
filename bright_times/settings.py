@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'events',
     'user_profile.apps.UserProfileConfig',  # Install user_profile app signals
     'tickets.apps.TicketsConfig',  # Install tickets app that includes stripe
+    'management',
 ]
 
 MIDDLEWARE = [
