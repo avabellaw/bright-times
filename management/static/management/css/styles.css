@@ -1,0 +1,11 @@
+table.management-table input {
+    width: 100%;
+}
+
+table.management-table tr td:nth-child(2) {
+    width: 15em;
+}
+
+table.management-table tr td:last-child {
+    width: 3.5em;
+}
