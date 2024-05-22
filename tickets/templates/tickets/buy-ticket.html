@@ -13,7 +13,6 @@
             </div>
         </div>
     </div>
-
     <div class="container">
         <div class="row">
             <div class="col">
@@ -21,12 +20,15 @@
                     {% csrf_token %}
                     <div class="form-group">
                         <h3>Price of ticket: {{ event.price }}</h3>
-
                         <label for="quantity">Quantity:</label>
-                        <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1" required>
-
-                        <p>Total cost: </p>
-
+                        <input type="number"
+                               class="form-control"
+                               id="quantity"
+                               name="quantity"
+                               value="1"
+                               min="1"
+                               required>
+                        <p>Total cost:</p>
                         <button type="submit" class="btn btn-primary mt-3">Buy ticket</button>
                     </div>
                 </form>
