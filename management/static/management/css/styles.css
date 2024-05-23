@@ -1,7 +1,18 @@
 .management-table {
     padding: 0.2em;
-    max-width: 1200px;
     margin: auto;
+}
+
+.container_max-width-lg {
+    max-width: 1200px;
+}
+
+.container_max-width-md {
+    max-width: 800px;
+}
+
+.container_max-width-sm {
+    max-width: 400px;
 }
 
 .management-table > .container {
@@ -33,4 +44,13 @@
 .management-table a.row:hover {
     background-color: var(--primary-colour-highlight);
     cursor: pointer;
+}
+
+.table-detail input {
+    width: 100%;
+}
+
+.table-detail label {
+    margin-bottom: 0.4em;
+    font-weight: 500;
 }
