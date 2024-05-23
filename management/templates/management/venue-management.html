@@ -21,23 +21,23 @@
         </div>
         <div class="row">
             <div class="col">
-                <div class="container management-table">
-                    <div class="row">
-                        <div class="header col-2 col-md-1">#</div>
-                        <div class="header col-5 col-sm-4 col-lg-4">Name</div>
-                        <div class="header col-sm-6 col-md-7 col-lg-5 d-none d-sm-block">Address</div>
-                        <div class="header col-2 col-md-1 d-none d-lg-block">Capacity</div>
+                <div class="management-table">
+                    <div class="container">
+                        <div class="row header">
+                            <div class="header col-2 col-md-1">#</div>
+                            <div class="header col-5 col-sm-4 col-lg-4">Name</div>
+                            <div class="header col-sm-6 col-md-7 col-lg-5 d-none d-sm-block">Address</div>
+                            <div class="header col-2 d-none d-lg-block">Capacity</div>
+                        </div>
+                        {% for venue in venues %}
+                            <a class="row" href="{% url 'venue-detail' venue.id %}">
+                                <div class="col-2 col-md-1" scope="row">{{ forloop.counter }}</div>
+                                <div class="col-5 col-sm-4 col-lg-4">{{ venue.name }}</div>
+                                <div class="col-sm-6 col-md-7 col-lg-5 d-none d-sm-block">{{ venue.address }}</div>
+                                <div class="col-2 d-none d-lg-block">{{ venue.capacity }}</div>
+                            </a>
+                        {% endfor %}
                     </div>
-                    {% for venue in venues %}
-                        <a class="row" href="{% url 'venue-detail' venue.id %}">
-                            <div class="col-2 col-md-1" scope="row">
-                                {{ forloop.counter }}
-                            </div>
-                            <div class="col-5 col-sm-4 col-lg-4">{{ venue.name }}</div>
-                            <div class="col-sm-6 col-md-7 col-lg-5 d-none d-sm-block">{{ venue.address }}</div>
-                            <div class="col-2 col-md-1 d-none d-lg-block">{{ venue.capacity }}</div>
-                        </a>
-                    {% endfor %}
                 </div>
             </div>
         </div>

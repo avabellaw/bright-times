@@ -1,11 +1,19 @@
 /* Header */
 
+    :root {
+        --primary-colour:#9DDCFF;
+        --primary-colour-lighten:#C9EFFF;
+        --primary-colour-lighten-2:hsl(198, 100%, 91%);
+        --primary-colour-highlight: #9dddff2c;
+        --primary-text-colour: black;
+    }
+
     body {
         font-family: "Inter", sans-serif;
     }
 
     .nav-container {
-        background-color: #9DDCFF;
+        background-color: var(--primary-colour);
         margin-bottom: 2em;
     }
 
@@ -25,6 +33,7 @@
 
     .page-header > h1 {
         margin: 0.5em 0;
+        margin-bottom: 1.2em;
         text-align: center;
     }
 
