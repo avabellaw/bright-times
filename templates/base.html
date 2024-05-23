@@ -23,6 +23,7 @@
 
         {% block additional_head %}{% endblock %}
         <title>
+
             {% block title %}BrightTimes{% endblock %}
         </title>
     </head>
@@ -70,14 +71,13 @@
                                                         <li>
                                                             <a class="dropdown-item" href="#">Profile</a>
                                                         </li>
-
                                                         <li>
                                                             <a class="dropdown-item" href="#">My tickets</a>
                                                         </li>
-                                                        <li class="pl-1 pr-1">
-                                                            <hr class="dropdown-divider ml-1 mr-1">
-                                                        </li>
                                                         {% if user.is_venue_manager %}
+                                                            <li>
+                                                                <hr>
+                                                            </li>
                                                             <li>
                                                                 <a class="dropdown-item" href="{% url 'venue-management' %}">Venue management</a>
                                                             </li>
