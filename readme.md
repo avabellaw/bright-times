@@ -115,6 +115,9 @@ I also used the walkthrough project for additional guidence.
 * Location icon from [flaticon by Shastry](https://www.flaticon.com/free-icon/map_9120063?term=venue&page=1&position=79&origin=search&related_id=9120063)
 * Calendar icon from [fontawesome](https://fontawesome.com/icons/calendar?f=classic&s=regular)
 * Venue icon from [thenounproject by Vicons Design](https://thenounproject.com/icon/venue-79187/)
+* Sun icon from [freepik by Muzammal Hussain](https://www.freepik.com/icon/sun_13443601#fromView=search&page=1&position=28&uuid=c73706b9-c633-4704-9131-5ffd741c6e21)
+    * I created the favicon in paint.NET using this icon
+* Logo I created in paint.NET
 
 ## Code
 

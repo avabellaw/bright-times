@@ -1,8 +1,12 @@
 /* Event detail */
 
-body {
+:root {
     /* Fixed-bottom buy tickets height */
     --buy-tickets-height: 10em;
+    
+    /* Event card variables */
+    --outline-colour: #545454;
+    --card-border-radius: 2px;
 }
 
 .nav-container {
@@ -119,7 +123,7 @@ article#event-details > section {
 }
 
 .event-card {
-    border-radius: 9px;
+    border-radius: var(--card-border-radius);
     overflow: hidden;
 
     display: flex;
@@ -129,10 +133,6 @@ article#event-details > section {
     margin: auto;
     max-width: 100%;
     position: relative;
-
-    /* Event card variables */
-    --outline-colour: #545454;
-    --card-border-radius: 9px;
 }
 
 a#buy-tickets {
@@ -145,7 +145,7 @@ a#buy-tickets {
     border-top-right-radius: var(--card-border-radius);
     border: 1px var(--outline-colour) solid;
     padding: 0.4em;
-    background-color: #00AFFA;
+    background-color: var(--primary-colour);
     position: relative;
 }
 
@@ -175,7 +175,7 @@ a#buy-tickets {
     border-bottom-left-radius: var(--card-border-radius);
     border-bottom-right-radius: var(--card-border-radius);
     padding: 1.4em;
-    background-color: #dce4ff;
+    background-color: rgb(247 242 251);
 
     display: flex;
     flex-direction: column;

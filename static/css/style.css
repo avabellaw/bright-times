@@ -1,15 +1,32 @@
 /* Header */
 
     :root {
-        --primary-colour:#9DDCFF;
-        --primary-colour-lighten:#C9EFFF;
-        --primary-colour-lighten-2:hsl(198, 100%, 91%);
-        --primary-colour-highlight: #9dddff2c;
-        --primary-text-colour: black;
+        --primary-colour:#A86EC1;
+        --primary-colour-lighten:#c886e4;
+        --primary-colour-lighten-2: #e096ff;
+        --primary-colour-lighten-3: #e7b8fc;
+        --primary-colour-lighten-4: #f6e8fc;
+        --primary-colour-highlight: #00d5b931;
+        --primary-text-colour: rgb(0, 0, 0);
     }
 
     body {
         font-family: "Inter", sans-serif;
+    }
+
+    .navbar {
+        font-family: "Freeman", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 1.4em;
+    }
+
+    .navbar-brand >img {
+        margin-bottom: 5px;
+    }
+
+    .navbar a.nav-link {
+        color: var(--primary-text-colour);
     }
 
     .nav-container {
@@ -19,7 +36,10 @@
 
     ul.navbar-nav {
         margin-left: auto;
+        color: var(--primary-text-colour);
     }
+
+    .navbar a.nav-link
 
     .navbar {
         font-size: 1.2em;
