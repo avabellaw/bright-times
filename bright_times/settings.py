@@ -214,9 +214,20 @@ class ToastMessage:
         messages.error(request, 'You must be a venue manager to view this \
             page.')
 
+    @staticmethod
+    def cannot_delete_venue_not_manager(request):
+        messages.error(request, 'You are not a manager of this venue.')
+
+    @staticmethod
+    def venue_deleted(request, venue):
+        messages.success(request, f'{venue.name} deleted successfully.')
+
 
 # The variable is singular to aid readbility when using the methods
 TOAST_MESSAGE = ToastMessage
 
 # Tickets
 MAX_TICKETS_PER_USER = 10
+
+# Venue Managers
+VENUE_MANAGER_ROLES = "OWNER", "MANAGER", "STAFF"

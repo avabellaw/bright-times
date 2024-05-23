@@ -4,7 +4,12 @@ from templates.includes.decorators import (login_required_message,
 
 from events.models import Venue
 from events.forms import VenueForm, AddressForm
+from django.urls import reverse
+from django.shortcuts import redirect
+from django.conf import settings
+from .helpers import is_user_manager_of_venue
 
+ToastMessage = settings.TOAST_MESSAGE
 
 @login_required_message
 @must_be_venue_manager
@@ -46,6 +51,19 @@ def venue_detail(request, venue_id):
         'venue': venue,
         'venue_form': venue_form,
         'address_form': address_form,
+        'breadcrumbs': [{'name': venue.name}]
     }
 
     return render(request, template, context)
+
+
+@login_required_message
+@must_be_venue_manager
+def delete_venue(request, venue_id):
+    venue = Venue.objects.get(pk=venue_id)
+    if is_user_manager_of_venue(request.user, venue):
+        ToastMessage.venue_deleted(request, venue)
+        venue.delete()
+    else:
+        ToastMessage.cannot_delete_venue_not_manager(request)
+    return redirect(reverse('venue-management'))

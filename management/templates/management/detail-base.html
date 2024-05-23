@@ -7,8 +7,8 @@
         <div class="row">
             <div class="col text-center">
                 <button id="edit-btn" data-editing="false" class="btn btn-dark">Edit</button>
-                <a href="{% url 'venue-management-detail' venue.id %}" id="cancel-btn" class="btn btn-dark d-none">Cancel</a>
-                <button id="delete-btn" class="btn btn-dark">Delete</button>
+                <a href="{% block cancel_btn_url %}{%endblock%}" id="cancel-btn" class="btn btn-dark d-none">Cancel</a>
+                <a href="{% block delete_btn_url %}{%endblock%}" id="delete-btn" class="btn btn-dark">Delete</a>
             </div>
         </div>
         <br>
