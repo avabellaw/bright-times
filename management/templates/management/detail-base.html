@@ -17,7 +17,9 @@
                 <form id="detail-form" method="post">
                     {% csrf_token %}
 
-                    {% block form_items %}{% endblock %}
+                    <div id="form-items">
+                        {% block form_items %}{% endblock %}
+                    </div>
 
                     <br>
                     <div class="text-center">
