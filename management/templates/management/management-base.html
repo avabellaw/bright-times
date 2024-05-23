@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'management/css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="page-header">
+                    <h1>{% block page_header %}{% endblock %}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {% block table %}
+                    
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

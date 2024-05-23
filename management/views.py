@@ -11,7 +11,7 @@ from events.forms import VenueForm, AddressForm
 def venue_management(request):
     venues = Venue.objects.filter(managers=request.user)
 
-    template = 'management/venue-management.html'
+    template = 'management/venue/venue-management.html'
 
     context = {
         'venues': venues,
@@ -30,7 +30,7 @@ def venue_detail(request, venue_id):
     address_form = AddressForm(instance=venue.address)
     address_form.make_read_only()
 
-    template = 'management/venue-detail.html'
+    template = 'management/venue/venue-detail.html'
 
     context = {
         'venue': venue,

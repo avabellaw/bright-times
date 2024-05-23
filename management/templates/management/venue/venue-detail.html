@@ -1,6 +1,8 @@
 {% extends 'management/detail-base.html' %}
 {% load crispy_forms_tags %}
 
+{% block page_header %}Venue Management Detail{% endblock %}
+
 {% block form_items %}
     {{ venue_form|crispy }}
     {{ address_form|crispy }}
