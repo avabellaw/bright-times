@@ -33,6 +33,7 @@ def venue_detail(request, venue_id):
     template = 'management/venue-detail.html'
 
     context = {
+        'venue': venue,
         'venue_form': venue_form,
         'address_form': address_form,
     }

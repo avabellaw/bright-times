@@ -54,3 +54,11 @@
     margin-bottom: 0.4em;
     font-weight: 500;
 }
+
+.detail-form {
+    padding:1em;
+}
+
+#save-btn {
+    width: 10em;
+}

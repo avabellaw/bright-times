@@ -1,25 +1,7 @@
-{% extends 'management/venue-management.html' %}
-
+{% extends 'management/detail-base.html' %}
 {% load crispy_forms_tags %}
 
-{% block table %}
-    <div class="container container_max-width-md table-detail">
-        <div class="row">
-            <div class="col text-center">
-                <button class="btn btn-dark">Edit</button>
-                <button class="btn btn-dark">Delete</button>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col">
-                <form method="post">
-                    {% csrf_token %}
-                    {{ venue_form|crispy }}
-                    {{ address_form|crispy}}
-                    <button type="submit" class="btn btn-dark">Save</button>
-                </form>
-            </div>
-        </div>
-    </div>
+{% block form_items %}
+    {{ venue_form|crispy }}
+    {{ address_form|crispy }}
 {% endblock %}

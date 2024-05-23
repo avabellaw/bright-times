@@ -1,0 +1,36 @@
+{% extends 'management/venue-management.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block table %}
+    <div class="container container_max-width-md table-detail">
+        <div class="row">
+            <div class="col text-center">
+                <button id="edit-btn" data-editing="false" class="btn btn-dark">Edit</button>
+                <a href="{% url 'venue-management-detail' venue.id %}" id="cancel-btn" class="btn btn-dark d-none">Cancel</a>
+                <button id="delete-btn" class="btn btn-dark">Delete</button>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <form id="detail-form" method="post">
+                    {% csrf_token %}
+
+                    {% block form_items %}{% endblock %}
+
+                    <br>
+                    <div class="text-center">
+                        <button type="submit" id="save-btn" class="btn btn-dark d-none">Save</button>
+                    </div>
+                </form>
+                <br>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'management/js/management-detail.js' %}"></script>
+{% endblock %}
