@@ -115,6 +115,9 @@ TEMPLATES = [
 
                 # `allauth` needs this from django
                 'django.template.context_processors.request',
+
+                # Context proccessor
+                'utils.context_processors.user_context',
             ],
         },
     },
