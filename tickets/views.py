@@ -6,6 +6,7 @@ from templates.includes.decorators import login_required_message
 import stripe
 from decimal import Decimal
 from django.http import JsonResponse
+from django.urls import reverse
 
 ToastMessage = settings.TOAST_MESSAGE
 
@@ -30,7 +31,6 @@ def buy_ticket(request, event_id):
             ToastMessage.min_max_tickets_error(request, quantity)
             return redirect('buy-ticket', event_id=event_id)
 
-
         # Purchase tickets at quantity selected
         # for _ in range(quantity):
         #     ticket = Ticket.objects.create(event=event, user=request.user)
@@ -44,13 +44,23 @@ def buy_ticket(request, event_id):
 
         request.session['ticket_order'] = {
             'total': str(event.price * quantity)
-            }
+        }
         return redirect('checkout', event_id=event_id)
 
     template = 'tickets/buy-ticket.html'
 
     context = {
         'event': event,
+        'breadcrumbs': [
+            {
+                'name': event.name,
+                'url': reverse('event-details', args=[event.id])
+            },
+            {
+                'name': 'Buy ticket',
+                'url': reverse('buy-ticket', args=[event.id])
+            }
+        ]
     }
 
     return render(request, template, context)
