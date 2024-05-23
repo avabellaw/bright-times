@@ -103,3 +103,23 @@
     }
 
 /* End Venue */
+
+/* Footer */
+
+    .footer {
+        background-color: var(--primary-colour);
+        padding: 2em;
+    }
+
+    .footer_container {
+        display: flex;
+    }
+
+    .footer_container > p:last-of-type{
+        margin-bottom: 0;
+    }
+
+    .footer_container > .social-icons {
+        margin-left: auto;
+    }
+/* End Footer */
