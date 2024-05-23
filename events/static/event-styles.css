@@ -129,7 +129,7 @@ article#event-details > section {
     display: flex;
     flex-direction: column;
     row-gap: 0.3em;
-    width: 250px;
+    width: 350px;
     margin: auto;
     max-width: 100%;
     position: relative;
@@ -144,9 +144,9 @@ a#buy-tickets {
     border-top-left-radius: var(--card-border-radius);
     border-top-right-radius: var(--card-border-radius);
     border: 1px var(--outline-colour) solid;
-    padding: 0.4em;
-    background-color: var(--primary-colour);
+    aspect-ratio: 7 / 4;
     position: relative;
+    overflow: hidden;
 }
 
 /* City tag */
