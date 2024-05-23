@@ -25,11 +25,21 @@ def venue_management(request):
 def venue_detail(request, venue_id):
     venue = Venue.objects.get(pk=venue_id)
 
-    venue_form = VenueForm(instance=venue)
-    venue_form.make_read_only()
-    address_form = AddressForm(instance=venue.address)
-    address_form.make_read_only()
+    if request.POST:
+        venue_form = VenueForm(request.POST, instance=venue)
+        address_form = AddressForm(request.POST, instance=venue.address)
 
+        if venue_form.is_valid() and address_form.is_valid():
+            venue = venue_form.save(commit=False)
+            address = address_form.save()
+            venue.address = address
+            venue.save()
+    else:
+        venue_form = VenueForm(instance=venue)
+        address_form = AddressForm(instance=venue.address)
+
+    venue_form.make_read_only()
+    address_form.make_read_only()
     template = 'management/venue/venue-detail.html'
 
     context = {
