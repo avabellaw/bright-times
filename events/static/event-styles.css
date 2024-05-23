@@ -180,6 +180,9 @@ a#buy-tickets {
     display: flex;
     flex-direction: column;
     row-gap: 0.5em;
+    height: 20em;
+    justify-content: space-between;
+    display: flex;
 }
 
 .event-card_content>header {
