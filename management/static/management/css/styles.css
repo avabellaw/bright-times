@@ -1,11 +1,7 @@
-table.management-table input {
-    width: 100%;
+.management-table .row:not(.header) > div {
+  
 }
 
-table.management-table tr td:nth-child(2) {
-    width: 15em;
-}
-
-table.management-table tr td:last-child {
-    width: 3.5em;
+.management-table .row {
+    justify-content: center;
 }

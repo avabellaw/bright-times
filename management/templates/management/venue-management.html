@@ -19,48 +19,26 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container">
         <div class="row">
             <div class="col">
-                <table class="table management-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Capacity</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for venue in venues %}
-                            <tr>
-                                <th scope="row">{{ forloop.counter }}</th>
-                                <td>
-                                    <input type="text"
-                                           name="venue_name"
-                                           id="venue_name"
-                                           value="{{ venue.name }}"
-                                           readonly>
-                                </td>
-                                <td>
-                                    <input type="text"
-                                           name="venue_address"
-                                           id="venue_address"
-                                           value="{{ venue.address }}"
-                                           readonly>
-                                </td>
-                                <td>
-                                    <input type="number"
-                                           name="venue_capacity"
-                                           id="venue_capacity"
-                                           value="{{ venue.capacity }}"
-                                           readonly>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <div class="container management-table">
+                    <div class="row">
+                        <div class="header col-2 col-md-1">#</div>
+                        <div class="header col-5 col-sm-4 col-lg-4">Name</div>
+                        <div class="header col-sm-6 col-md-7 col-lg-5 d-none d-sm-block">Address</div>
+                        <div class="header col-2 col-md-1 d-none d-lg-block">Capacity</div>
+                    </div>
+                    {% for venue in venues %}
+                        <a class="row" href="{% url 'venue-detail' venue.id %}">
+                            <div class="col-2 col-md-1" scope="row">
+                                {{ forloop.counter }}
+                            </div>
+                            <div class="col-5 col-sm-4 col-lg-4">{{ venue.name }}</div>
+                            <div class="col-sm-6 col-md-7 col-lg-5 d-none d-sm-block">{{ venue.address }}</div>
+                            <div class="col-2 col-md-1 d-none d-lg-block">{{ venue.capacity }}</div>
+                        </a>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

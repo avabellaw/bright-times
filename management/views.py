@@ -17,3 +17,17 @@ def venue_management(request):
     }
 
     return render(request, template, context)
+
+
+@login_required_message
+@must_be_venue_manager
+def venue_detail(request, venue_id):
+    venue = Venue.objects.get(pk=venue_id)
+
+    template = 'management/venue-detail.html'
+
+    context = {
+        'venue': venue,
+    }
+
+    return render(request, template, context)
