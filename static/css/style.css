@@ -12,8 +12,11 @@
 
     body {
         font-family: "Inter", sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
     }
-
+    
     .navbar {
         font-family: "Freeman", sans-serif;
         font-weight: 400;
