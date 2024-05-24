@@ -8,3 +8,18 @@ def has_a_verified_email(request):
     """
     return EmailAddress.objects.filter(user=request.user,
                                        verified=True).exists()
+
+
+def is_email_verified(request, email):
+    """Return whether specific email has been verified.
+
+    args:
+        request: Request object.
+        email: Email to check.
+
+    Returns:
+        bool: Whether email has been verified. False if doesn't belong to user.
+    """
+    return EmailAddress.objects.filter(user=request.user,
+                                       email=email,
+                                       verified=True).exists()
