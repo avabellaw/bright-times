@@ -88,6 +88,11 @@
 
     /* Login page */
 
+    #id_password + #id_password_helptext {
+        display: block;
+        margin-top: 0.5em;
+    }
+
     /* End Login page */
 
 /* End Allauth */
