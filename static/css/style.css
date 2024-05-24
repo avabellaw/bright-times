@@ -17,6 +17,10 @@
         min-height: 100vh;
     }
     
+    .container_fit-content {
+        width: fit-content;
+    }
+
     .navbar {
         font-family: "Freeman", sans-serif;
         font-weight: 400;
