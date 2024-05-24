@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from templates.includes.decorators import (login_required_message,
+from utils.decorators import (login_required_message,
                                            must_be_venue_manager)
 
 from events.models import Venue, Event

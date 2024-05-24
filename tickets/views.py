@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Ticket
 from events.models import Event
 from django.conf import settings
-from templates.includes.decorators import login_required_message
+from utils.decorators import login_required_message
 import stripe
 from decimal import Decimal
 from django.http import JsonResponse
