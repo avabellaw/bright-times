@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'crispy_forms',
 
     # Allauth
+    'allauth_override',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
