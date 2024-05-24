@@ -103,6 +103,10 @@
         padding: 1em 2%;
     }
 
+    .form-group {
+        margin: 1em 0px;
+    }
+
 /* End Forms */
 
 /* Venue */
