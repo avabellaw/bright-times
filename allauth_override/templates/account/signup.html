@@ -3,6 +3,7 @@
 {% block head_title %}
     {% trans "Signup" %}
 {% endblock head_title %}
+{% load crispy_forms_tags %}
 {% block content %}
 <div class="container container_fit-content">
     <div class="row">
@@ -27,34 +28,12 @@
                 {% blocktranslate %}Already have an account? Then please {{ link }}sign in{{ end_link }}.{% endblocktranslate %}
             {% endelement %}
             {% if not SOCIALACCOUNT_ONLY %}
-                <form action="{% url 'account_signup' %}" method="post">
-                    {% csrf_token %}
-                    <label for="email">Email:</label>
-                    <input type="email" name="email" id="email" required>
-
-                    <label for="username">Username:</label>
-                    <input type="text" name="username" id="username" required>
-
-                    <label for="password1">Password:</label>
-                    <input type="password" name="password1" id="password1" required>
-                </form>
                 {% url 'account_signup' as action_url %}
-                {% element form form=form method="post" action=action_url tags="entrance,signup" %}
-                    {% slot body %}
-                        {% csrf_token %}
-                        {% element fields form=form unlabeled=True %}
-                        {% endelement %}
-                        {{ redirect_field }}
-                    {% endslot %}
-                    {% slot actions %}
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-dark">
-                                {% trans "Sign Up" %}
-
-                            </button>
-                        </div>
-                    {% endslot %}
-                {% endelement %}
+                <form method="post" action="{{ action_url }}">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </form>
             {% endif %}
             {% if SOCIALACCOUNT_ENABLED %}
                 {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
