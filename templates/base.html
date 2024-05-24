@@ -89,6 +89,11 @@
                                                             <li>
                                                                 <a class="dropdown-item" href="{% url 'venue-management' %}">Venue management</a>
                                                             </li>
+                                                            {% if user.has_events %}
+                                                                <li>
+                                                                    <a class="dropdown-item" href="{% url 'event-management' %}">Event management</a>
+                                                                </li>
+                                                            {% endif %}
                                                         {% endif %}
                                                         <li>
                                                             <hr class="dropdown-divider">
