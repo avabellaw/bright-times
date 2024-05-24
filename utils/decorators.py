@@ -2,6 +2,7 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from events.models import VenueManager
+from .user_utils import has_a_verified_email
 
 ToastMessage = settings.TOAST_MESSAGE
 
@@ -27,6 +28,16 @@ def must_be_venue_manager(view_func):
         if not venue_manager:
             ToastMessage.must_be_a_venue_manager(request)
             return HttpResponseRedirect(reverse('choose_or_create_venue'))
+        else:
+            return view_func(request, *args, **kwargs)
+    return wrapper
+
+
+def email_verification_required(view_func):
+    def wrapper(request, *args, **kwargs):
+        if not has_a_verified_email(request):
+            ToastMessage.email_verification_required(request, "buy a ticket")
+            return HttpResponseRedirect(reverse('account_email_verification_sent'))
         else:
             return view_func(request, *args, **kwargs)
     return wrapper

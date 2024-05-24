@@ -7,11 +7,13 @@ import stripe
 from decimal import Decimal
 from django.http import JsonResponse
 from django.urls import reverse
+from utils.decorators import email_verification_required
 
 ToastMessage = settings.TOAST_MESSAGE
 
 
 @login_required_message
+@email_verification_required
 def buy_ticket(request, event_id):
     event = Event.objects.get(id=event_id)
 

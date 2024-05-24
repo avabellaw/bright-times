@@ -91,7 +91,8 @@ SITES_ENABLED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
-ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = False
 ACCOUNT_USERNAME_MIN_LENGTH = 3
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
@@ -113,7 +114,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
-            ],
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -211,7 +212,8 @@ class ToastMessage:
         if num_of_tickets_attempted < 1:
             messages.error(request, 'You must buy at least 1 ticket.')
         else:
-            messages.error(request, 'You can only buy a maximum of 10 tickets.')
+            messages.error(
+                request, 'You can only buy a maximum of 10 tickets.')
 
     @staticmethod
     def user_reached_max_tickets(request):
@@ -230,6 +232,16 @@ class ToastMessage:
     @staticmethod
     def deleted_successfully(request, name):
         messages.success(request, f'{name} deleted successfully.')
+
+    @staticmethod
+    def email_verification_required(request,
+                                    attempted_action="access this page"):
+        """You must verify email message
+
+        attempted_action (str): The action the user was trying to perform
+        """
+        messages.error(request, f'You must verify your email address to \
+            {attempted_action}')
 
 
 # The variable is singular to aid readbility when using the methods
