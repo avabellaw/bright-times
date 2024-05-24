@@ -14,7 +14,7 @@
         <br>
         <div class="row">
             <div class="col">
-                <form action="{% url 'venue-management-detail' venue.id %}" id="detail-form" method="post">
+                <form action="{% block form_action %}{% endblock%}" id="detail-form" method="post">
                     {% csrf_token %}
 
                     <div id="form-items">

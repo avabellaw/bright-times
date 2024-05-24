@@ -2,7 +2,14 @@ from django import forms
 from .models import Venue, Address, Event
 
 
-class EventForm(forms.ModelForm):
+class FormUtilsMixin():
+    def make_read_only(self):
+        for field in self.fields.values():
+            field.widget.attrs['readonly'] = True
+            field.widget.attrs['disabled'] = True
+
+
+class EventForm(forms.ModelForm, FormUtilsMixin):
     class Meta():
         model = Event
         exclude = ['venue', 'created_by_venue_manager']
@@ -16,13 +23,6 @@ class EventForm(forms.ModelForm):
             'ticket_end_date_time': forms.DateTimeInput(
                 attrs=datetime_attributes),
         }
-
-
-class FormUtilsMixin():
-    def make_read_only(self):
-        for field in self.fields.values():
-            field.widget.attrs['readonly'] = True
-            field.widget.attrs['disabled'] = True
 
 
 class VenueForm(forms.ModelForm, FormUtilsMixin):

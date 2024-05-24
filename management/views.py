@@ -91,26 +91,25 @@ def event_detail(request, event_id):
 
     if request.POST:
         event_form = EventForm(request.POST, instance=event)
-        address_form = AddressForm(request.POST, instance=event.address)
 
-        if event_form.is_valid() and address_form.is_valid():
-            event = event_form.save(commit=False)
-            address = address_form.save()
-            event.address = address
-            event.save()
+        if event_form.is_valid():
+            event_form.save()
     else:
         event_form = EventForm(instance=event)
-        address_form = AddressForm(instance=event.address)
 
     event_form.make_read_only()
-    address_form.make_read_only()
     template = 'management/event/event-detail.html'
 
     context = {
         'event': event,
         'event_form': event_form,
-        'address_form': address_form,
         'breadcrumbs': [{'name': event.name}]
     }
 
     return render(request, template, context)
+
+
+@login_required_message
+@must_be_venue_manager
+def delete_event(request, event_id):
+    return
