@@ -122,6 +122,10 @@
 
 /* Footer */
 
+    body > .container:last-of-type {
+        margin-bottom: 2em;
+    }
+
     .footer {
         background-color: var(--primary-colour);
         padding: 2em;

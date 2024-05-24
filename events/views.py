@@ -3,8 +3,8 @@ from .forms import AddressForm, VenueForm, EventForm
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.conf import settings
-from utils.decorators import login_required_message
 
+from utils.decorators import login_required_message
 from .helpers import add_tickets_left_to_events
 from .models import Event, Venue, VenueManager
 
