@@ -219,8 +219,8 @@ class ToastMessage:
         messages.error(request, 'You are not a manager of this venue.')
 
     @staticmethod
-    def venue_deleted(request, venue):
-        messages.success(request, f'{venue.name} deleted successfully.')
+    def deleted_successfully(request, name):
+        messages.success(request, f'{name} deleted successfully.')
 
 
 # The variable is singular to aid readbility when using the methods

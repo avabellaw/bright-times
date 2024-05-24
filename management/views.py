@@ -63,7 +63,7 @@ def venue_detail(request, venue_id):
 def delete_venue(request, venue_id):
     venue = Venue.objects.get(pk=venue_id)
     if is_user_manager_of_venue(request.user, venue):
-        ToastMessage.venue_deleted(request, venue)
+        ToastMessage.deleted_successfully(request, venue.name)
         venue.delete()
     else:
         ToastMessage.cannot_delete_venue_not_manager(request)
@@ -112,4 +112,10 @@ def event_detail(request, event_id):
 @login_required_message
 @must_be_venue_manager
 def delete_event(request, event_id):
-    return
+    event = Event.objects.get(pk=event_id)
+    if is_user_manager_of_venue(request.user, event.venue):
+        ToastMessage.deleted_successfully(request, event.name)
+        event.delete()
+    else:
+        ToastMessage.cannot_delete_event_not_manager(request)
+    return redirect(reverse('event-management'))
