@@ -3,10 +3,6 @@
 
 {% block page_header %}Event Management Detail{% endblock %}
 
-{% block cancel_btn_url %}
-    {% url 'event-management-detail' event.id %}
-{% endblock %}
-
 {% block form_action %}
     {% url 'event-management-detail' event.id %}
 {% endblock %}

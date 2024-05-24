@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col text-center">
                 <button id="edit-btn" data-editing="false" class="btn btn-dark">Edit</button>
-                <a href="{% block cancel_btn_url %}{%endblock%}" id="cancel-btn" class="btn btn-dark d-none">Cancel</a>
+                <a href="{{ request.path }}" id="cancel-btn" class="btn btn-dark d-none">Cancel</a>
                 <a href="{% block delete_btn_url %}{%endblock%}" id="delete-btn" class="btn btn-dark">Delete</a>
             </div>
         </div>

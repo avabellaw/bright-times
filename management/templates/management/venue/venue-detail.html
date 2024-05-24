@@ -3,10 +3,6 @@
 
 {% block page_header %}Venue Management Detail{% endblock %}
 
-{% block cancel_btn_url %}
-    {% url 'venue-management-detail' venue.id %}
-{% endblock %}
-
 {% block form_action %}
 {% url 'venue-management-detail' venue.id %}
 {% endblock %}
