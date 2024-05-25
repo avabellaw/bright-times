@@ -87,6 +87,7 @@ def check_created_by_is_set(created_by):
 class VenueManager(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
+    role = models.CharField(max_length=50, blank=False, null=False)
 
 
 class Address(models.Model):
