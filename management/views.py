@@ -134,6 +134,15 @@ def delete_event(request, event_id):
 def venue_manager_admin(request):
     template = 'management/venue-manager/venue-manager-admin.html'
 
+    venues = Venue.objects.filter(
+        venuemanager__user=request.user, venuemanager__role__in=['OWNER', 'MANAGER'])
+
+    venue_managers = VenueManager.objects.filter(venue__in=venues).exclude(user=request.user)
+
+    if len(venues) == 0:
+        ToastMessage.must_be_a_venue_manager(request)
+        return redirect('create-or-choose-venue')
+
     if request.POST:
         venue_id = request.POST.get('venue')
         role = request.POST.get('role')
@@ -152,15 +161,6 @@ def venue_manager_admin(request):
         VenueManager.objects.create(venue=venue, user=user, role=role)
         messages.success(request, f'Venue manager {user.username} added \
             successfully.')
-
-    venues = Venue.objects.filter(
-        venuemanager__user=request.user, venuemanager__role__in=['OWNER', 'MANAGER'])
-
-    venue_managers = VenueManager.objects.filter(venue__in=venues).exclude(user=request.user)
-
-    if len(venues) == 0:
-        ToastMessage.must_be_a_venue_manager(request)
-        return redirect('create-or-choose-venue')
 
     context = {
         'venues': venues,
