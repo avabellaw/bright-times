@@ -19,4 +19,8 @@ urlpatterns = [
 
     path('event-management/delete-event/<int:event_id>',
          views.delete_event, name='delete-event'),
+
+    # Venue manager admin urls
+    path('venue-manager-admin/', views.venue_manager_admin,
+         name='venue-manager-admin'),
 ]

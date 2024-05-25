@@ -1,0 +1,73 @@
+{% extends 'management/management-base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ block.super }}
+    - Venue Manager Admin
+{% endblock %}
+
+{% block page_header %}Venue Manager Admin{% endblock %}
+
+{% block table %}
+    <div class="management-table">
+        <div class="container container_max-width-lg">
+            <div class="row header">
+                <div class="header col-2 col-md-1">#</div>
+                <div class="header col-5 col-sm-4 col-lg-4">Username</div>
+                <div class="header col-sm-6 col-md-7 col-lg-5 d-none d-sm-block">Venue</div>
+                <div class="header col-2 d-none d-lg-block">Role</div>
+            </div>
+            {% for manager in venue_managers %}
+                <a class="row" href="{% url 'venue-management-detail' venue.id %}">
+                    <div class="col-2 col-md-1" scope="row">{{ forloop.counter }}</div>
+                    <div class="col-5 col-sm-4 col-lg-4">{{ manager.user.username }}</div>
+                    <div class="col-sm-6 col-md-7 col-lg-5 d-none d-sm-block">{{ manager.venue.name }}</div>
+                    <div class="col-2 d-none d-lg-block">{{ manager.role }}</div>
+                </a>
+            {% endfor %}
+            {% if venue_managers|length == 0 %}
+                <div class="container container_max-width-lg">
+                    <div class="row">
+                        <div class="col text-center">
+                            <p class="mb-0">No venue managers found.</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <hr class="mt-5 mb-5">
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2>Add a new venue manager:</h2>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <form action="{% url 'venue-manager-admin' %}">
+                <label for="username_email">Username or email:</label>
+                <input type="text" name="username_email" id="username_email">
+
+                <label for="venue">Venue:</label>
+                <select name="venue" id="venue">
+                    {% for venue in venues %}
+                        <option value="{{ venue.id }}">{{ venue.name }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="role">Role:</label>
+                <select name="role" id="role">
+                    {% for role in roles %}
+                        <option value="{{ role }}">{{ role }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-dark ml-2">Add manager</button>
+            </form>
+        </div>
+    </div>
+
+    <br>
+{% endblock %}

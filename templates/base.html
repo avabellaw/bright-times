@@ -94,6 +94,11 @@
                                                                     <a class="dropdown-item" href="{% url 'event-management' %}">Event management</a>
                                                                 </li>
                                                             {% endif %}
+                                                            {% if user.is_venue_admin %}
+                                                                <li>
+                                                                    <a class="dropdown-item" href="{% url 'venue-manager-admin' %}">Venue manager admin</a>
+                                                                </li>
+                                                            {% endif %}
                                                         {% endif %}
                                                         <li>
                                                             <hr class="dropdown-divider">
@@ -142,7 +147,7 @@
         <footer class="footer mt-auto">
             <div class="container">
                 <div class="footer_container">
-                    <!-- "now" and format from w3schools 
+                    <!-- "now" and format from w3schools
                         [https://www.w3schools.com/django/ref_tags_now.php#:~:text=The%20now%20tag%20inserts%20the,according%20to%20the%20specified%20format.] -->
                     <p>© {% now "Y" %} BrightTimes. Created by Ava.</p>
                     <div class="social-icons">

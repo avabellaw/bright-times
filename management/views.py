@@ -1,16 +1,18 @@
 from django.shortcuts import render
-from utils.decorators import (login_required_message,
-                                           must_be_venue_manager)
-
-from events.models import Venue, Event
-from events.forms import VenueForm, AddressForm, EventForm
 from django.urls import reverse
 from django.shortcuts import redirect
 from django.conf import settings
+
+from utils.decorators import (login_required_message,
+                              must_be_venue_manager)
 from .helpers import is_user_manager_of_venue
+from events.models import Venue, Event, VenueManager
+from events.forms import VenueForm, AddressForm, EventForm
 
 ToastMessage = settings.TOAST_MESSAGE
 
+
+# Venue management views
 
 @login_required_message
 @must_be_venue_manager
@@ -70,6 +72,8 @@ def delete_venue(request, venue_id):
     return redirect(reverse('venue-management'))
 
 
+# Event management views
+
 @login_required_message
 @must_be_venue_manager
 def event_management(request):
@@ -119,3 +123,27 @@ def delete_event(request, event_id):
     else:
         ToastMessage.cannot_delete_event_not_manager(request)
     return redirect(reverse('event-management'))
+
+# Venue manager admin views
+
+
+@login_required_message
+@must_be_venue_manager
+def venue_manager_admin(request):
+    template = 'management/venue-manager/venue-manager-admin.html'
+
+    venues = Venue.objects.filter(venuemanager__user=request.user, venuemanager__role__in=['OWNER', 'MANAGER'])
+
+    if len(venues) == 0:
+        ToastMessage.must_be_a_venue_manager(request)
+        return redirect('create-or-choose-venue')
+
+    venue_managers = VenueManager.objects.filter(venue__in=venues)
+
+    context = {
+        'venues': venues,
+        'venue-managers': venue_managers,
+        'roles': settings.VENUE_MANAGER_ROLE
+    }
+
+    return render(request, template, context)

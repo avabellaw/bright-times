@@ -1,6 +1,7 @@
 from django.db import models
 from django_countries.fields import CountryField
 from django.contrib.auth.models import User
+from django.conf import settings
 
 
 class Event(models.Model):
@@ -75,7 +76,9 @@ class Venue(models.Model):
         if just_created:
             check_created_by_is_set(created_by)
 
-            VenueManager.objects.create(user=created_by, venue=self)
+            VenueManager.objects.create(user=created_by,
+                                        venue=self,
+                                        role=settings.VENUE_MANAGER_ROLE[0])
 
 
 def check_created_by_is_set(created_by):
