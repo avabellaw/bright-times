@@ -165,7 +165,7 @@ def venue_manager_admin(request):
     context = {
         'venues': venues,
         'venue_managers': venue_managers,
-        'roles': settings.VENUE_MANAGER_ROLE
+        'roles': settings.VENUE_MANAGER_ROLE[::-1]
     }
 
     return render(request, template, context)
