@@ -244,6 +244,10 @@ class ToastMessage:
         messages.error(request, f'You must verify your email address to \
             {attempted_action}')
 
+    @staticmethod
+    def user_not_found(request):
+        messages.error(request, 'User not found.')
+
 
 # The variable is singular to aid readbility when using the methods
 TOAST_MESSAGE = ToastMessage

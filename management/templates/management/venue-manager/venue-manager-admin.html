@@ -18,12 +18,12 @@
                 <div class="header col-2 d-none d-lg-block">Role</div>
             </div>
             {% for manager in venue_managers %}
-                <a class="row" href="{% url 'venue-management-detail' venue.id %}">
+                <div class="row">
                     <div class="col-2 col-md-1" scope="row">{{ forloop.counter }}</div>
                     <div class="col-5 col-sm-4 col-lg-4">{{ manager.user.username }}</div>
                     <div class="col-sm-6 col-md-7 col-lg-5 d-none d-sm-block">{{ manager.venue.name }}</div>
                     <div class="col-2 d-none d-lg-block">{{ manager.role }}</div>
-                </a>
+                </div>
             {% endfor %}
             {% if venue_managers|length == 0 %}
                 <div class="container container_max-width-lg">
@@ -47,7 +47,8 @@
         </div>
         <br>
         <div class="row">
-            <form action="{% url 'venue-manager-admin' %}">
+            <form action="{% url 'venue-manager-admin' %}" method="post">
+                {% csrf_token %}
                 <label for="username_email">Username or email:</label>
                 <input type="text" name="username_email" id="username_email">
 
