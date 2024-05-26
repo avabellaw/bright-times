@@ -108,6 +108,11 @@ I followed the Stripe documentation and a guide by testdriven as [mentioned in t
 
 I also used the walkthrough project for additional guidence.
 
+# Bug fixes
+
+* Cripsy forms returns error "too many values to unpack (expected 2)"
+  * [https://stackoverflow.com/questions/37244808/valueerror-too-many-values-to-unpack-expected-2-in-django](Make choices a tuple of 2)
+
 # Credits
 
 ## Images

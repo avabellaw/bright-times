@@ -10,6 +10,7 @@ from utils.decorators import (login_required_message,
 from .helpers import is_user_manager_of_venue
 from events.models import Venue, Event, VenueManager
 from events.forms import VenueForm, AddressForm, EventForm
+from .forms import VenueManagerCreationForm
 
 ToastMessage = settings.TOAST_MESSAGE
 
@@ -139,33 +140,24 @@ def venue_manager_admin(request):
 
     venue_managers = VenueManager.objects.filter(venue__in=venues).exclude(user=request.user)
 
+    form = VenueManagerCreationForm(venues)
+
     if len(venues) == 0:
         ToastMessage.must_be_a_venue_manager(request)
         return redirect('create-or-choose-venue')
 
     if request.POST:
-        venue_id = request.POST.get('venue')
-        role = request.POST.get('role')
-        username_or_email = request.POST.get('username_email')
-
-        try:
-            user = User.objects.get(username=username_or_email)
-        except User.DoesNotExist:
-            try:
-                user = User.objects.get(email=username_or_email)
-            except User.DoesNotExist:
-                ToastMessage.user_not_found(request)
-                return redirect('venue-manager-admin')
-
-        venue = Venue.objects.get(pk=venue_id)
-        VenueManager.objects.create(venue=venue, user=user, role=role)
-        messages.success(request, f'Venue manager {user.username} added \
-            successfully.')
+        if form.is_valid():
+            form.save()
+            user = form.cleaned_data['user']
+            messages.success(request, f'Venue manager {user.username} added \
+                successfully.')
+            return redirect('venue-manager-admin')
+        else:
+            messages.error(request, 'Please correct the form errors.')
 
     context = {
-        'venues': venues,
-        'venue_managers': venue_managers,
-        'roles': settings.VENUE_MANAGER_ROLE[::-1]
+        'form': form,
     }
 
     return render(request, template, context)
