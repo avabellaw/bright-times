@@ -1,0 +1,30 @@
+{% extends 'management/detail-base.html' %}
+{% load crispy_forms_tags %}
+
+{% block page_header %}Venue Manager Admin{% endblock %}
+
+{% block form_action %}
+    {% url 'venue-manager-admin-detail' manager.id %}
+{% endblock %}
+
+{% block delete_btn_url %}
+    {% url 'delete-manager' manager.id %}
+{% endblock %}
+
+{% block form_items %}
+    <p>
+        <strong>User:</strong>{{ manager.user.username }}
+    </p>
+    <p>
+        <strong>Email:</strong>{{ manager.user.email }}
+    </p>
+    <p>
+        <strong>Venue:</strong>{{ manager.venue.name }}
+    </p>
+    <label for="role">Role:</label>
+    <select class="form-control" id="role" name="role" disabled>
+        {% for role in roles %}
+            <option value="{{ role }}" {% if manager.role == role %}selected{% endif %}>{{ role }}</option>
+        {% endfor %}
+    </select>
+{% endblock %}

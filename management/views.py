@@ -7,7 +7,7 @@ from django.contrib import messages
 
 from utils.decorators import (login_required_message,
                               must_be_venue_manager)
-from .helpers import is_user_manager_of_venue
+from .helpers import is_user_manager_of_venue, get_venues_managed_by_user
 from events.models import Venue, Event, VenueManager
 from events.forms import VenueForm, AddressForm, EventForm
 from .forms import VenueManagerCreationForm
@@ -135,8 +135,7 @@ def delete_event(request, event_id):
 def venue_manager_admin(request):
     template = 'management/venue-manager/venue-manager-admin.html'
 
-    venues = Venue.objects.filter(
-        venuemanager__user=request.user, venuemanager__role__in=['OWNER', 'MANAGER'])
+    venues = get_venues_managed_by_user(request.user)
 
     venue_managers = VenueManager.objects.filter(venue__in=venues).exclude(user=request.user)
 
@@ -164,3 +163,30 @@ def venue_manager_admin(request):
     }
 
     return render(request, template, context)
+
+
+@login_required_message
+@must_be_venue_manager
+def venue_manager_admin_detail(request, manager_id):
+    manager = VenueManager.objects.get(pk=manager_id)
+
+    template = 'management/venue-manager/venue-manager-detail.html'
+
+    context = {
+        'roles': settings.VENUE_MANAGER_ROLE,
+        'manager': manager,
+    }
+
+    return render(request, template, context)
+
+
+@login_required_message
+@must_be_venue_manager
+def delete_manager(request, manager_id):
+    manager = VenueManager.objects.get(pk=manager_id)
+    if is_user_manager_of_venue(request.user, manager.venue):
+        ToastMessage.deleted_successfully(request, manager.name)
+        manager.delete()
+    else:
+        ToastMessage.cannot_delete_manager_not_manager(request)
+    return redirect(reverse('venue-manager-admin'))

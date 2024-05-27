@@ -17,15 +17,15 @@
                 <div class="header d-none d-md-block col-md-1">#</div>
                 <div class="header col-4">Username</div>
                 <div class="header col-4">Venue</div>
-                <div class="header col-4">Role</div>
+                <div class="header col-4 col-md-3">Role</div>
             </div>
             {% for manager in venue_managers %}
-                <div class="row">
+                <a class="row" href="{% url 'venue-manager-admin-detail' manager.id %}">
                     <div class="d-none d-md-block col-md-1" scope="row">{{ forloop.counter }}</div>
                     <div class="col-4">{{ manager.user.username }}</div>
                     <div class="col-4">{{ manager.venue.name }}</div>
-                    <div class="col-4">{{ manager.role }}</div>
-                </div>
+                    <div class="col-4 col-md-3">{{ manager.role }}</div>
+                </a>
             {% endfor %}
             {% if venue_managers|length == 0 %}
                 <div class="container container_max-width-lg">

@@ -29,6 +29,11 @@ class VenueManagerCreationForm(forms.Form):
 
         return user
 
+    def clean_venue(self):
+        venue = self.cleaned_data['venue']
+
+        return venue
+
     def clean(self):
         cleaned_data = super().clean()
 
