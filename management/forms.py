@@ -29,10 +29,16 @@ class VenueManagerCreationForm(forms.Form):
 
         return user
 
-    def clean_venue(self):
-        venue = self.cleaned_data['venue']
+    def clean(self):
+        cleaned_data = super().clean()
 
-        return venue
+        user = cleaned_data.get('user')
+        venue = cleaned_data.get('venue')
+
+        if user and venue:
+            if VenueManager.objects.filter(venue=venue, user=user).exists():
+                raise forms.ValidationError(
+                    'Venue manager already exists.')
 
     def save(self):
         user = self.cleaned_data['user']
