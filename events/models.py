@@ -93,7 +93,7 @@ class VenueManager(models.Model):
     role = models.CharField(max_length=50, blank=False, null=False)
 
     def __str__(self):
-        return f'{self.venue.name} {self.role}: {self.user.username}'
+        return f'{self.venue.name} {self.role.lower()}: {self.user.username}'
 
 
 class Address(models.Model):
