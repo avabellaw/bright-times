@@ -51,11 +51,6 @@
             <div class="row">
                 <div class="col">
                     {{ form|crispy }}
-                    {% if form.errors %}
-                        <div class="alert alert-danger" role="alert">
-                            <strong>Oops!</strong> There was an error processing your request.
-                        </div>
-                    {% endif %}
                
                     <button type="submit" class="btn btn-dark ml-2">Add manager</button>
                 </div>
