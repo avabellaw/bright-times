@@ -147,6 +147,8 @@ def venue_manager_admin(request):
         return redirect('create-or-choose-venue')
 
     if request.POST:
+        form = VenueManagerCreationForm(venues, request.POST)
+
         if form.is_valid():
             form.save()
             user = form.cleaned_data['user']
@@ -157,6 +159,7 @@ def venue_manager_admin(request):
             messages.error(request, 'Please correct the form errors.')
 
     context = {
+        'venue_managers': venue_managers,
         'form': form,
     }
 
