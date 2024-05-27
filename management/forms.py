@@ -9,7 +9,8 @@ from events.models import Venue, VenueManager
 class VenueManagerCreationForm(forms.Form):
     user = forms.CharField()
     venue = forms.ModelChoiceField(queryset=Venue.objects.none())
-    role = forms.ChoiceField(choices=[(role, role) for role in settings.VENUE_MANAGER_ROLE])
+    role = forms.ChoiceField(choices=[(role, role)
+                             for role in settings.VENUE_MANAGER_ROLE])
 
     def __init__(self, venues, *args, **kwargs):
         self.venues = venues
@@ -50,7 +51,7 @@ class VenueManagerCreationForm(forms.Form):
         venue = self.cleaned_data['venue']
         role = self.cleaned_data['role']
 
-        venue_manager = VenueManager(user=user, venue=venue, role=role)
-        venue_manager.save()
+        self.venue_manager = VenueManager(user=user, venue=venue, role=role)
+        self.venue_manager.save()
 
-        return venue_manager
+        return self.venue_manager

@@ -155,8 +155,7 @@ def venue_manager_admin(request):
 
         if form.is_valid():
             form.save()
-            user = form.cleaned_data['user']
-            messages.success(request, f'Venue manager {user.username} added \
+            messages.success(request, f'{form.venue_manager} added \
                 successfully.')
             return redirect('venue-manager-admin')
         else:
