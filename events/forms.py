@@ -8,6 +8,10 @@ class FormUtilsMixin():
             field.widget.attrs['readonly'] = True
             field.widget.attrs['disabled'] = True
 
+    def add_class_to_all_fields(self, class_name):
+        for field in self.fields.values():
+            field.widget.attrs['class'] = class_name
+
 
 class EventForm(forms.ModelForm, FormUtilsMixin):
     class Meta():

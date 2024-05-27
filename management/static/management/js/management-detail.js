@@ -5,10 +5,7 @@ $('#edit-btn').click(function() {
 
     window.location.hash = '#detail-form';
 
-    $('input').prop('disabled', !isEditing);
-    $('input').prop('readonly', !isEditing);
-    $('#id_country').prop('disabled', !isEditing);
-    $('#id_country').prop('readonly', !isEditing);
+    $('.editable-field').prop('disabled', !isEditing).prop('readonly', !isEditing)
 
     $('#save-btn').toggleClass('d-none');
     $('#edit-btn').toggleClass('d-none');

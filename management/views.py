@@ -51,6 +51,9 @@ def venue_detail(request, venue_id):
 
     venue_form.make_read_only()
     address_form.make_read_only()
+    venue_form.add_class_to_all_fields('editable-field')
+    address_form.add_class_to_all_fields('editable-field')
+
     template = 'management/venue/venue-detail.html'
 
     context = {
@@ -105,6 +108,8 @@ def event_detail(request, event_id):
         event_form = EventForm(instance=event)
 
     event_form.make_read_only()
+    event_form.add_class_to_all_fields('editable-field')
+
     template = 'management/event/event-detail.html'
 
     context = {

@@ -13,16 +13,16 @@
 
 {% block form_items %}
     <p>
-        <strong>User:</strong>{{ manager.user.username }}
+        <strong>User:</strong> {{ manager.user.username }}
     </p>
     <p>
-        <strong>Email:</strong>{{ manager.user.email }}
+        <strong>Email:</strong> {{ manager.user.email }}
     </p>
     <p>
-        <strong>Venue:</strong>{{ manager.venue.name }}
+        <strong>Venue:</strong> {{ manager.venue.name }}
     </p>
     <label for="role">Role:</label>
-    <select class="form-control" id="role" name="role" disabled>
+    <select class="form-control editable-field" id="role" name="role" disabled>
         {% for role in roles %}
             <option value="{{ role }}" {% if manager.role == role %}selected{% endif %}>{{ role }}</option>
         {% endfor %}
