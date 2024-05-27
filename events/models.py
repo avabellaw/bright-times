@@ -92,6 +92,9 @@ class VenueManager(models.Model):
     venue = models.ForeignKey(Venue, on_delete=models.CASCADE)
     role = models.CharField(max_length=50, blank=False, null=False)
 
+    def __str__(self):
+        return f'{self.venue.name} {self.role}: {self.user.username}'
+
 
 class Address(models.Model):
     class Meta:
