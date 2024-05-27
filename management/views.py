@@ -175,6 +175,17 @@ def venue_manager_admin(request):
 def venue_manager_admin_detail(request, manager_id):
     manager = VenueManager.objects.get(pk=manager_id)
 
+    if request.POST:
+        role = request.POST.get('role')
+        if role not in settings.VENUE_MANAGER_ROLE:
+            messages.error(request, 'Invalid role.')
+            return redirect(reverse('venue-manager-admin-detail',
+                                    args=[manager_id]))
+
+        manager.role = role
+        manager.save()
+        messages.success(request, 'Role updated successfully.')
+
     template = 'management/venue-manager/venue-manager-detail.html'
 
     context = {
@@ -190,7 +201,7 @@ def venue_manager_admin_detail(request, manager_id):
 def delete_manager(request, manager_id):
     manager = VenueManager.objects.get(pk=manager_id)
     if is_user_manager_of_venue(request.user, manager.venue):
-        ToastMessage.deleted_successfully(request, manager.name)
+        ToastMessage.deleted_successfully(request, manager)
         manager.delete()
     else:
         ToastMessage.cannot_delete_manager_not_manager(request)
