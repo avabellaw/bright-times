@@ -3,7 +3,8 @@
 
 {% block additional_css %}
     {{ block.super }}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css">
 {% endblock %}
 
 {% block title %}
@@ -27,10 +28,8 @@
                       method="post"
                       enctype="multipart/form-data">
                     {% csrf_token %}
-                    <section class="input-fields">
-                        {{ event_form|crispy }}
-                        <button type="submit">Create Event</button>
-                    </section>
+                    {{ event_form|crispy }}
+                    <button class="btn btn-dark" type="submit">Create Event</button>
                 </form>
             </div>
         </div>
@@ -39,11 +38,11 @@
 
 {% block js %}
     {{ block.super }}
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
     <script type="text/javascript">$(".datetimepicker").datetimepicker({
         inline:true,
         step:15,
         format:'Y-m-d H:i',
-    });</script>
+    });
+    </script>
 {% endblock %}

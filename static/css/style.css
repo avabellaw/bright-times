@@ -98,10 +98,15 @@
 /* Forms */
 
     form {
+        padding: 1em;
+    }
+
+    form:has(.form-heading) {
         padding: 0.6em 1.4em;
     }
 
     .form-heading {
+        margin-top: 0.5em;
         margin-left: -0.4em;
     }
 
@@ -119,7 +124,7 @@
 
     @media screen and (min-width: 576px){
         .form-container {
-            max-width: 65%;
+            max-width: 800px;
         }
     }
 
