@@ -7,18 +7,25 @@
     <link rel="stylesheet" href="{% static 'tickets/css/style.css' %}">
 {% endblock %}
 
-{% block additional_head %}<script src="https://js.stripe.com/v3/"></script>{% endblock %}
+{% block additional_head %}
+    <!-- Added to the head as per the Stripe documentation -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script defer src="{% static 'tickets/js/checkout.js' %}"></script>
+{% endblock %}
 
 {% block content %}
     <div class="container checkout-container">
         <div class="row">
             <div class="col">
                 <div class="page-header">
-                    <h1>Checkout {{ qty }} ticket{% if qty > 1 %}s{% endif %} for: {{ event.name }}</h1>
+                    <h1>
+                        Checkout {{ qty }} ticket
+                        {% if qty > 1 %}s{% endif %}
+                        for: {{ event.name }}
+                    </h1>
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col">
                 <!-- Display a payment form -->
@@ -45,9 +52,4 @@
             </div>
         </div>
     </div>
-{% endblock %}
-
-{% block js %}
-    {{ block.super }}
-    <script src="{% static 'tickets/js/checkout.js' %}"></script>
 {% endblock %}
