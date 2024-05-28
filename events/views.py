@@ -62,7 +62,7 @@ def choose_or_create_venue(request):
 
             messages.success(request, MESSAGE)
 
-            return redirect('create_event', venue_id=venue.id)
+            return redirect('create-event', venue_id=venue.id)
         else:
             ToastMessage.form_validation_error(request)
     else:
@@ -81,9 +81,9 @@ def choose_or_create_venue(request):
 
 
 @login_required_message
-def select_venue_and_create_event(request):
+def select_venue(request):
     venue_id = int(request.POST.get('choose-venue'))
-    return redirect('create_event', venue_id=venue_id)
+    return redirect('create-event', venue_id=venue_id)
 
 
 @login_required_message
@@ -114,7 +114,7 @@ def create_event(request, venue_id):
     else:
         event_form = EventForm()
 
-    template = 'events/create_event.html'
+    template = 'events/create-event.html'
 
     context = {
         'venue': venue,

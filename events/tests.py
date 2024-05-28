@@ -37,21 +37,21 @@ class EventTestCase(TestCase):
 
         client.login(username=self.user.username, password='doe')
 
-        response = client.get(reverse('create_event', args=[self.venue.id]))
+        response = client.get(reverse('create-event', args=[self.venue.id]))
 
         self.assertEqual(response.status_code, 200)
 
     def test_unauthorized_access_to_event_creation_page(self):
         client = Client()
 
-        response = client.get(reverse('create_event', args=[self.venue.id]))
+        response = client.get(reverse('create-event', args=[self.venue.id]))
 
         # Test is redirected to login page
         self.assertEqual(response.status_code, 302)
 
         client.login(username=self.user.username, password='doe')
 
-        response = client.get(reverse('create_event', args=[self.venue2.id]))
+        response = client.get(reverse('create-event', args=[self.venue2.id]))
 
         # User should not be able to use User2's venue
         self.assertEqual(response.status_code, 403)

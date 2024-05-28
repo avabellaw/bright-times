@@ -27,7 +27,7 @@ def must_be_venue_manager(view_func):
         venue_manager = VenueManager.objects.filter(user=request.user)
         if not venue_manager:
             ToastMessage.must_be_a_venue_manager(request)
-            return HttpResponseRedirect(reverse('choose_or_create_venue'))
+            return HttpResponseRedirect(reverse('choose-or-create-venue'))
         else:
             return view_func(request, *args, **kwargs)
     return wrapper

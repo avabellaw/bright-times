@@ -5,16 +5,16 @@ urlpatterns = [
     path('', views.events, name='events'),
 
     # Create an event
-    path('create/<int:venue_id>', views.create_event, name='create_event'),
+    path('create/<int:venue_id>', views.create_event, name='create-event'),
 
     # Select venue and go to event creation page
-    path('select-venue/', views.select_venue_and_create_event,
-         name='select_venue'),
+    path('select-venue/', views.select_venue,
+         name='select-venue'),
 
     # Get choose or create venue page
     path('choose-or-create-venue/',
          views.choose_or_create_venue,
-         name='choose_or_create_venue'),
+         name='choose-or-create-venue'),
 
     # Event details
     path('event-details/<int:event_id>', views.event_details,
