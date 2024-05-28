@@ -45,6 +45,8 @@ def buy_ticket(request, event_id):
         # messages.success(request, MESSAGE)
 
         request.session['ticket_order'] = {
+            'item_id': str(event.id),
+            'qty': str(quantity),
             'total': str(event.price * quantity)
         }
         return redirect('checkout', event_id=event_id)
@@ -71,12 +73,19 @@ def buy_ticket(request, event_id):
 def checkout(request, event_id):
     stripe_pub_key = settings.STRIPE_PUBLISHABLE_KEY
 
+    template = 'tickets/checkout.html'
+
+    ticket_order = request.session.get('ticket_order')
+    event = Event.objects.get(id=event_id)
+    qty = int(ticket_order.get('qty'))
+
     context = {
+        'event': event,
+        'qty': qty,
+        'total': event.price * qty,
         'stripe_pub_key': stripe_pub_key,
         'event_id': event_id,
     }
-
-    template = 'tickets/checkout.html'
 
     return render(request, template, context)
 
@@ -84,7 +93,6 @@ def checkout(request, event_id):
 def create_payment_intent(request):
     ticket_order = request.session.get('ticket_order')
     order_total = Decimal(ticket_order.get('total'))
-    print("order total: ", order_total)
 
     stripe.api_key = settings.STRIPE_SECRET_KEY
 

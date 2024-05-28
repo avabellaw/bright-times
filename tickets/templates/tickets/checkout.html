@@ -1,35 +1,53 @@
 {% extends 'events/base.html' %}
 {% load static %}
 
+{% block additional_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'tickets/css/checkout.css' %}">
+    <link rel="stylesheet" href="{% static 'tickets/css/style.css' %}">
+{% endblock %}
+
 {% block additional_head %}<script src="https://js.stripe.com/v3/"></script>{% endblock %}
 
 {% block content %}
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <!-- Display a payment form -->
-        <form id="payment-form">
-          {% csrf_token %}
-          <div id="payment-element">
-            <!--Stripe.js injects the Payment Element-->
-          </div>
-          <button id="submit">
-            <div class="spinner hidden" id="spinner"></div>
-            <span id="button-text">Pay now</span>
-          </button>
-          <div id="payment-message" class="hidden"></div>
-        </form>
-        <input type="hidden" name="event_id" id="event_id" value="{{ event.name }}">
-        <input type="hidden"
-               name="stripe_pub_key"
-               id="stripe_pub_key"
-               value="{{ stripe_pub_key }}">
-      </div>
+    <div class="container checkout-container">
+        <div class="row">
+            <div class="col">
+                <div class="page-header">
+                    <h1>Checkout {{ qty }} ticket{% if qty > 1 %}s{% endif %} for: {{ event.name }}</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <!-- Display a payment form -->
+                <form id="payment-form">
+                    {% csrf_token %}
+                    <div class="form-group text-center">
+                        <h2>Total price: £{{ total }}</h2>
+                        <hr>
+                    </div>
+                    <div id="payment-element">
+                        <!--Stripe.js injects the Payment Element-->
+                    </div>
+                    <button id="submit" class="btn btn-dark">
+                        <div class="spinner hidden" id="spinner"></div>
+                        <span id="button-text">Pay now</span>
+                    </button>
+                    <div id="payment-message" class="hidden"></div>
+                </form>
+                <input type="hidden" name="event_id" id="event_id" value="{{ event.name }}">
+                <input type="hidden"
+                       name="stripe_pub_key"
+                       id="stripe_pub_key"
+                       value="{{ stripe_pub_key }}">
+            </div>
+        </div>
     </div>
-  </div>
 {% endblock %}
 
 {% block js %}
-  {{ block.super }}
-  <script src="{% static 'js/checkout.js' %}"></script>
+    {{ block.super }}
+    <script src="{% static 'tickets/js/checkout.js' %}"></script>
 {% endblock %}

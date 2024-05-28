@@ -1,0 +1,11 @@
+.checkout-container {
+    max-width: 800px;
+}
+
+#payment-form {
+    width: 100%;
+}
+
+#payment-element {
+    padding: 2em;
+}

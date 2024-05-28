@@ -19,7 +19,7 @@
                 <form action="{% url 'buy-ticket' event.id %}" method="post">
                     {% csrf_token %}
                     <div class="form-group">
-                        <h3>Price of ticket: {{ event.price }}</h3>
+                        <h3>Price of ticket: £{{ event.price }}</h3>
                         <label for="quantity">Quantity:</label>
                         <input type="number"
                                class="form-control"
