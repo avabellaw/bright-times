@@ -79,6 +79,13 @@
             padding-left: var(--bs-navbar-nav-link-padding-x);
         }
 
+        @media screen and (min-width: 576px){
+            .account-dropdown-container {
+                display: flex;
+                align-items: center;
+            }
+        }
+
         @media screen and (max-width: 576px) {
             #navbarNav {
                 background-color: #ffffff17;
