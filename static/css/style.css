@@ -80,11 +80,6 @@
 /* End Header */
 
 /* General styles */
-
-    .form-container {
-        max-width: 65%;
-    }
-
 /* End General styles */
 
 /* Allauth */
@@ -102,12 +97,30 @@
 
 /* Forms */
 
-    section.input-fields {
-        padding: 1em 2%;
+    form {
+        padding: 0.6em 1.4em;
+    }
+
+    .form-heading {
+        margin-left: -0.4em;
     }
 
     .form-group {
-        margin: 1em 0px;
+        margin: 1.4em 0.4em;
+    }
+
+    form .form-group:first-of-type:not(.form-heading + .form-group) {
+        margin-top: 0;
+    }
+
+    form button {
+        margin-top: 0.5em;
+    }
+
+    @media screen and (min-width: 576px){
+        .form-container {
+            max-width: 65%;
+        }
     }
 
 /* End Forms */

@@ -29,15 +29,15 @@
                         <form action="{% url 'select_venue' %}" method="post">
                             {% csrf_token %}
                             {% for venue in venues %}
-                                <input type="radio"
-                                       name="choose-venue"
-                                       id="{{ venue.id }}"
-                                       value="{{ venue.id }}">
-                                <label for="{{ venue.id }}">{{ venue.name }}</label>
-                                <br>
+                                <div class="form-group">
+                                    <input type="radio"
+                                           name="choose-venue"
+                                           id="{{ venue.id }}"
+                                           value="{{ venue.id }}">
+                                    <label for="{{ venue.id }}">{{ venue.name }}</label>
+                                </div>
                             {% endfor %}
-
-                            <button type="submit">Choose Venue</button>
+                            <button class="btn btn-dark" type="submit">Choose Venue</button>
                         </form>
                     </section>
                 </div>
@@ -53,17 +53,15 @@
         <!-- Show create a new venue section regardless -->
         <div class="row">
             <div class="col">
-                <form action="{% url 'choose_or_create_venue' %}" method="post">
+                <form class="form"
+                      action="{% url 'choose_or_create_venue' %}"
+                      method="post">
                     {% csrf_token %}
-                    <section class="input-fields">
-                        <h3>Venue Details:</h3>
-                        {{ venue_form|crispy }}
-                    </section>
-                    <section class="input-fields">
-                        <h3>Venue Address:</h3>
-                        {{ address_form|crispy }}
-                    </section>
-                    <button type="submit">Create Venue</button>
+                    <h3 class="form-heading">Venue Details:</h3>
+                    {{ venue_form|crispy }}
+                    <h3 class="form-heading">Venue Address:</h3>
+                    {{ address_form|crispy }}
+                    <button class="btn btn-dark" type="submit">Create Venue</button>
                 </form>
             </div>
         </div>
