@@ -81,6 +81,9 @@
 
 /* General styles */
 
+    .form-container {
+        max-width: 65%;
+    }
 
 /* End General styles */
 
