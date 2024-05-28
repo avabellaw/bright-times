@@ -48,7 +48,10 @@
             color: var(--primary-text-colour);
         }
 
-        .navbar a.nav-link
+        .navbar .dropdown-menu {
+            animation: slowExpandUL 0.5s ease-in-out;
+            overflow: hidden;
+        }
 
         .navbar {
             font-size: 1.2em;
@@ -192,3 +195,18 @@
         margin-left: auto;
     }
 /* End Footer */
+
+@keyframes slowExpandUL {
+    0% {
+        max-height: 0;
+        padding: 0;
+    }
+
+    25% {
+        padding: inherit;
+    }
+
+    100% {
+        max-height: 400px;
+    }
+}

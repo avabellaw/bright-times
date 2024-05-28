@@ -79,34 +79,34 @@
                                                        aria-expanded="false">{{ user.username }}</a>
                                                     <br>
                                                     <ul class="dropdown-menu">
-                                                        <li>
-                                                            <a class="dropdown-item" href="#">Profile</a>
+                                                        <li class="dropdown-item">
+                                                            <a class="nav-link" href="#">Profile</a>
                                                         </li>
-                                                        <li>
-                                                            <a class="dropdown-item" href="#">My tickets</a>
+                                                        <li class="dropdown-item">
+                                                            <a class="nav-link" href="#">My tickets</a>
                                                         </li>
                                                         {% if user.is_venue_manager %}
-                                                            <li>
+                                                            <li class="dropdown-item">
                                                                 <hr>
                                                             </li>
-                                                            <li>
-                                                                <a class="dropdown-item" href="{% url 'venue-management' %}">Venue management</a>
+                                                            <li class="dropdown-item">
+                                                                <a class="nav-link" href="{% url 'venue-management' %}">Venue management</a>
                                                             </li>
                                                             {% if user.has_events %}
-                                                                <li>
-                                                                    <a class="dropdown-item" href="{% url 'event-management' %}">Event management</a>
+                                                                <li class="dropdown-item">
+                                                                    <a class="nav-link" href="{% url 'event-management' %}">Event management</a>
                                                                 </li>
                                                             {% endif %}
                                                             {% if user.is_venue_admin %}
-                                                                <li>
-                                                                    <a class="dropdown-item" href="{% url 'venue-manager-admin' %}">Venue manager admin</a>
+                                                                <li class="dropdown-item">
+                                                                    <a class="nav-link" href="{% url 'venue-manager-admin' %}">Venue manager admin</a>
                                                                 </li>
                                                             {% endif %}
                                                         {% endif %}
-                                                        <li>
+                                                        <li class="dropdown-item">
                                                             <hr class="dropdown-divider">
                                                         </li>
-                                                        <li>
+                                                        <li class="dropdown-item">
                                                             <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                                                         </li>
                                                     </ul>
