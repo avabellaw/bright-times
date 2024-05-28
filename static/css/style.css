@@ -49,7 +49,7 @@
         }
 
         .navbar .dropdown-menu {
-            animation: slowExpandUL 0.5s ease-in-out;
+            animation: slowExpandUL 0.3s ease-in-out;
             overflow: hidden;
         }
 
