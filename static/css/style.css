@@ -89,15 +89,7 @@
         @media screen and (max-width: 576px) {
             #navbarNav {
                 background-color: #ffffff17;
-                padding: 0.5em;
-            }
-
-            #navbarNav .navbar-nav > li:first-child > .nav-link {
-                padding-top: 0;
-            }
-
-            #navbarNav .navbar-nav > li:last-child .nav-link:not(.show) {
-                padding-bottom: 0;
+                padding: 0 0.5em;
             }
 
             .dropdown-menu {
