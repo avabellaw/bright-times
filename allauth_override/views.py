@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def verified_email_required(request):
+    return render(request, 'account/verified-email-required.html')

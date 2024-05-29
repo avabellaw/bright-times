@@ -40,17 +40,6 @@ def buy_ticket(request, event_id):
             ToastMessage.min_max_tickets_error(request, quantity)
             return redirect('buy-ticket', event_id=event_id)
 
-        # Purchase tickets at quantity selected
-        # for _ in range(quantity):
-        #     ticket = Ticket.objects.create(event=event, user=request.user)
-        #     ticket.save()
-
-        # create_stripe_payment(request, event, quantity)
-
-        # MESSAGE = f'Ticket for "{event.name}" purchased successfully.'
-
-        # messages.success(request, MESSAGE)
-
         request.session['ticket_order'] = {
             'item_id': str(event.id),
             'qty': str(quantity),
@@ -97,7 +86,8 @@ def create_order(request):
 
         customer = stripe.Customer.retrieve(payment_intent_object["customer"])
         email = customer.email
-        order = TicketOrder.objects.filter(payment_intent=confirmed_payment_intent)
+        order = TicketOrder.objects.filter(
+            payment_intent=confirmed_payment_intent)
         if order.exists():
             order = order.first()
             messages.error(request, 'Order already exists.')
@@ -116,16 +106,18 @@ def create_order(request):
             # Create the tickets
             for _ in range(qty):
                 ticket = Ticket.objects.create(event=event, user=request.user,
-                                            order_num=order)
+                                               order_num=order)
                 ticket.save()
 
             del request.session['ticket_order']
 
-            MESSAGE = f'{qty} x ticket(s) for "{event.name}" purchased successfully.'
+            MESSAGE = f'{qty} x ticket(s) for "{
+                event.name}" purchased successfully.'
 
             messages.success(request, MESSAGE)
 
-        return HttpResponseRedirect(reverse('checkout-success', args=[order.order_num]))
+        return HttpResponseRedirect(reverse('checkout-success',
+                                            args=[order.order_num]))
 
 
 def checkout(request):

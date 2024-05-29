@@ -5,7 +5,7 @@ urlpatterns = [
     path('', views.events, name='events'),
 
     # Create an event
-    path('create/<int:venue_id>', views.create_event, name='create-event'),
+    path('create/<int:venue_id>/', views.create_event, name='create-event'),
 
     # Select venue and go to event creation page
     path('select-venue/', views.select_venue,
@@ -17,6 +17,6 @@ urlpatterns = [
          name='choose-or-create-venue'),
 
     # Event details
-    path('event-details/<int:event_id>', views.event_details,
+    path('event-details/<int:event_id>/', views.event_details,
          name='event-details'),
 ]

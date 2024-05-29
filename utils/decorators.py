@@ -37,7 +37,7 @@ def email_verification_required(view_func):
     def wrapper(request, *args, **kwargs):
         if not has_a_verified_email(request):
             ToastMessage.email_verification_required(request, "buy a ticket")
-            return HttpResponseRedirect(reverse('account_email'))
+            return HttpResponseRedirect(reverse('verified-email-required'))
         else:
             return view_func(request, *args, **kwargs)
     return wrapper
