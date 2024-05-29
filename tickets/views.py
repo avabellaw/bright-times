@@ -97,30 +97,35 @@ def create_order(request):
 
         customer = stripe.Customer.retrieve(payment_intent_object["customer"])
         email = customer.email
-        # Create the order
-        order = TicketOrder.objects.create(
-            first_name="TEMP FIRST",
-            last_name="TEMP LAST",
-            email=email,
-            quantity=qty,
-            price=event.price,
-            order_total=ticket_order.total,
-            payment_intent=confirmed_payment_intent
-        )
+        order = TicketOrder.objects.filter(payment_intent=confirmed_payment_intent)
+        if order.exists():
+            order = order.first()
+            messages.error(request, 'Order already exists.')
+        else:
+            # Create the order
+            order = TicketOrder.objects.create(
+                first_name="TEMP FIRST",
+                last_name="TEMP LAST",
+                email=email,
+                quantity=qty,
+                price=event.price,
+                order_total=ticket_order.total,
+                payment_intent=confirmed_payment_intent
+            )
 
-        # Create the tickets
-        for _ in range(qty):
-            ticket = Ticket.objects.create(event=event, user=request.user,
-                                           order_id=order)
-            ticket.save()
+            # Create the tickets
+            for _ in range(qty):
+                ticket = Ticket.objects.create(event=event, user=request.user,
+                                            order_id=order)
+                ticket.save()
 
-        del request.session['ticket_order']
+            del request.session['ticket_order']
 
-        MESSAGE = f'{qty} x ticket(s) for "{event.name}" purchased successfully.'
+            MESSAGE = f'{qty} x ticket(s) for "{event.name}" purchased successfully.'
 
-        messages.success(request, MESSAGE)
+            messages.success(request, MESSAGE)
 
-        return HttpResponseRedirect(reverse('checkout-success', args=[order.id]))
+        return HttpResponseRedirect(reverse('checkout-success', args=[order.order_num]))
 
 
 def checkout(request):
@@ -145,9 +150,9 @@ def checkout(request):
     return render(request, template, context)
 
 
-def checkout_success(request, order_id):
-    order = TicketOrder.objects.get(id=order_id)
-    a_ticket = Ticket.objects.filter(order_id=order.id).first()
+def checkout_success(request, order_num):
+    order = TicketOrder.objects.get(order_num=order_num)
+    a_ticket = Ticket.objects.filter(order_num=order.order_num).first()
     event = Event.objects.get(id=a_ticket.event.id)
 
     template = 'tickets/checkout-success.html'

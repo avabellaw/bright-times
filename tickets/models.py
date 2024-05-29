@@ -2,16 +2,19 @@ from django.db import models
 from django.contrib.auth.models import User
 from events.models import Event
 from django.core.validators import MinValueValidator, MaxValueValidator
+import uuid
 
 
 class Ticket(models.Model):
-    order_id = models.ForeignKey('TicketOrder', on_delete=models.CASCADE,
+    order_num = models.ForeignKey('TicketOrder', on_delete=models.CASCADE,
                                  null=False, blank=False, related_name='tickets')
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class TicketOrder(models.Model):
+    order_num = models.UUIDField(primary_key=True, default=uuid.uuid4,
+                                 editable=False, unique=True)
     first_name = models.CharField(max_length=50, blank=False, null=False)
     last_name = models.CharField(max_length=50, blank=False, null=False)
     email = models.EmailField(max_length=100, blank=False, null=False)

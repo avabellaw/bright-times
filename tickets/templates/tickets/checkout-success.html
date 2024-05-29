@@ -1,12 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Success !</h1>
-<h2>{{ event.name }}</h2>
-<h3>{{ order.total }}
-    
-</h3>{% endblock %}
-
-{% block additional_js %}
-    
+    <h1>Success !</h1>
+    <h2>{{ event.name }}</h2>
+    <h3>{{ order.order_total }}</h3>
 {% endblock %}
+
+{% block additional_js %}{% endblock %}
