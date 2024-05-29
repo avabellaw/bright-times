@@ -111,6 +111,8 @@ I also used the walkthrough project for additional guidence.
 PaymentIntent is created with a customer ID if user profile has one. If not, a new customer object is created.
 The customer object contains the email for the receipt.
 
+When the stripe payment is completed, the return url is the create_order view. This confirms the payment intent and ensures it's not already been created. It then creates the order and the tickets associated with it.
+
 # Bug fixes
 
 * Cripsy forms returns error "too many values to unpack (expected 2)"

@@ -12,6 +12,7 @@ urlpatterns = [
 
     # Stripe checkout
     path('checkout/', views.checkout, name='checkout'),
-    path('checkout-success/', views.checkout_success, name='checkout-success'),
+    path('checkout-success/<int:order_id>', views.checkout_success,
+         name='checkout-success'),
     path('create-order/', views.create_order, name='create-order'),
 ]

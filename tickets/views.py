@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from .models import Ticket
 from events.models import Event
 from django.conf import settings
 from utils.decorators import login_required_message
@@ -13,7 +12,9 @@ from utils.decorators import email_verification_required
 from django.http import HttpResponseRedirect
 
 from .helpers import get_ticket_order
+from .models import Ticket, TicketOrder
 from user_profile.models import UserProfile
+import json
 
 ToastMessage = settings.TOAST_MESSAGE
 
@@ -84,22 +85,42 @@ def create_order(request):
     confirmed_payment_intent = stripe.PaymentIntent.retrieve(
         str(payment_intent))
 
-    print("server got payment intent", confirmed_payment_intent)
+    payment_intent_object = json.loads(str(confirmed_payment_intent))
 
-    ticket_order = request.session.get('ticket_order')
-    event_id = ticket_order.get('item_id')
-    event = Event.objects.get(id=event_id)
-    qty = int(ticket_order.get('qty'))
-    # Purchase the tickets
-    # for _ in range(qty):
-    #     ticket = Ticket.objects.create(event=event, user=request.user)
-    #     ticket.save()
+    ticket_order = get_ticket_order(request)
+    is_valid = ticket_order.validate_payment_intent(payment_intent_object)
 
-    MESSAGE = f'Ticket for "{event.name}" purchased successfully.'
+    if is_valid:
+        ticket_order = get_ticket_order(request)
+        event = ticket_order.event
+        qty = ticket_order.qty
 
-    messages.success(request, MESSAGE)
+        customer = stripe.Customer.retrieve(payment_intent_object["customer"])
+        email = customer.email
+        # Create the order
+        order = TicketOrder.objects.create(
+            first_name="TEMP FIRST",
+            last_name="TEMP LAST",
+            email=email,
+            quantity=qty,
+            price=event.price,
+            order_total=ticket_order.total,
+            payment_intent=confirmed_payment_intent
+        )
 
-    return HttpResponseRedirect(reverse('checkout-success'))
+        # Create the tickets
+        for _ in range(qty):
+            ticket = Ticket.objects.create(event=event, user=request.user,
+                                           order_id=order)
+            ticket.save()
+
+        del request.session['ticket_order']
+
+        MESSAGE = f'{qty} x ticket(s) for "{event.name}" purchased successfully.'
+
+        messages.success(request, MESSAGE)
+
+        return HttpResponseRedirect(reverse('checkout-success', args=[order.id]))
 
 
 def checkout(request):
@@ -124,10 +145,19 @@ def checkout(request):
     return render(request, template, context)
 
 
-def checkout_success(request):
+def checkout_success(request, order_id):
+    order = TicketOrder.objects.get(id=order_id)
+    a_ticket = Ticket.objects.filter(order_id=order.id).first()
+    event = Event.objects.get(id=a_ticket.event.id)
+
     template = 'tickets/checkout-success.html'
 
-    return render(request, template)
+    context = {
+        'order': order,
+        'event': event,
+    }
+
+    return render(request, template, context)
 
 
 def create_payment_intent(request):
@@ -144,7 +174,8 @@ def create_payment_intent(request):
         # Create a PaymentIntent with the order amount and currency
         # Stripe docs [https://docs.stripe.com/api/payment_intents/create]
         if user_profile.stripe_customer_id:
-            customer = stripe.Customer.retrieve(user_profile.stripe_customer_id)
+            customer = stripe.Customer.retrieve(
+                user_profile.stripe_customer_id)
         else:
             customer = stripe.Customer.create(
                 email=request.user.email,

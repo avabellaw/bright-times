@@ -18,3 +18,8 @@ class TicketOrder():
         self.event = event
         self.qty = qty
         self.total = total
+
+    def validate_payment_intent(self, payment_intent):
+        is_amount_correct = payment_intent['amount'] == int(self.total * 100)
+        is_currency_correct = payment_intent['currency'] == 'gbp'
+        return is_amount_correct and is_currency_correct
