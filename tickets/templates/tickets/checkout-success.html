@@ -1,9 +1,67 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'tickets/css/checkout-success.css' %}">
+{% endblock %}
+
 {% block content %}
-    <h1>Success !</h1>
-    <h2>{{ event.name }}</h2>
-    <h3>{{ order.order_total }}</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="page-header">
+                    <h1>Checkout successful!</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="rol">
+                <div class="alert alert-success" role="alert">
+                    <h2 class="alert-heading">Thank you for your purchase!</h2>
+                    <p>
+                        Order <strong>#{{ order.order_num }}</strong> has been successfully processed.
+                    </p>
+                    <hr>
+                    <p class="mb-0">You will receive a confirmation email.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container order-information-container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h3>Order information</h3>
+                    <hr>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <p>Event:</p>
+                    </div>
+                    <div class="col-6">{{ event.name }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <p>Ticket price:</p>
+                    </div>
+                    <div class="col-6">£{{ order.price }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <p>Quantity:</p>
+                    </div>
+                    <div class="col-6">{{ order.quantity }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <p>Total:</p>
+                    </div>
+                    <div class="col-6">£{{ order.order_total }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block additional_js %}{% endblock %}

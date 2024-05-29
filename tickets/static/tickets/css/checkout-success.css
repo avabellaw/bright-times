@@ -1,0 +1,23 @@
+.order-information-container {
+    max-width: 700px;
+}
+
+.order-information-container > .container > .row > div:first-child{
+    font-weight: bold;
+}
+
+.order-information-container > .container > .row div:last-child{
+    text-align: right;
+}
+
+.alert.alert-success {
+    width: fit-content;
+    margin: auto;
+    padding: 2em;
+    margin-bottom: 2.5em;
+    text-align: center;
+}
+
+.alert.alert-success > .alert-heading {
+    margin-bottom: 1em;
+}
