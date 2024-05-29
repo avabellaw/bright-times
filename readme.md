@@ -109,7 +109,9 @@ I followed the Stripe documentation and a guide by testdriven as [mentioned in t
 I also used the walkthrough project for additional guidence.
 
 PaymentIntent is created with a customer ID if user profile has one. If not, a new customer object is created.
-The customer object contains the email for the receipt.
+The customer object contains the email for the receipt. The reciept will only be sent once Stripe is set to live mode.
+
+The Stripe PaymentIntent is also created with a description of the ticket ordered and quantity. 
 
 When the stripe payment is completed, the return url is the create_order view. This confirms the payment intent and ensures it's not already been created. It then creates the order and the tickets associated with it.
 
