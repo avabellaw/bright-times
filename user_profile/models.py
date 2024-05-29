@@ -8,3 +8,4 @@ class UserProfile(models.Model):
     first_name = models.CharField(max_length=50, blank=True, null=True)
     address = models.OneToOneField(Address, null=True,
                                    on_delete=models.CASCADE)
+    stripe_customer_id = models.CharField(max_length=50, null=True)
