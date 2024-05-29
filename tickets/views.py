@@ -116,7 +116,7 @@ def create_order(request):
             # Create the tickets
             for _ in range(qty):
                 ticket = Ticket.objects.create(event=event, user=request.user,
-                                            order_id=order)
+                                            order_num=order)
                 ticket.save()
 
             del request.session['ticket_order']
