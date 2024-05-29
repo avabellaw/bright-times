@@ -10,6 +10,7 @@ from django.urls import reverse
 from django.contrib import messages
 
 from utils.decorators import email_verification_required
+from django.http import HttpResponseRedirect
 
 ToastMessage = settings.TOAST_MESSAGE
 
@@ -77,17 +78,17 @@ def create_order(request):
     event_id = ticket_order.get('item_id')
     event = Event.objects.get(id=event_id)
     qty = int(ticket_order.get('qty'))
+    # Purchase the tickets
+    # for _ in range(qty):
+    #     ticket = Ticket.objects.create(event=event, user=request.user)
+    #     ticket.save()
 
-    if request.POST:
-        # Purchase the tickets
-        # for _ in range(qty):
-        #     ticket = Ticket.objects.create(event=event, user=request.user)
-        #     ticket.save()
+    print("ticket created")
+    MESSAGE = f'Ticket for "{event.name}" purchased successfully.'
 
-        print("ticket created")
-        MESSAGE = f'Ticket for "{event.name}" purchased successfully.'
+    messages.success(request, MESSAGE)
 
-        messages.success(request, MESSAGE)
+    return HttpResponseRedirect(reverse('checkout-success'))
 
 
 def checkout(request):
