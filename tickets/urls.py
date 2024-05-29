@@ -11,5 +11,7 @@ urlpatterns = [
          name='create-payment-intent'),
 
     # Stripe checkout
-    path('checkout/<int:event_id>/', views.checkout, name='checkout'),
+    path('checkout/', views.checkout, name='checkout'),
+    path('checkout-success/', views.checkout_success, name='checkout-success'),
+    path('create-order/', views.create_order, name='create-order'),
 ]

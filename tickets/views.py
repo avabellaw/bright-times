@@ -7,6 +7,8 @@ import stripe
 from decimal import Decimal
 from django.http import JsonResponse
 from django.urls import reverse
+from django.contrib import messages
+
 from utils.decorators import email_verification_required
 
 ToastMessage = settings.TOAST_MESSAGE
@@ -49,7 +51,7 @@ def buy_ticket(request, event_id):
             'qty': str(quantity),
             'total': str(event.price * quantity)
         }
-        return redirect('checkout', event_id=event_id)
+        return redirect('checkout')
 
     template = 'tickets/buy-ticket.html'
 
@@ -70,14 +72,33 @@ def buy_ticket(request, event_id):
     return render(request, template, context)
 
 
-def checkout(request, event_id):
-    stripe_pub_key = settings.STRIPE_PUBLISHABLE_KEY
-
-    template = 'tickets/checkout.html'
-
+def create_order(request):
     ticket_order = request.session.get('ticket_order')
+    event_id = ticket_order.get('item_id')
     event = Event.objects.get(id=event_id)
     qty = int(ticket_order.get('qty'))
+
+    if request.POST:
+        # Purchase the tickets
+        # for _ in range(qty):
+        #     ticket = Ticket.objects.create(event=event, user=request.user)
+        #     ticket.save()
+
+        print("ticket created")
+        MESSAGE = f'Ticket for "{event.name}" purchased successfully.'
+
+        messages.success(request, MESSAGE)
+
+
+def checkout(request):
+    ticket_order = request.session.get('ticket_order')
+
+    event_id = ticket_order.get('item_id')
+    event = Event.objects.get(id=event_id)
+    qty = int(ticket_order.get('qty'))
+
+    stripe_pub_key = settings.STRIPE_PUBLISHABLE_KEY
+    template = 'tickets/checkout.html'
 
     context = {
         'event': event,
@@ -90,6 +111,12 @@ def checkout(request, event_id):
     return render(request, template, context)
 
 
+def checkout_success(request):
+    template = 'tickets/checkout-success.html'
+
+    return render(request, template)
+
+
 def create_payment_intent(request):
     ticket_order = request.session.get('ticket_order')
     order_total = Decimal(ticket_order.get('total'))
@@ -100,7 +127,7 @@ def create_payment_intent(request):
         # Create a PaymentIntent with the order amount and currency
         intent = stripe.PaymentIntent.create(
             amount=int(order_total * 100),
-            currency='GBP',
+            currency='gbp',
         )
         return JsonResponse({
             'clientSecret': intent['client_secret']

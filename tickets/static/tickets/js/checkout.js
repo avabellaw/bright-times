@@ -3,6 +3,8 @@ const pub_key = document.getElementById("stripe_pub_key").value;
 const stripe = Stripe(pub_key);
 let csrf = $('input[name="csrfmiddlewaretoken"]').val();
 const event_id = document.getElementById("event_id").value;
+const form = document.getElementById("payment-form");
+const return_url = `${window.location.protocol}//${window.location.host}${document.getElementById("return-url").value}`;
 
 // The items the customer wants to buy
 const items = [{ id: event_id }];
@@ -12,9 +14,7 @@ let elements;
 initialize();
 checkStatus();
 
-document
-    .querySelector("#payment-form")
-    .addEventListener("submit", handleSubmit);
+form.addEventListener("submit", handleSubmit);
 
 // Fetches a payment intent and captures the client secret
 async function initialize() {
@@ -50,8 +50,7 @@ async function handleSubmit(e) {
     const { error } = await stripe.confirmPayment({
         elements,
         confirmParams: {
-            // Make sure to change this to your payment completion page
-            return_url: "/events/",
+            return_url: return_url,
         },
     });
 
