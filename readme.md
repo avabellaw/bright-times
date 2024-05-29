@@ -108,6 +108,9 @@ I followed the Stripe documentation and a guide by testdriven as [mentioned in t
 
 I also used the walkthrough project for additional guidence.
 
+PaymentIntent is created with a customer ID if user profile has one. If not, a new customer object is created.
+The customer object contains the email for the receipt.
+
 # Bug fixes
 
 * Cripsy forms returns error "too many values to unpack (expected 2)"

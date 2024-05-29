@@ -12,6 +12,9 @@ from django.contrib import messages
 from utils.decorators import email_verification_required
 from django.http import HttpResponseRedirect
 
+from .helpers import get_ticket_order
+from user_profile.models import UserProfile
+
 ToastMessage = settings.TOAST_MESSAGE
 
 
@@ -74,6 +77,15 @@ def buy_ticket(request, event_id):
 
 
 def create_order(request):
+    payment_intent = request.GET.get('payment_intent')
+
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+
+    confirmed_payment_intent = stripe.PaymentIntent.retrieve(
+        str(payment_intent))
+
+    print("server got payment intent", confirmed_payment_intent)
+
     ticket_order = request.session.get('ticket_order')
     event_id = ticket_order.get('item_id')
     event = Event.objects.get(id=event_id)
@@ -83,7 +95,6 @@ def create_order(request):
     #     ticket = Ticket.objects.create(event=event, user=request.user)
     #     ticket.save()
 
-    print("ticket created")
     MESSAGE = f'Ticket for "{event.name}" purchased successfully.'
 
     messages.success(request, MESSAGE)
@@ -92,11 +103,12 @@ def create_order(request):
 
 
 def checkout(request):
-    ticket_order = request.session.get('ticket_order')
+    ticket_order = get_ticket_order(request)
 
-    event_id = ticket_order.get('item_id')
-    event = Event.objects.get(id=event_id)
-    qty = int(ticket_order.get('qty'))
+    event = ticket_order.event
+    qty = ticket_order.qty
+    event_id = ticket_order.event.id
+    total = ticket_order.total
 
     stripe_pub_key = settings.STRIPE_PUBLISHABLE_KEY
     template = 'tickets/checkout.html'
@@ -104,7 +116,7 @@ def checkout(request):
     context = {
         'event': event,
         'qty': qty,
-        'total': event.price * qty,
+        'total': total,
         'stripe_pub_key': stripe_pub_key,
         'event_id': event_id,
     }
@@ -119,16 +131,31 @@ def checkout_success(request):
 
 
 def create_payment_intent(request):
-    ticket_order = request.session.get('ticket_order')
-    order_total = Decimal(ticket_order.get('total'))
+    ticket_order = get_ticket_order(request)
+    order_total = ticket_order.total
+    user_profile = UserProfile.objects.get(user=request.user)
 
+    desc = f'{ticket_order.qty} x ticket(s) for {ticket_order.event.name}.\n\n\
+        Ticket price: £{ticket_order.event.price}.\n\
+        Total: £{order_total}.'
     stripe.api_key = settings.STRIPE_SECRET_KEY
 
     try:
         # Create a PaymentIntent with the order amount and currency
+        # Stripe docs [https://docs.stripe.com/api/payment_intents/create]
+        if user_profile.stripe_customer_id:
+            customer = stripe.Customer.retrieve(user_profile.stripe_customer_id)
+        else:
+            customer = stripe.Customer.create(
+                email=request.user.email,
+                name=request.user.username,
+            )
+
         intent = stripe.PaymentIntent.create(
             amount=int(order_total * 100),
             currency='gbp',
+            customer=customer.id,
+            description=desc
         )
         return JsonResponse({
             'clientSecret': intent['client_secret']
