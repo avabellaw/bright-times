@@ -10,7 +10,8 @@ class Event(models.Model):
     created_by_venue_manager = models.ForeignKey("VenueManager",
                                                  on_delete=models.CASCADE)
     name = models.CharField(blank=False, null=False, max_length=50)
-    desc = models.CharField(blank=False, null=False, max_length=1000)
+    desc = models.CharField(blank=False, null=False, max_length=300)
+    about = models.TextField(blank=False, null=False, max_length=1500)
     price = models.DecimalField(blank=False, null=False,
                                 max_digits=4, decimal_places=2)
     image = models.ImageField(upload_to='event_images/',

@@ -21,7 +21,10 @@
                 <div class="event-header">
                     <div class="event-hero-img">
                         <div class="event-hero-img_background"></div>
-                        <img class="img img-responsive" height="400" src="{{ event.image.url }}" alt="">
+                        <img class="img img-responsive"
+                             height="400"
+                             src="{{ event.image.url }}"
+                             alt="">
                     </div>
                 </div>
             </div>
@@ -53,8 +56,10 @@
                             <br>
                             {{ event.venue.address.street_address1 }},
                             <br>
-                            {{ event.venue.address.street_address2 }},
-                            <br>
+                            {% if event.venue.address.street_address2 %}
+                                {{ event.venue.address.street_address2 }},
+                                <br>
+                            {% endif %}
                             {{ event.venue.address.city }},
                             <br>
                             {{ event.venue.address.county }},
@@ -63,6 +68,10 @@
                             <br>
                             {{ event.venue.address.country }}
                         </p>
+                    </section>
+                    <section>
+                        <h3>About the event</h3>
+                        {{ event.about }}
                     </section>
                 </article>
             </div>
