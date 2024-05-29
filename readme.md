@@ -113,6 +113,10 @@ The customer object contains the email for the receipt.
 
 When the stripe payment is completed, the return url is the create_order view. This confirms the payment intent and ensures it's not already been created. It then creates the order and the tickets associated with it.
 
+Quantity, price and total price are added to the TicketOrder model. This is redundant information but is useful for debugging in future.
+If an order were to go wrong, you would have the quantity and price of the ticket at order creation.
+The order total also adds an extra level of redundancy incase a calculation went wrong. It ensures that this information will match up with stripe records in one way or another. Order total is also useful for auditing data or creating reports.
+
 # Bug fixes
 
 * Cripsy forms returns error "too many values to unpack (expected 2)"
