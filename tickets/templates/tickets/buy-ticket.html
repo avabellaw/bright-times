@@ -1,5 +1,7 @@
 {% extends 'events/base.html' %}
 
+{% load static %}
+
 {% block title %}BrightTimes - Buy Ticket{% endblock %}
 
 {% block content %}
@@ -19,7 +21,7 @@
                 <form action="{% url 'buy-ticket' event.id %}" method="post">
                     {% csrf_token %}
                     <div class="form-group">
-                        <h3>Price of ticket: £{{ event.price }}</h3>
+                        <h3>Price of ticket: £<span id="ticket-price">{{ event.price }}</span></h3>
                         <label for="quantity">Quantity:</label>
                         <input type="number"
                                class="form-control"
@@ -27,12 +29,20 @@
                                name="quantity"
                                value="1"
                                min="1"
+                               max="10"
                                required>
-                        <p>Total cost:</p>
-                        <button type="submit" class="btn btn-primary mt-3">Buy ticket</button>
+                        <br>
+                        <p class="text-danger" id="error-message"></p>
+                        <h4>Total cost: £<sh4an id="total-cost"></span></h4>
+                        <button type="submit" class="btn btn-dark mt-3">Buy ticket</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block additional_js %}
+    <script type="text/javascript" src="{% static 'tickets/js/update-total-cost.js' %}">
+    </script>
 {% endblock %}
