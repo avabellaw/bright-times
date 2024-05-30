@@ -124,6 +124,13 @@ The order total also adds an extra level of redundancy incase a calculation went
 * Cripsy forms returns error "too many values to unpack (expected 2)"
   * [https://stackoverflow.com/questions/37244808/valueerror-too-many-values-to-unpack-expected-2-in-django](Make choices a tuple of 2)
 
+# Known bugs
+
+* Quantity button on buy ticket page flickers when you go under 1 or over 10 (using the up/down arrows).
+    * This is to allow the JavaScript validation to show the error message.
+    * I originally had the min/max values set but this would mean the validation message wasn't triggered.
+    * Besides, I believe the flickering back to a valid number enforces the validation further.
+
 # Credits
 
 ## Images
