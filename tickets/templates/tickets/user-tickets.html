@@ -1,0 +1,35 @@
+{% extends 'events/base.html' %}
+
+{% load static %}
+
+{% block title %}BrightTimes - Tickets{% endblock %}
+
+{% block content %}
+    <div class="container event-cards-container">
+        <div class="row">
+            <div class="col">
+                <div class="page-header">
+                    <h1>Tickets</h1>
+                    <hr>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for ticket in tickets %}
+                {% with event=ticket.event %}
+                    <div class="col-4">     
+                        <img class="img img-responsive" src="{{ event.image.url }}" alt="{{ event.name}} image">
+                    </div>
+                    <div class="col-8">
+                        <h3>{{ event.name }}</h3>
+                        <p>{{ event.start_date_time }}</p>
+                        <br>
+                        <p><strong>Order no.</strong> #{{ ticket.order_num }}</p>
+                        <p><strong>Ordered on: </strong> {{ ticket.order.order_date }}</p>
+                    </div>
+                {% endwith %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

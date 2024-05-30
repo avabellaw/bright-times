@@ -3,7 +3,6 @@ from events.models import Event
 from django.conf import settings
 from utils.decorators import login_required_message
 import stripe
-from decimal import Decimal
 from django.http import JsonResponse
 from django.urls import reverse
 from django.contrib import messages
@@ -18,6 +17,26 @@ import json
 
 ToastMessage = settings.TOAST_MESSAGE
 
+
+@login_required_message
+def user_tickets(request):
+    tickets = Ticket.objects.filter(user=request.user)
+    for t in tickets:
+        t.order = t.order_num
+
+    template = 'tickets/user-tickets.html'
+
+    context = {
+        'tickets': tickets,
+        'breadcrumbs': [
+            {
+                'name': 'My tickets',
+                'url': reverse('user-tickets')
+            }
+        ]
+    }
+
+    return render(request, template, context)
 
 @login_required_message
 @email_verification_required

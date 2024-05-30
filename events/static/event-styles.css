@@ -120,6 +120,7 @@ article#event-details > section {
 
 .event-cards-container>.row {
     --bs-gutter-y: 1.5rem;
+    justify-content: space-evenly;
 }
 
 .event-card {

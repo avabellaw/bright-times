@@ -83,7 +83,7 @@
                                                             <a class="nav-link" href="#">Profile</a>
                                                         </li>
                                                         <li class="dropdown-item">
-                                                            <a class="nav-link" href="#">My tickets</a>
+                                                            <a class="nav-link" href="{% url 'user-tickets' %}">Tickets ({{ user.tickets|length }})</a>
                                                         </li>
                                                         {% if user.is_venue_manager %}
                                                             <li class="dropdown-item">
