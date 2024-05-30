@@ -14,10 +14,18 @@ from pathlib import Path
 import os
 from django.contrib import messages
 
+import dj_database_url
+
 if os.path.exists('env.py'):
     import env  # noqa
 
-DEBUG = True if 'DEVELOPMENT' in os.environ else False
+# Sets DEBUG to True only if the environment variable exists AND is set to True
+# Default value is False
+DEBUG = os.environ.get('DEBUG', False)
+
+# Development variable is to determine whether to use dev resources or not
+# Default value is False
+DEVELOPMENT = os.environ.get('DEVELOPMENT', False)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -141,10 +149,13 @@ WSGI_APPLICATION = 'bright_times.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        } if DEVELOPMENT else {
+            dj_database_url.parse(os.environ.get('DATABASE_URL'))
+        }
+        
 }
 
 
