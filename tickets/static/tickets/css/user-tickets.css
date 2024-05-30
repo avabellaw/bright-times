@@ -1,6 +1,7 @@
 .user-tickets-container {
     padding: 1em;
     margin-bottom: 1em;
+    position: relative;
 }
 
 .user-tickets-container>div {

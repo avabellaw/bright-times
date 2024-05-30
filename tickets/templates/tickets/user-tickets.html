@@ -39,6 +39,7 @@
                             <strong>Ordered on:</strong> {{ ticket.order.order_date }}
                         </p>
                     </div>
+                    <a class="stretched-link" href="{% url 'event-details' event.id %}"></a>
                 </div>
             {% endwith %}
             {% if not forloop.last %}<hr class="hr--light">{% endif %}
