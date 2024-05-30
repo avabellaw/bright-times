@@ -21,8 +21,6 @@ ToastMessage = settings.TOAST_MESSAGE
 @login_required_message
 def user_tickets(request):
     tickets = Ticket.objects.filter(user=request.user)
-    for t in tickets:
-        t.order = t.order_num
 
     template = 'tickets/user-tickets.html'
 
