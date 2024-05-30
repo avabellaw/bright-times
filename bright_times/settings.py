@@ -163,6 +163,7 @@ else:
 # Use AWS S3 for static and media files if [use] DEVELOPMENT resource == False
 # Default is False if doesn't exist
 if not os.environ.get('DEVELOPMENT', False):
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     AWS_STORAGE_BUCKET_NAME = 'your-bright-times'
     AWS_S3_REGION_NAME = 'eu-north-1'
     AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
