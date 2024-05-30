@@ -7,7 +7,8 @@ import uuid
 
 class Ticket(models.Model):
     order_num = models.ForeignKey('TicketOrder', on_delete=models.CASCADE,
-                                 null=False, blank=False, related_name='tickets')
+                                  null=False, blank=False,
+                                  related_name='tickets')
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -15,6 +16,7 @@ class Ticket(models.Model):
 class TicketOrder(models.Model):
     order_num = models.UUIDField(primary_key=True, default=uuid.uuid4,
                                  editable=False, unique=True)
+    order_date = models.DateTimeField(auto_now_add=True)
     first_name = models.CharField(max_length=50, blank=False, null=False)
     last_name = models.CharField(max_length=50, blank=False, null=False)
     email = models.EmailField(max_length=100, blank=False, null=False)
