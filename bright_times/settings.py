@@ -57,6 +57,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # AWS
+    'storages',
+
     # Crispy forms
     'crispy_bootstrap4',
     'crispy_forms',
