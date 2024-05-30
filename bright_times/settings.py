@@ -36,7 +36,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUB_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.environ['ALLOWED_HOST']]
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
