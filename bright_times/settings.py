@@ -162,7 +162,7 @@ else:
 
 # Use AWS S3 for static and media files if [use] DEVELOPMENT resource == False
 # Default is False if doesn't exist
-if os.environ.get('DEVELOPMENT', False):
+if not os.environ.get('DEVELOPMENT', False):
     AWS_STORAGE_BUCKET_NAME = 'your-bright-times'
     AWS_S3_REGION_NAME = 'eu-north-1'
     AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
@@ -175,8 +175,8 @@ if os.environ.get('DEVELOPMENT', False):
     MEDIAFILES_LOCATION = 'media'
 
     # override static and media URLS in production
-    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}'
-    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}'
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
     # S3 bucket caching
     AWS_S3_OBJECT_PARAMETERS = {
