@@ -32,8 +32,7 @@ form {
 }
 
 /* Buttons and links */
-button {
-    background: #5469d4;
+#payment-form button {
     font-family: Arial, sans-serif;
     color: #ffffff;
     border-radius: 4px;
@@ -48,11 +47,11 @@ button {
     width: 100%;
 }
 
-button:hover {
+#payment-form button:hover {
     filter: contrast(115%);
 }
 
-button:disabled {
+#payment-form button:disabled {
     opacity: 0.5;
     cursor: default;
 }
