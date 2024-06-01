@@ -143,10 +143,15 @@
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        z-index: 1;
+        z-index: 100;
         border-radius: 50%;
         overflow: hidden;
         box-shadow: -1px 2px 8px -1px black;
+    }
+
+    .scroll-control:hover {
+        border: 2px solid white;
+        cursor: pointer;
     }
 
     .scroll-control[data-arrow="right"] {
