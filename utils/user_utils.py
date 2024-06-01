@@ -1,8 +1,21 @@
 from allauth.account.admin import EmailAddress
 
 
+def get_primary_email(request):
+    """Get primary email of user.
+
+    args:
+        request: Request object.
+
+    Returns:
+        str: Primary email of user.
+    """
+    return EmailAddress.objects.get(user=request.user, primary=True,
+                                    verified=True).email
+
+
 def has_a_verified_email(request):
-    """Return whether email has been verified.
+    """Get whether email has been verified.
 
     From stackoverflow post [https://stackoverflow.com/questions/54467321/how-to-tell-if-users-email-address-has-been-verified-using-django-allauth-res]
     """

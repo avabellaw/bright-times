@@ -9,7 +9,7 @@
 
 {% block additional_head %}
     <!-- Added to the head as per the Stripe documentation -->
-    <script src="https://js.stripe.com/v3/"></script>
+    <script defer src="https://js.stripe.com/v3/"></script>
     <script defer src="{% static 'tickets/js/checkout.js' %}"></script>
 {% endblock %}
 

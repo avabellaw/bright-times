@@ -9,15 +9,21 @@ def get_ticket_order(request):
     event = Event.objects.get(id=event_id)
     qty = int(ticket_order.get('qty'))
     total = Decimal(event.price * qty)
+    first_name = ticket_order.get('first_name')
+    last_name = ticket_order.get('last_name')
+    email = ticket_order.get('email')
 
-    return TicketOrder(event, qty, total)
+    return TicketOrder(event, qty, total, first_name, last_name, email)
 
 
 class TicketOrder():
-    def __init__(self, event, qty, total):
+    def __init__(self, event, qty, total, first_name, last_name, email):
         self.event = event
         self.qty = qty
         self.total = total
+        self.first_name = first_name
+        self.last_name = last_name
+        self.email = email
 
     def validate_payment_intent(self, payment_intent):
         is_amount_correct = payment_intent['amount'] == int(self.total * 100)

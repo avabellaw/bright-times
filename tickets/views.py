@@ -14,6 +14,7 @@ from .helpers import get_ticket_order
 from .models import Ticket, TicketOrder
 from user_profile.models import UserProfile
 import json
+from utils import user_utils
 
 ToastMessage = settings.TOAST_MESSAGE
 
@@ -36,6 +37,7 @@ def user_tickets(request):
 
     return render(request, template, context)
 
+
 @login_required_message
 @email_verification_required
 def buy_ticket(request, event_id):
@@ -43,6 +45,9 @@ def buy_ticket(request, event_id):
 
     if request.POST:
         quantity = int(request.POST.get('quantity'))
+        first_name = request.POST.get('first-name')
+        last_name = request.POST.get('last-name')
+        email = request.session['ticket_order']['email']
 
         tickets_owned = Ticket.objects.filter(event=event,
                                               user=request.user).count()
@@ -60,10 +65,17 @@ def buy_ticket(request, event_id):
         request.session['ticket_order'] = {
             'item_id': str(event.id),
             'qty': str(quantity),
-            'total': str(event.price * quantity)
+            'total': str(event.price * quantity),
+            'first_name': first_name,
+            'last_name': last_name,
+            'email': email,
         }
         return redirect('checkout')
 
+    user_email = user_utils.get_primary_email(request)
+    request.session['ticket_order'] = {
+        'email': user_email,
+    }
     template = 'tickets/buy-ticket.html'
 
     context = {
@@ -77,7 +89,8 @@ def buy_ticket(request, event_id):
                 'name': 'Buy ticket',
                 'url': reverse('buy-ticket', args=[event.id])
             }
-        ]
+        ],
+        'user_email': user_email,
     }
 
     return render(request, template, context)
@@ -103,6 +116,10 @@ def create_order(request):
 
         customer = stripe.Customer.retrieve(payment_intent_object["customer"])
         email = customer.email
+
+        first_name = ticket_order.first_name
+        last_name = ticket_order.last_name
+
         order = TicketOrder.objects.filter(
             payment_intent=confirmed_payment_intent)
         if order.exists():
@@ -111,8 +128,8 @@ def create_order(request):
         else:
             # Create the order
             order = TicketOrder.objects.create(
-                first_name="TEMP FIRST",
-                last_name="TEMP LAST",
+                first_name=first_name,
+                last_name=last_name,
                 email=email,
                 quantity=qty,
                 price=event.price,
@@ -123,7 +140,7 @@ def create_order(request):
             # Create the tickets
             for _ in range(qty):
                 ticket = Ticket.objects.create(event=event, user=request.user,
-                                               order_num=order)
+                                               order=order)
                 ticket.save()
 
             del request.session['ticket_order']
@@ -161,7 +178,7 @@ def checkout(request):
 
 def checkout_success(request, order_num):
     order = TicketOrder.objects.get(order_num=order_num)
-    a_ticket = Ticket.objects.filter(order_num=order.order_num).first()
+    a_ticket = Ticket.objects.filter(order=order).first()
     event = Event.objects.get(id=a_ticket.event.id)
 
     template = 'tickets/checkout-success.html'

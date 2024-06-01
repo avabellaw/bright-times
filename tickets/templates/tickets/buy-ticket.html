@@ -1,5 +1,4 @@
 {% extends 'events/base.html' %}
-
 {% load static %}
 
 {% block title %}BrightTimes - Buy Ticket{% endblock %}
@@ -10,18 +9,45 @@
             <div class="col">
                 <div class="page-header">
                     <h1>Buy for {{ event.name }}</h1>
-                    <h2>Hosted at {{ event.venue.name }}</h2>
+                    <h2 class="text-sm-center">Hosted at {{ event.venue.name }}</h2>
                 </div>
             </div>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col-12 col-sm-10 col-lg-8 offset-lg-2 offset-sm-1">
                 <form action="{% url 'buy-ticket' event.id %}" method="post">
                     {% csrf_token %}
                     <div class="form-group">
-                        <h3>Price of ticket: £<span id="ticket-price">{{ event.price }}</span></h3>
+                        <label for="first-name">First name:</label>
+                        <input type="text"
+                               class="form-control"
+                               id="first-name"
+                               name="first-name"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last name:</label>
+                        <input type="text"
+                               class="form-control"
+                               id="last-name"
+                               name="last-name"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email"
+                               class="form-control"
+                               id="email"
+                               name="email"
+                               value="{{ user_email }}"
+                               disabled>
+                    </div>
+                    <h3>
+                        Price of ticket: £<span id="ticket-price">{{ event.price }}</span>
+                    </h3>
+                    <div class="form-group">
                         <label for="quantity">Quantity:</label>
                         <input type="number"
                                class="form-control"
@@ -31,16 +57,18 @@
                                required>
                         <br>
                         <p class="text-danger" id="error-message"></p>
-                        <h4>Total cost: £<sh4an id="total-cost"></span></h4>
-                        <button type="submit" class="btn btn-dark mt-3">Buy ticket</button>
-                    </div>
-                </form>
-            </div>
+                        <h4>
+                        Total cost: £<sh4an id="total-cost"></span>
+                    </h4>
+                    <button type="submit" class="btn btn-dark mt-3">Buy ticket</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 {% endblock %}
 
 {% block additional_js %}
-    <script type="text/javascript" src="{% static 'tickets/js/update-total-cost.js' %}">
-    </script>
+    <script type="text/javascript"
+            src="{% static 'tickets/js/update-total-cost.js' %}"></script>
 {% endblock %}
