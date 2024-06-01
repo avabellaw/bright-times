@@ -1,11 +1,26 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'event-card-styles.css' %}">
+{% endblock %}
+
 {% block content %}
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Welcome to BrightTimes</h1>
+                <div class="page-header">
+                    <h1>Welcome to BrightTimes</h1>
+                    <hr>
+                </div>
             </div>
+        </div>
+        <div class="row">
+            <h2>Coming up</h2>
+            {% for event in coming_up %}
+                {% include 'includes/event-card.html' with event=event %}
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
