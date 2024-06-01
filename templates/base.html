@@ -67,10 +67,10 @@
                                                 <div class="account-dropdown-container">
                                                     <div class="img-container">
                                                         <img src="{% static 'font-awesome/user-solid.svg' %}"
-                                                        class="profile-icon"
-                                                        width="16"
-                                                        height="16"
-                                                        alt="">
+                                                             class="profile-icon"
+                                                             width="16"
+                                                             height="16"
+                                                             alt="">
                                                     </div>
                                                     <a class="nav-link dropdown-toggle"
                                                        href="#"
@@ -119,34 +119,39 @@
                         </div>
                     </div>
                 </div>
+                <div class="position-relative">
+                    <!-- Django.contrib messages -->
+                    {% if messages %}
+                        <div class="toast-container top-0 end-0 p-3">
+                            {% for message in messages %}
+                                {% with message.level as level %}
+                                    <!-- Error -->
+                                    {% if level == 40 %}
+                                        {% include 'includes/toasts/toast_error.html' %}
+                                        <!-- Warning -->
+                                    {% elif level == 30 %}
+                                        {% include 'includes/toasts/toast_warning.html' %}
+                                        <!-- Success -->
+                                    {% elif level == 25 %}
+                                        {% include 'includes/toasts/toast_success.html' %}
+                                        <!-- Info -->
+                                    {% else %}
+                                        {% include 'includes/toasts/toast_info.html' %}
+                                    {% endif %}
+                                {% endwith %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
             </div>
 
             {% block additional_header %}{% endblock %}
         </header>
-        <!-- Django.contrib messages -->
-        {% if messages %}
-            <div class="toast-container position-fixed bottom-0 end-0 p-3">
-                {% for message in messages %}
-                    {% with message.level as level %}
-                        <!-- Error -->
-                        {% if level == 40 %}
-                            {% include 'includes/toasts/toast_error.html' %}
-                            <!-- Warning -->
-                        {% elif level == 30 %}
-                            {% include 'includes/toasts/toast_warning.html' %}
-                            <!-- Success -->
-                        {% elif level == 25 %}
-                            {% include 'includes/toasts/toast_success.html' %}
-                            <!-- Info -->
-                        {% else %}
-                            {% include 'includes/toasts/toast_info.html' %}
-                        {% endif %}
-                    {% endwith %}
-                {% endfor %}
-            </div>
-        {% endif %}
 
-        {% block content %}{% endblock %}
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
         <footer class="footer mt-auto">
             <div class="container">
                 <div class="footer_container">
