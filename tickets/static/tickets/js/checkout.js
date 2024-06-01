@@ -1,7 +1,7 @@
 // This is your test publishable API key.
 const pub_key = document.getElementById("stripe_pub_key").value;
 const stripe = Stripe(pub_key);
-let csrf = $('input[name="csrfmiddlewaretoken"]').val();
+let csrf = $("input[name='csrfmiddlewaretoken']").val();
 const event_id = document.getElementById("event_id").value;
 const form = document.getElementById("payment-form");
 const return_url = `${window.location.protocol}//${window.location.host}${document.getElementById("return-url").value}`;
@@ -30,7 +30,7 @@ async function initialize() {
     const { clientSecret } = await response.json();
 
     const appearance = {
-        theme: 'stripe',
+        theme: "stripe",
     };
     elements = stripe.elements({ appearance, clientSecret });
 
@@ -39,8 +39,10 @@ async function initialize() {
     };
 
     const paymentElement = elements.create("payment", paymentElementOptions);
+    paymentElement.on("ready", function() {
+            setLoading(false);
+      });
     paymentElement.mount("#payment-element");
-    setLoading(false);
 }
 
 async function handleSubmit(e) {
