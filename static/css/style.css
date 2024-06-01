@@ -132,48 +132,6 @@
         margin: 1em 0;
     }
 
-    .col.scroll-control-container {
-        display: flex;
-        position: relative;
-    }
-
-    .scroll-control {
-        display: none;
-        align-items: center;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 100;
-        border-radius: 50%;
-        overflow: hidden;
-        box-shadow: -1px 2px 8px -1px black;
-    }
-
-    .scroll-control:hover {
-        border: 2px solid white;
-        cursor: pointer;
-    }
-
-    .scroll-control[data-arrow="right"] {
-        right: -1em;
-    }
-
-    .scroll-control[data-arrow="left"]{
-        left: -1em;
-    }
-
-    @media screen and (min-width: 576px){
-        .scroll-control {
-            display: flex;
-        }
-    }
-
-    .scroll-control > img{
-        max-width: 100%;
-        width: 100%;
-        margin: auto;
-    }
-
 /* End General styles */
 
 /* Allauth */

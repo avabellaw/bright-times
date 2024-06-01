@@ -1,17 +1,18 @@
 $(function() {
     $(".scroll-control[data-arrow='right']").click(function() {
-        
-        scroll($(this).data("target"), 100);
+        let target = $(this).data("target");
+        scroll(target, 1);
     });
 
     $(".scroll-control[data-arrow='left']").click(function() {
         let target = $(this).data("target");
-        console.log(target)
-        scroll(target, -100);
+        scroll(target, -1);
     });
 
-    function scroll(target, scrollAmt){
-        scrollAmt = $(target).scrollLeft() + scrollAmt;
-        $(target).scrollLeft(scrollAmt);
+    function scroll(target, dir){
+        let amnt = $(target).find(".row").find("div").innerWidth() * dir;
+        console.log(amnt)
+        let scrollAmt = $(target).scrollLeft() + amnt;
+        $(target).animate({scrollLeft: scrollAmt}, 400);
     }
 });
