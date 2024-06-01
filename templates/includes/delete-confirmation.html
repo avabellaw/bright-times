@@ -1,0 +1,25 @@
+<!-- Bootstrap docs [https://getbootstrap.com/docs/4.0/components/modal/] -->
+<button type="button"
+        class="btn btn-dark"
+        data-bs-toggle="modal"
+        data-bs-target="#confirm-delete-modal">Delete</button>
+
+<div class="modal fade"
+     id="confirm-delete-modal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="confirm-delete"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center">
+                <h5 class="modal-title" id="confirm-delete">{{ title }}</h5>
+            </div>
+            <div class="modal-body p-2">{{ body }}</div>
+            <div class="modal-footer p-2 justify-content-center">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{% block delete_btn_url %}{% endblock %}" class="btn btn-dark">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
