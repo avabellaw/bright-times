@@ -17,9 +17,9 @@
         </div>
         <div class="row">
             <div class="col">
+                <h2>Coming up</h2>
                 <div class="container event-cards-container event-cards-sm event-cards-scroll">
                     <div class="row">
-                        <h2>Coming up</h2>
                         {% for event in coming_up %}
                             {% include 'includes/event-card.html' with event=event %}
                         {% endfor %}
@@ -30,9 +30,9 @@
         <br>
         <div class="row">
             <div class="col">
+                <h2>Recently added</h2>
                 <div class="container event-cards-container event-cards-sm event-cards-scroll">
                     <div class="row">
-                        <h2>Recently added</h2>
                         {% for event in recently_added %}
                             {% include 'includes/event-card.html' with event=event %}
                         {% endfor %}
