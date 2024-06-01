@@ -1,0 +1,112 @@
+.event-cards-container {
+    margin-top: 1.5rem;
+}
+
+.event-cards-container>.row {
+    --bs-gutter-y: 1.5rem;
+    justify-content: space-evenly;
+}
+
+.event-card {
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.3em;
+    width: 350px;
+    margin: auto;
+    max-width: 100%;
+    position: relative;
+}
+
+.event-card_img {
+    border-top-left-radius: var(--card-border-radius);
+    border-top-right-radius: var(--card-border-radius);
+    border: 1px var(--outline-colour) solid;
+    aspect-ratio: 7 / 4;
+    position: relative;
+    overflow: hidden;
+}
+
+.event-card_img>.city-tag {
+    background: #000000b9;
+    color: white;
+    width: fit-content;
+    padding: 0.2em 0.4em;
+    border: 1px solid #ffffff63;
+    border-radius: 5px;
+    font-size: 0.8em;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 0.7em;
+    margin-bottom: 0.7em;
+}
+
+.event-card_img>.city-tag>p {
+    margin: 0;
+}
+
+.event-card_content {
+    border: 1px var(--outline-colour) solid;
+    border-bottom-left-radius: var(--card-border-radius);
+    border-bottom-right-radius: var(--card-border-radius);
+    padding: 1.4em;
+    background-color: rgb(247 242 251);
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5em;
+    height: 20em;
+    justify-content: space-between;
+    display: flex;
+}
+
+.event-card_content>header {
+    padding: 0.2em;
+}
+
+.event-card_content>footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0.6em;
+}
+
+.event-card_content>footer>p {
+    margin-bottom: 0.2em;
+    font-size: 0.7em;
+    font-weight: 600;
+    margin-top: 0.8em;
+}
+
+.event-card .btn {
+    width: 100%;
+}
+
+.event-card_details {
+    background-color: white;
+    padding: 1.2em;
+    font-size: 0.7em;
+    font-weight: 700;
+    border-radius: 10px;
+    border-left: 1px solid var(--outline-colour);
+}
+
+.event-card_details>p {
+    margin-bottom: 0.8em;
+}
+
+.event-card_details>p:last-child {
+    margin: 0;
+}
+
+.event-card_details>p>img {
+    margin-right: 0.5em;
+}
+
+.event-card_title {
+    font-size: calc(0.9em + .6vw);
+}

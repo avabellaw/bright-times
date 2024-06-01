@@ -1,5 +1,11 @@
 {% extends 'events/base.html' %}
 
+{% load static %}
+
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static 'event-card-styles.css' %}">
+{% endblock %}
+
 {% block title %}BrightTimes - Events{% endblock %}
 
 {% block content %}

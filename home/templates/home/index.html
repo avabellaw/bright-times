@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
 {% block additional_css %}
@@ -16,11 +15,13 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <h2>Coming up</h2>
-            {% for event in coming_up %}
-                {% include 'includes/event-card.html' with event=event %}
-            {% endfor %}
+        <div class="container event-cards-container">
+            <div class="row">
+                <h2>Coming up</h2>
+                {% for event in coming_up %}
+                    {% include 'includes/event-card.html' with event=event %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}
