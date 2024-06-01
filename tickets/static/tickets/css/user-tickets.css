@@ -21,6 +21,14 @@ hr.hr--light {
     color: rgb(162 41 255);
 }
 
+.user-tickets-container .img-container>img {
+   margin-bottom: 1.5em;
+}
+
+.user-tickets-container.row {
+    justify-content: center;
+}
+
 @media screen and (min-width: 576px) {
     .user-tickets-container>div {
         max-width: unset;
@@ -34,8 +42,11 @@ hr.hr--light {
     }
 
     .user-tickets-container .img-container>img {
-        max-height: 100%;
-        width: unset;
+        max-height: 14em;
+        margin: auto 0;
+        height: 100%;
+        max-width: 18em;
+        object-fit: cover;
     }
 }
 
