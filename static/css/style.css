@@ -128,6 +128,10 @@
         background-position: center;
     }
 
+    .header {
+        margin: 1em 0;
+    }
+
 /* End General styles */
 
 /* Allauth */
