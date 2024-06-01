@@ -3,24 +3,13 @@
 
 {% block title %}BrightTimes - {{ event.name }}{% endblock %}
 
-{% block additional_css %}
-    {{ block.super }}
-    <style>
-        /* Styles added here due to django static file limitations in css */
-        .event-hero-img_background {
-            background: url("{{ event.image.url }}") no-repeat center;
-            background-size: cover;
-        }
-    </style>
-{% endblock %}
-
 {% block content %}
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="event-header">
                     <div class="event-hero-img">
-                        <div class="event-hero-img_background"></div>
+                        <div style="background-image: url({{ event.image.url }})" class="img-blurred-sides"></div>
                         <img class="img img-responsive"
                              height="400"
                              src="{{ event.image.url }}"
