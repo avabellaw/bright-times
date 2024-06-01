@@ -11,12 +11,13 @@ def home(request):
 
     by_next_week = today + timedelta(weeks=1)
     past_week = today - timedelta(weeks=1)
+    available_events = event_helpers.get_available_events()
 
-    coming_up = event_helpers.get_available_events.filter(
+    coming_up = available_events.filter(
         start_date_time__lt=by_next_week
         ).order_by('start_date_time')
 
-    recently_added = event_helpers.get_available_events().filter(
+    recently_added = available_events.filter(
         created_on__gt=past_week).order_by('-created_on')
 
     context = {
