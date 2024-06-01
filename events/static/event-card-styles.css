@@ -21,6 +21,10 @@
     position: relative;
 }
 
+.event-card_img > img {
+    height: 100%;
+}
+
 .event-card_img {
     border-top-left-radius: var(--card-border-radius);
     border-top-right-radius: var(--card-border-radius);
@@ -28,6 +32,8 @@
     aspect-ratio: 7 / 4;
     position: relative;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
 }
 
 .event-card_img>.city-tag {
@@ -52,6 +58,7 @@
 
 .event-cards-sm .event-card_content {
     height: fit-content;
+    padding: 0.9em;
 }
 
 .event-cards-container.event-cards-scroll {
