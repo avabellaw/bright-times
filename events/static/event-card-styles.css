@@ -49,6 +49,14 @@
     margin: 0;
 }
 
+.event-cards-sm .event-card_content {
+    height: fit-content;
+}
+
+.event-cards-container.event-cards-scroll {
+    overflow-x: auto;
+}
+
 .event-card_content {
     border: 1px var(--outline-colour) solid;
     border-bottom-left-radius: var(--card-border-radius);
