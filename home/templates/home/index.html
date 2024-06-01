@@ -17,13 +17,26 @@
         </div>
         <h2 class="header">Coming up</h2>
         <div class="row">
-            <div class="col">
-                <div class="container event-cards-container event-cards-sm event-cards-scroll">
+            <div class="col scroll-control-container">
+                <div data-arrow="left" data-target="#coming-up" class="scroll-control">
+                    <img src="{% static 'icons/circle-chevron-left.svg' %}"
+                         width="48"
+                         height="48"
+                         alt="Next icon">
+                </div>
+                <div id="coming-up" class="container event-cards-container event-cards-sm event-cards-scroll">
                     <div class="row">
                         {% for event in coming_up %}
                             <div class="col-12 col-sm-6 col-md-4 col-lg-3">{% include 'includes/event-card.html' with event=event %}</div>
                         {% endfor %}
                     </div>
+                </div>
+                
+                <div data-arrow="right" data-target="#coming-up" class="scroll-control">
+                    <img src="{% static 'icons/circle-chevron-right.svg' %}"
+                         width="48"
+                         height="48"
+                         alt="Next icon">
                 </div>
             </div>
         </div>
