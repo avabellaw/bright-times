@@ -15,16 +15,11 @@
         display: flex;
         flex-direction: column;
         min-height: 100vh;
+        font-size: calc(.65rem + 0.4vw + 0.25vh);
     }
     
     .container_fit-content {
         width: fit-content;
-    }
-
-    .nav-container {
-        margin-bottom: 2em;
-        background: linear-gradient(50deg, var(--primary-colour), #ffffff00);
-        position: relative;
     }
 
     #header-bg-image {
@@ -37,6 +32,12 @@
     }
 
     /* Navbar */
+    
+        .nav-container {
+            margin-bottom: 2em;
+            background: linear-gradient(50deg, var(--primary-colour), #ffffff00);
+            position: relative;
+        }
 
         .navbar {
             font-family: "Freeman", sans-serif;
@@ -93,6 +94,11 @@
             .account-dropdown-container {
                 display: flex;
                 align-items: center;
+            }
+
+            .navbar-brand >img {
+                width: 130px;
+                height: auto;
             }
         }
 
@@ -214,16 +220,26 @@
         margin-top: 1.5em;
     }
 
-    .footer_container {
+    .footer-container {
         display: flex;
+        align-items: center;
     }
 
-    .footer_container > p:last-of-type{
+    .footer-container > p:last-of-type{
         margin-bottom: 0;
     }
 
-    .footer_container > .social-icons {
+    .footer-container > .social-icons {
         margin-left: auto;
+    }
+
+    .social-icons > a {
+        opacity: 0.7;
+    }
+
+    .social-icons > a:hover {
+        opacity: 1;
+        box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.309);
     }
 /* End Footer */
 
