@@ -42,7 +42,7 @@
             </p>
         </section>
         <footer>
-            <p class="tickets-left">{{ event.tickets_left }} Tickets left</p>
+            <p class="tickets-left">{{ event.get_tickets_left }} Tickets left</p>
             <a id="buy-tickets"
                href="{% url 'buy-ticket' event.id %}"
                class="btn btn-dark">BUY TICKETS</a>

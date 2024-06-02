@@ -25,6 +25,11 @@ class Event(models.Model):
     end_date_time = models.DateTimeField(blank=False, null=False,
                                          auto_now=False, auto_now_add=False)
 
+    def get_tickets_left(self):
+        from tickets.models import Ticket
+        num_of_tickets_sold = Ticket.objects.filter(event=self).count()
+        return self.venue.capacity - num_of_tickets_sold
+
     def __str__(self):
         return f'{self.name}, at {self.venue.name}'
 

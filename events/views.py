@@ -6,7 +6,6 @@ from django.conf import settings
 from django.urls import reverse
 
 from utils.decorators import login_required_message
-from .helpers import add_tickets_left_to_events
 from .models import Event, Venue, VenueManager
 
 ToastMessage = settings.TOAST_MESSAGE
@@ -17,8 +16,6 @@ def events(request):
     events = Event.objects.all()
 
     template = 'events/events.html'
-
-    add_tickets_left_to_events(events)
 
     context = {
         'events': events,
@@ -31,8 +28,6 @@ def event_details(request, event_id):
     event = Event.objects.get(id=event_id)
 
     template = 'events/event-details.html'
-
-    add_tickets_left_to_events([event])
 
     context = {
         'event': event,

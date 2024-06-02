@@ -19,9 +19,6 @@ def home(request):
     recently_added = available_events.filter(
         created_on__gt=past_week).order_by('-created_on')
 
-    event_helpers.add_tickets_left_to_events(coming_up)
-    event_helpers.add_tickets_left_to_events(recently_added)
-
     context = {
         'coming_up': coming_up,
         'recently_added': recently_added,
