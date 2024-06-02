@@ -124,12 +124,6 @@ def create_order(request):
         event = ticket_order.event
         qty = ticket_order.qty
 
-        customer = stripe.Customer.retrieve(payment_intent_object["customer"])
-        email = customer.email
-
-        first_name = ticket_order.first_name
-        last_name = ticket_order.last_name
-
         order = TicketOrder.objects.filter(
             payment_intent=confirmed_payment_intent)
         if order.exists():
@@ -140,7 +134,6 @@ def create_order(request):
             order = TicketOrder.objects.create(
                 quantity=qty,
                 price=event.price,
-                order_total=ticket_order.total,
                 payment_intent=confirmed_payment_intent
             )
 

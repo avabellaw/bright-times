@@ -25,5 +25,6 @@ class TicketOrder(models.Model):
                                                MaxValueValidator(10)])
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=False,
                                 null=False)
-    order_total = models.DecimalField(max_digits=10, decimal_places=2,
-                                      blank=False, null=False)
+
+    def get_total(self):
+        return self.quantity * self.price
