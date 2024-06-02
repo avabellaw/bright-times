@@ -3,6 +3,7 @@ from .forms import AddressForm, VenueForm, EventForm
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.conf import settings
+from django.urls import reverse
 
 from utils.decorators import login_required_message
 from .helpers import add_tickets_left_to_events
@@ -35,7 +36,8 @@ def event_details(request, event_id):
 
     context = {
         'event': event,
-        'breadcrumbs': [event.name],
+        'breadcrumbs': [{'name': event.name, 'url': reverse('event-details',
+                                                            args=[event.id])}],
     }
 
     return render(request, template, context)
