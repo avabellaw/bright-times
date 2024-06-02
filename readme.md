@@ -138,6 +138,8 @@ Under the header, there will be hierarchical navigation.
 
 ### Data model
 
+You can view my [Entity Relationship diagram on lucid chart here](https://lucid.app/lucidchart/f61018a0-575d-4ff6-9d12-8b56e48e9e94/edit?viewport_loc=-529%2C-519%2C2828%2C1231%2C0_0&invitationId=inv_a3700010-1732-4eac-8bfb-6a86e7ff4a7a)
+
 #### User and User Profile
 
 These two models have a one-to-one relationship. A user profile model instance is created when a user is created. This is done using a signal on post_save.
