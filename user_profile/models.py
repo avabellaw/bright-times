@@ -6,6 +6,5 @@ from events.models import Address
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50, blank=True, null=True)
-    address = models.OneToOneField(Address, null=True,
-                                   on_delete=models.CASCADE)
+    last_name = models.CharField(max_length=50, blank=True, null=True)
     stripe_customer_id = models.CharField(max_length=50, null=True)

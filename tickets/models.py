@@ -17,9 +17,6 @@ class TicketOrder(models.Model):
     order_num = models.UUIDField(primary_key=True, default=uuid.uuid4,
                                  editable=False, unique=True)
     order_date = models.DateTimeField(auto_now_add=True)
-    first_name = models.CharField(max_length=50, blank=False, null=False)
-    last_name = models.CharField(max_length=50, blank=False, null=False)
-    email = models.EmailField(max_length=100, blank=False, null=False)
     payment_intent = models.CharField(max_length=500, blank=False, null=False)
     # Quantity, price and order_total are for redundancy
     # Add validators from stackoverflow: [https://stackoverflow.com/questions/849142/how-to-limit-the-maximum-value-of-a-numeric-field-in-a-django-model]
