@@ -136,7 +136,7 @@ I will include the following pages:
 
 Under the header, there will be hierarchical navigation.
 
-### The data
+### Data model
 
 I decided to seperate the address from Venue to better organise the data. I considered a one-to-one relationship, however, a one-to-many relationship would enable a different venue under the same address to use the existing address record. Therefore, it allows for the future introduction of this feature. While aknowedging that this is a rare case, this would avoid duplicate address records.
 
@@ -144,6 +144,29 @@ The original idea was to use a user ID to set the Event's created by. If you wan
 
 Django doesn't support composite primary keys so the junction table VenueManager still has a primary key. I have set the meta so that the combination of User ID and Venue ID is unique. The primary key will be useful for indexing in future anyway.
 This will allow me to filter by userID and VenueID and get a result as if using a composite ID.
+
+#### Ticket
+
+A ticket is a junction table between an event and a user.
+It also contains the foreign key of a ticket order. Multiple tickets can be created under one order.
+
+#### Ticket order
+
+* Ticket order has it's primary key as a UUID. 
+    * This makes guessing the checkout-success page url practically impossible. 
+    * A UUID is unique as it's mathematically impossible to get the same one twice. Although techincally it is a non-zero chance.
+* Order date.
+    * Contains the date on creation. Useful information for the customer and for debugging.
+* Quantity and price redundancy.
+    * Although this information is redundant, it will help debugging in future.
+    * This way, the quantity and price will never change regardless of the event or ticket instances.
+    * The information can be easily matched with the information on Stripe's end too.
+
+
+**Future adaptations**
+
+* Change about field into a rich text field.
+    * This will allow the user to add images and style their text.
 
 
 ## Skeleton plane
