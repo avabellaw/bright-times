@@ -72,6 +72,15 @@ class VenueTestCase(TestCase):
         venue.save(created_by=self.USER['regular'])
         self.assertIsNotNone(venue)
 
+    def test_venue_manager_created_with_venue(self):
+        venue = Venue(address=get_generic_address(),
+                      name='Test Venue', capacity=1)
+        venue.save(created_by=self.USER['regular'])
+
+        self.assertIsNotNone(VenueManager.objects.get(venue=venue,
+                                                      user=self.USER['regular']
+                                                      ))
+
     def test_venuemanager_created_by_admin(self):
         venue = Venue(address=get_generic_address(),
                       name='Test Venue', capacity=1)
