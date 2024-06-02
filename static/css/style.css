@@ -22,7 +22,7 @@
     }
 
     .nav-container {
-        margin-bottom: 1em;
+        margin-bottom: 2em;
         background: linear-gradient(50deg, var(--primary-colour), #ffffff00);
         position: relative;
     }

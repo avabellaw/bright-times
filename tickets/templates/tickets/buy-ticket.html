@@ -1,5 +1,6 @@
 {% extends 'events/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}BrightTimes - Buy Ticket{% endblock %}
 
@@ -19,22 +20,8 @@
             <div class="col-12 col-sm-10 col-lg-8 offset-lg-2 offset-sm-1">
                 <form action="{% url 'buy-ticket' event.id %}" method="post">
                     {% csrf_token %}
-                    <div class="form-group">
-                        <label for="first-name">First name:</label>
-                        <input type="text"
-                               class="form-control"
-                               id="first-name"
-                               name="first-name"
-                               required>
-                    </div>
-                    <div class="form-group">
-                        <label for="last-name">Last name:</label>
-                        <input type="text"
-                               class="form-control"
-                               id="last-name"
-                               name="last-name"
-                               required>
-                    </div>
+                    
+                    {{ user_form|crispy }}
                     <div class="form-group">
                         <label for="email">Email:</label>
                         <input type="email"

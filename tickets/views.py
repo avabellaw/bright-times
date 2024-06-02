@@ -15,6 +15,7 @@ from .models import Ticket, TicketOrder
 from user_profile.models import UserProfile
 import json
 from utils import user_utils
+from user_profile.forms import UserProfileForm
 
 ToastMessage = settings.TOAST_MESSAGE
 
@@ -43,39 +44,47 @@ def user_tickets(request):
 def buy_ticket(request, event_id):
     event = Event.objects.get(id=event_id)
 
+    user_form = UserProfileForm(instance=request.user.userprofile)
+
     if request.POST:
         quantity = int(request.POST.get('quantity'))
-        first_name = request.POST.get('first-name')
-        last_name = request.POST.get('last-name')
         email = request.session['ticket_order']['email']
 
         tickets_owned = Ticket.objects.filter(event=event,
                                               user=request.user).count()
 
-        # Check if user has reached max tickets
-        if tickets_owned + quantity > settings.MAX_TICKETS_PER_USER:
-            ToastMessage.user_reached_max_tickets(request)
-            return redirect('buy-ticket', event_id=event_id)
+        user_form = UserProfileForm(request.POST,
+                                    instance=request.user.userprofile)
+        if user_form.is_valid():
+            first_name = user_form.cleaned_data['first_name']
+            last_name = user_form.cleaned_data['last_name']
+            user_form.save()
 
-        # Check if quantity is valid
-        if quantity < 1 or quantity > settings.MAX_TICKETS_PER_USER:
-            ToastMessage.min_max_tickets_error(request, quantity)
-            return redirect('buy-ticket', event_id=event_id)
+            # Check if user has reached max tickets
+            if tickets_owned + quantity > settings.MAX_TICKETS_PER_USER:
+                ToastMessage.user_reached_max_tickets(request)
+                return redirect('buy-ticket', event_id=event_id)
 
-        request.session['ticket_order'] = {
-            'item_id': str(event.id),
-            'qty': str(quantity),
-            'total': str(event.price * quantity),
-            'first_name': first_name,
-            'last_name': last_name,
-            'email': email,
-        }
-        return redirect('checkout')
+            # Check if quantity is valid
+            if quantity < 1 or quantity > settings.MAX_TICKETS_PER_USER:
+                ToastMessage.min_max_tickets_error(request, quantity)
+                return redirect('buy-ticket', event_id=event_id)
+
+            request.session['ticket_order'] = {
+                'item_id': str(event.id),
+                'qty': str(quantity),
+                'total': str(event.price * quantity),
+                'first_name': first_name,
+                'last_name': last_name,
+                'email': email,
+            }
+            return redirect('checkout')
 
     user_email = user_utils.get_primary_email(request)
     request.session['ticket_order'] = {
         'email': user_email,
     }
+
     template = 'tickets/buy-ticket.html'
 
     context = {
@@ -91,6 +100,7 @@ def buy_ticket(request, event_id):
             }
         ],
         'user_email': user_email,
+        'user_form': user_form,
     }
 
     return render(request, template, context)
@@ -128,9 +138,6 @@ def create_order(request):
         else:
             # Create the order
             order = TicketOrder.objects.create(
-                first_name=first_name,
-                last_name=last_name,
-                email=email,
                 quantity=qty,
                 price=event.price,
                 order_total=ticket_order.total,
