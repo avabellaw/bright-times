@@ -8,9 +8,68 @@ This projects demonstrates my ability to create a full-stack application with ec
 
 ![]()
 
-## Frameworks, etc used
+## Technologies used
+
+### Lanuages used
+
+* HTML5
+* CSS3
+* JavaScript
+* Python
+
+### Frameworks, Libraries & Programs Used
 
 * JQuery datetimepicker
+* boto3
+    * To interact with AWS S3 bucket.
+* django-allauth
+    * User authentication, registration and management.
+    * To send and manage emails.
+* Stripe
+    * To implement the card payment system. 
+* djlint 
+    * For django-html auto formatting.
+* Django 5
+    * Full python framework.
+* Bootstrap 5
+    * CSS framework
+* autopep8 extension/package
+    * Package to automatically format to PEP8 standards.
+* Google Fonts
+* Easy access to many fonts supplied from a CDN that is close to the user, increasing download speed.
+* Font Awesome
+    * Professional icons
+* Git 
+    * Used for version control.
+* GitHub
+    * Used to store commits.
+* Heroku
+    * Hosts the live project.
+* Visual Studio Code
+    * Used as the IDE for the project.
+    * I set a shortcut for Visual Code to format HTML/CSS/JS (ctrl+shift+f).
+        * This also worked for Python after installing autopep8.
+* Paint.NET
+    * Used to edit images for the project.
+* Figma
+    * Used to create the mockup of the website before developing.
+* Lucid.app
+    * Used to create an Entity Relationship Diagram to model the data.
+* Word 
+    * Used to present the project requirements in my own words, for project research, and brainstorming.
+* Notepad and Notepad++
+    * Used for quick notes from my mentor and for notes while developing.
+    * Used for planning.
+* Chrome - Inspect element
+    * This was used to:
+        * Style the website and test new ideas to be copied into the project.
+        * Continuously test responsiveness by adjusting the screen size and by testing preset device dimensions.
+        * Bug fix.
+* Firefox, Microsoft Edge, Safari
+    * Used to test compatibility on other browsers.
+* [Responsinator](http://www.responsinator.com/) for testing on different screens.
+* [Grammarly](https://app.grammarly.com/)
+    * To help find and correct grammar and spelling mistakes.
 
 ## User Experience (UX)
 
