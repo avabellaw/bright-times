@@ -11,7 +11,6 @@
     }
 
     body {
-        font-family: "Inter", sans-serif;
         display: flex;
         flex-direction: column;
         min-height: 100vh;
@@ -24,6 +23,7 @@
 
     #header-bg-image {
         position: absolute;
+        background-size: cover;
         left: 0;
         right: 0;
         top: 0;
@@ -37,13 +37,6 @@
             margin-bottom: 2em;
             background: linear-gradient(50deg, var(--primary-colour), #ffffff00);
             position: relative;
-        }
-
-        .navbar {
-            font-family: "Freeman", sans-serif;
-            font-weight: 400;
-            font-style: normal;
-            font-size: 1.4em;
         }
 
         .navbar-brand >img {
@@ -65,9 +58,12 @@
         }
 
         .navbar {
-            font-size: 1.2em;
+            font-size: 1.25em;
             font-weight: 500;
             text-transform: capitalize;
+            
+            font-family: "Inter", sans-serif;
+            font-style: normal;
         }
 
         .account-dropdown-container > a.dropdown-toggle {
@@ -81,6 +77,8 @@
         }
 
         .profile-icon {
+            width: 0.8em;
+            height: 0.8em;
             margin-left: var(--bs-navbar-nav-link-padding-x);
             margin-right: calc(var(--bs-navbar-nav-link-padding-x)* -0.1);
         }
@@ -97,7 +95,7 @@
             }
 
             .navbar-brand >img {
-                width: 130px;
+                width: 125px;
                 height: auto;
             }
         }
