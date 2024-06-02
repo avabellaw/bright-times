@@ -77,6 +77,8 @@ This projects demonstrates my ability to create a full-stack application with ec
 
 This will be a website where you can discover an event that fits you. 
 
+The audience is anyone who enjoys going to events but is going to have a majority of young adults. It appears to be common for the home button to be excluded in event websites as it's well known that the logo will take you to the homepage.
+
 The project will be designed using the 5 planes of UX design. I will ofcourse be taking a mobile-first approach. This is especially important for an events based website, as usersare more likely to be travelling while using it.
 
 ### Stragtegy Plane
