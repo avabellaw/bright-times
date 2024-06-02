@@ -21,6 +21,21 @@
         width: fit-content;
     }
 
+    .nav-container {
+        margin-bottom: 1em;
+        background: linear-gradient(50deg, var(--primary-colour), #ffffff00);
+        position: relative;
+    }
+
+    #header-bg-image {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+    }
+
     /* Navbar */
 
         .navbar {
@@ -36,10 +51,6 @@
 
         .navbar a.nav-link {
             color: var(--primary-text-colour);
-        }
-
-        .nav-container {
-            background: linear-gradient(50deg, var(--primary-colour), #ffffff00);;
         }
 
         ul.navbar-nav {
