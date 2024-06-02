@@ -138,8 +138,6 @@ Under the header, there will be hierarchical navigation.
 
 ### Data model
 
-The original idea was to use a user ID to set the Event's created by. If you wanted the venue manager, you just use the user ID. However, a user can also have a ticket and therefore I believe it makes it more clear if created_by is set to the venue manager who created the event.
-
 #### User and User Profile
 
 These two models have a one-to-one relationship. A user profile model instance is created when a user is created. This is done using a signal on post_save.
@@ -158,6 +156,26 @@ I decided to seperate the address from Venue to better organise the data. I cons
 
 Django doesn't support composite primary keys so the junction table VenueManager still has a primary key. I have set the meta so that the combination of User ID and Venue ID is unique. The primary key will be useful for indexing in future anyway.
 This will allow me to filter by userID and VenueID and get a result as if using a composite ID.
+
+#### Event
+
+An event contains the foreign keys to a:
+    * Venue
+    * Venue manager
+
+The original idea was to use a user ID to set the Event's created by. If you wanted the venue manager, you just use the user ID. However, a user can also have a ticket and therefore I believe it makes it more clear if created_by is set to the venue manager who created the event.
+
+An event also contains the fields:
+* Name - The name/title of the event.
+* Description - A short description of the event.
+* About - The main content of the event.
+* Price - The price of the event
+    * I considered adding price to the Ticket model. This would allow for discounts.
+    * I decided that for the scope of this project, event containing the price sufficed.
+* Image URL - The url of the image stored in the media folder.
+* Created on - Automatically upon event creation.
+* Ticket end date/time - Datetime that the sale of tickets end
+* Start and end date/time - One field for the start date/time and one for the end date/time 
 
 #### Ticket
 
