@@ -25,6 +25,10 @@
     padding: 0.5em;
 }
 
+.management-table .row:last-child {
+    margin-bottom: 1em;
+}
+
 .management-table .row.header {
     background-color: var(--primary-colour-lighten-2);
     font-weight: bold;

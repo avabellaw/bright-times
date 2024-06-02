@@ -142,6 +142,10 @@
         margin: 1em 0;
     }
 
+    main {
+        margin-bottom: 2em;
+    }
+
 /* End General styles */
 
 /* Allauth */
