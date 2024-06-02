@@ -145,6 +145,13 @@ The original idea was to use a user ID to set the Event's created by. If you wan
 Django doesn't support composite primary keys so the junction table VenueManager still has a primary key. I have set the meta so that the combination of User ID and Venue ID is unique. The primary key will be useful for indexing in future anyway.
 This will allow me to filter by userID and VenueID and get a result as if using a composite ID.
 
+#### User and User Profile
+
+These two models have a one-to-one relationship. A user profile model instance is created when a user is created. This is done using a signal on post_save.
+
+A user profile contains the first name, last name and Stripe customer ID of a user. This information is saved when it is inputted to create a ticket order.
+The first and last name can also be added beforehand.
+
 #### Ticket
 
 A ticket is a junction table between an event and a user.
