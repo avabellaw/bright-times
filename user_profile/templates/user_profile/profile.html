@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% load crispy_forms_tags %}
 
 {% block content %}
@@ -14,9 +13,18 @@
         </div>
         <div class="row">
             <div class="col">
-                <form action="">
+                <form action="{% url 'user-profile' %}" method="post">
+                    {% csrf_token %}
                     {{ user_form|crispy }}
-
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input class="form-control"
+                               id="email"
+                               type="email"
+                               value="{{ user_email }}"
+                               disabled>
+                    </div>
+                    <a href="{% url 'account_email' %}" class="d-block mb-3">To change your email, click here.</a>
                     <button type="submit" class="btn btn-dark">Update details</button>
                 </form>
             </div>
