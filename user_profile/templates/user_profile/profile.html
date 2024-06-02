@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
-    <div class="container">
+    <div class="container form-container">
         <div class="row">
             <div class="col">
                 <div class="page-header">
@@ -13,9 +15,9 @@
         <div class="row">
             <div class="col">
                 <form action="">
-                    <div class="form-group">
-                        <label for="first-name"></label>
-                    </div>
+                    {{ user_form|crispy }}
+
+                    <button type="submit" class="btn btn-dark">Update details</button>
                 </form>
             </div>
         </div>

@@ -81,7 +81,7 @@
                                                     <br>
                                                     <ul class="dropdown-menu">
                                                         <li class="dropdown-item">
-                                                            <a class="nav-link" href="#">Profile</a>
+                                                            <a class="nav-link" href="{% url 'user-profile' %}">Profile</a>
                                                         </li>
                                                         <li class="dropdown-item">
                                                             <a class="nav-link" href="{% url 'user-tickets' %}">Tickets ({{ user.tickets|length }})</a>

@@ -12,6 +12,7 @@ urlpatterns = [
     path('tickets/', include('tickets.urls')),
     path('management/', include('management.urls')),
     path('accounts/', include('allauth_override.urls')),
+    path('user_profile/', include('user_profile.urls')),
 ]
 
 
