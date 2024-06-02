@@ -23,7 +23,8 @@ urlpatterns = [
     # Venue manager admin urls
     path('venue-manager-admin/', views.venue_manager_admin,
          name='venue-manager-admin'),
-    path('venue-manager-admin/manager-detail/<int:manager_id>/', views.venue_manager_admin_detail,
+    path('venue-manager-admin/manager-detail/<int:manager_id>/',
+         views.venue_manager_admin_detail,
          name='venue-manager-admin-detail'),
     path('venue-manager-admin/delete-manager/<int:manager_id>/',
          views.delete_manager, name='delete-manager'),

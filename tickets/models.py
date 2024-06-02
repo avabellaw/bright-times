@@ -7,8 +7,8 @@ import uuid
 
 class Ticket(models.Model):
     order = models.ForeignKey('TicketOrder', on_delete=models.CASCADE,
-                                  null=False, blank=False,
-                                  related_name='tickets')
+                              null=False, blank=False,
+                              related_name='tickets')
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 

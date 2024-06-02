@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from tickets.models import Ticket
 from .models import Event
+
 
 def get_available_events():
     """Return a list of events that have tickets available"""

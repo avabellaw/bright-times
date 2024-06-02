@@ -37,8 +37,8 @@ class Event(models.Model):
         """
         Overide the save method
 
-        If the event is being created, set the created_by attribute to the 
-        the venue manager who created the event.        
+        If the event is being created, set the created_by attribute to the
+        the venue manager who created the event.
         """
 
         self.created_by = created_by
@@ -69,7 +69,7 @@ class Venue(models.Model):
     def save(self, created_by=None, *args, **kwargs):
         """Override the save method to create the original VenueManager
 
-        The attribute created_by is passed in by the test case. 
+        The attribute created_by is passed in by the test case.
         Otherwise created_by is blank.
         """
 
