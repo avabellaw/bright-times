@@ -39,8 +39,7 @@
         }
 
         .nav-container {
-            background-color: var(--primary-colour);
-            margin-bottom: 2em;
+            background: linear-gradient(50deg, var(--primary-colour), #ffffff00);;
         }
 
         ul.navbar-nav {
