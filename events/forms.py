@@ -1,11 +1,13 @@
 from django import forms
 from .models import Venue, Address, Event
+from django.forms.widgets import FileInput
 
 
 class FormUtilsMixin():
     def make_read_only(self):
         for field in self.fields.values():
-            field.widget.attrs['readonly'] = True
+            if not isinstance(field.widget, FileInput):
+                field.widget.attrs['readonly'] = True
             field.widget.attrs['disabled'] = True
 
     def add_class_to_all_fields(self, class_name):

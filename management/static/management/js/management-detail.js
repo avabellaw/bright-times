@@ -5,8 +5,9 @@ $("#edit-btn").click(function() {
 
     window.location.hash = "#detail-form";
 
-    $(".editable-field").prop("disabled", !isEditing).prop(
+    $(".editable-field:not([type='file'])").prop("disabled", !isEditing).prop(
         "readonly", !isEditing);
+    $(".editable-field[type='file']").prop("disabled", !isEditing);
 
     $("#save-btn").toggleClass("d-none");
     $("#edit-btn").toggleClass("d-none");
