@@ -30,7 +30,7 @@
                              alt="{{ event.name }} image">
                     </div>
                     <div class="col-12 col-sm-7">
-                        <h3>{{ event.name }}</h3>
+                        <h2>{{ event.name }}</h2>
                         <p>{{ event.start_date_time }}</p>
                         <p>
                             <strong>Order no. #</strong>{{ ticket.order.order_num }}
@@ -39,7 +39,7 @@
                             <strong>Ordered on:</strong> {{ ticket.order.order_date }}
                         </p>
                     </div>
-                    <a class="stretched-link" href="{% url 'event-details' event.id %}"></a>
+                    <a class="stretched-link" href="{% url 'event-details' event.id %}" aria-label="Details page for {{ event.name }}"></a>
                 </div>
             {% endwith %}
             {% if not forloop.last %}<hr class="hr--light">{% endif %}
