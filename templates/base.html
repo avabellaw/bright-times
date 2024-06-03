@@ -31,7 +31,18 @@
     <body>
         <header id="main-header">
             <div class="nav-container">
-                <div id="header-bg-image" style="background-image: url('{% static 'images/homepage-hero.webp' %}');"></div>
+                <div id="header-bg-image">
+                    <img 
+                        src="{% static 'images/homepage-hero-sm.webp' %}"
+                        alt="" role="presentation"
+                        sizes="(max-width:999px) 600px,
+                               (min-width: 1000px) and (max-width: 1699px) 1300px, 
+                               (min-width: 1700px) 1920px"
+                        srcset="{% static 'images/homepage-hero-sm.webp' %} 600w,
+                                {% static 'images/homepage-hero-md.webp' %} 1300w,
+                                {% static 'images/homepage-hero.webp' %} 1920w"
+                    >
+                </div>
                 <div class="container">
                     <div class="row">
                         <div class="col">
