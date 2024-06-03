@@ -1,13 +1,14 @@
-$('#edit-btn').click(function() {
-    isEditing = $(this).attr('data-editing') === 'true';
+$("#edit-btn").click(function() {
+    let isEditing = $(this).attr("data-editing") === "true";
     isEditing = !isEditing;
-    $(this).attr('data-editing', isEditing);
+    $(this).attr("data-editing", isEditing);
 
-    window.location.hash = '#detail-form';
+    window.location.hash = "#detail-form";
 
-    $('.editable-field').prop('disabled', !isEditing).prop('readonly', !isEditing)
+    $(".editable-field").prop("disabled", !isEditing).prop(
+        "readonly", !isEditing);
 
-    $('#save-btn').toggleClass('d-none');
-    $('#edit-btn').toggleClass('d-none');
-    $('#cancel-btn').toggleClass('d-none');
+    $("#save-btn").toggleClass("d-none");
+    $("#edit-btn").toggleClass("d-none");
+    $("#cancel-btn").toggleClass("d-none");
 });
