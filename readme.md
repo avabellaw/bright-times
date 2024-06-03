@@ -19,7 +19,10 @@ This projects demonstrates my ability to create a full-stack application with ec
 
 ### Frameworks, Libraries & Programs Used
 
-* JQuery datetimepicker
+* JQuery datetimepicker plugin
+* [JQuery.visible plugin](https://github.com/customd/jquery-visible)
+    * Allows you to detect if element is visible.
+    * I use this to set django messages container position to fixed when scrolled out of view.
 * boto3
     * To interact with AWS S3 bucket.
 * django-allauth
