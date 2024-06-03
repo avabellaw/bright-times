@@ -45,7 +45,7 @@
                         <br>
                         <p class="text-danger" id="error-message"></p>
                         <h4>
-                        Total cost: £<sh4an id="total-cost"></span>
+                        Total cost: £<span id="total-cost"></span>
                     </h4>
                     <button type="submit" class="btn btn-dark mt-3">Buy ticket</button>
                 </div>
@@ -56,6 +56,5 @@
 {% endblock %}
 
 {% block additional_js %}
-    <script type="text/javascript"
-            src="{% static 'tickets/js/update-total-cost.js' %}"></script>
+    <script src="{% static 'tickets/js/update-total-cost.js' %}"></script>
 {% endblock %}
