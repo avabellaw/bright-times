@@ -351,6 +351,12 @@ Future improvements:
 
 As expected, the more images are present the lower the performance. Processing the images would help solve this problem.
 
+**Choose or create venue**
+
+[Mobile results](docs/google-lighthouse/choose-or-create-venue-mobile.webp)
+
+[Desktop results](docs/google-lighthouse/choose-or-create-venue.webp)
+
 # Bug fixes
 
 * Cripsy forms returns error "too many values to unpack (expected 2)"
