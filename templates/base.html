@@ -179,9 +179,10 @@
                     crossorigin="anonymous"></script>
             <!-- Bootstrap toasts -->
             <script>
-            $(document).ready(function(){
-                $('.toast').toast('show');
-            });
+                // As this is only one line, and will only be used in the base.html, I decided not to create a js file for it.
+                $(document).ready(function(){
+                    $('.toast').toast('show');
+                });
             </script>
         {% endblock %}
 
