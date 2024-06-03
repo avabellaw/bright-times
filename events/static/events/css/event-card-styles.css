@@ -107,6 +107,7 @@
 
 .event-card .btn {
     width: 100%;
+    z-index: 11;
 }
 
 .event-card_details {
