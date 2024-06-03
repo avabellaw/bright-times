@@ -6,7 +6,8 @@ from django.forms.widgets import FileInput
 class FormUtilsMixin():
     def make_read_only(self):
         for field in self.fields.values():
-            if not isinstance(field.widget, FileInput):
+            if not (isinstance(field.widget, FileInput)
+                    or isinstance(field.widget, forms.Select)):
                 field.widget.attrs['readonly'] = True
             field.widget.attrs['disabled'] = True
 
