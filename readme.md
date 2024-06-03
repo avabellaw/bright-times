@@ -387,6 +387,16 @@ As expected, the more images are present the lower the performance. Processing t
 
 [Desktop results](docs/google-lighthouse/venue-manager-admin.webp)
 
+**User tickets**
+
+* I changed the event title from a h3 to a h2.
+* I added an aria-label to the stretched-link
+* Under "Best practices" - I'm unable to correct the image size, at present, as they are user uploads.
+
+[Mobile results](docs/google-lighthouse/user-tickets-mobile.webp)
+
+[Desktop results](docs/google-lighthouse/user-tickets.webp)
+
 # Bug fixes
 
 * Cripsy forms returns error "too many values to unpack (expected 2)"
