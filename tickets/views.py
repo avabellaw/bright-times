@@ -125,7 +125,7 @@ def create_order(request):
         qty = ticket_order.qty
 
         order = TicketOrder.objects.filter(
-            payment_intent=confirmed_payment_intent)
+            payment_intent=payment_intent)
         if order.exists():
             order = order.first()
             messages.error(request, 'Order already exists.')
@@ -134,7 +134,7 @@ def create_order(request):
             order = TicketOrder.objects.create(
                 quantity=qty,
                 price=event.price,
-                payment_intent=confirmed_payment_intent
+                payment_intent=payment_intent,
             )
 
             # Create the tickets

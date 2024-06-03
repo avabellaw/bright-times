@@ -17,7 +17,8 @@ class TicketOrder(models.Model):
     order_num = models.UUIDField(primary_key=True, default=uuid.uuid4,
                                  editable=False, unique=True)
     order_date = models.DateTimeField(auto_now_add=True)
-    payment_intent = models.CharField(max_length=500, blank=False, null=False)
+    # 32-64 characters is recommended by Stripe incase the size is increased
+    payment_intent = models.CharField(max_length=64, blank=False, null=False)
     # Quantity, price and order_total are for redundancy
     # Add validators from stackoverflow: [https://stackoverflow.com/questions/849142/how-to-limit-the-maximum-value-of-a-numeric-field-in-a-django-model]
     quantity = models.IntegerField(blank=False, null=False,
