@@ -294,9 +294,9 @@ I will be ignorning errors relating to JQuery that JSLint produces.
 | delete-confirmation.html | Passed   | allauth_override | This is validated with the management templates ||
 | base.html & detail-base.html & management-base.html | Passed | management | All validated as they're are the base for the respective management pages | N/A |
 | event-management.html | Passed | management | | [View results](docs/validation/html/event-management.webp) |
-| event-detail.html | Passed | management || [View results](docs/validation/html/event-management-detail.webp) |
-|venue-management.html | Passed | management || [View results]() |
-|.html | Passed | management || [View results]() |
+| event-detail.html | Passed | management | Had to update forms.py and management-detail.js to stop adding readonly to file input fields | [View results](docs/validation/html/event-management-detail.webp) |
+| venue-management.html | Passed | management | Had to remove scope="row" | [View results](docs/validation/html/venue-management.webp) |
+|venue-detail.html | Passed | management || [View results](docs/validation/html/venue-management-detail.webp) |
 |.html | Passed | management || [View results]() |
  
 # Bug fixes
