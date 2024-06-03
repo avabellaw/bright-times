@@ -240,6 +240,10 @@ Quantity, price and total price are added to the TicketOrder model. This is redu
 If an order were to go wrong, you would have the quantity and price of the ticket at order creation.
 The order total also adds an extra level of redundancy incase a calculation went wrong. It ensures that this information will match up with stripe records in one way or another. Order total is also useful for auditing data or creating reports.
 
+# Security features
+
+* I have added a CSP policy to help protect against cross-site scripting attacks using django-csp.
+
 # Testing
 
 ## Code validation
@@ -312,7 +316,20 @@ I will be ignorning errors relating to JQuery that JSLint produces.
 * I added "editor.rulers": [79]," to vscode's settings.json file. This displayed a ruler line where the character limit hit 79 characters.
 
 **Flake8 results**
+
 ![Problems output](docs/validation/python/flake8.webp)
+
+## Further testing
+
+#### Google lighthouse
+
+**Mobile**
+
+* Homepage
+    * I added aria-labels to the stretched links as they had no discernible name.
+    * Changed the event card button's IDs to classes.
+    * Increased event-card_details font for legibility.
+    * Added a higher resolution image to the logo img srcset.
 
 # Bug fixes
 
@@ -336,6 +353,7 @@ I will be ignorning errors relating to JQuery that JSLint produces.
 * Sun icon from [freepik by Muzammal Hussain](https://www.freepik.com/icon/sun_13443601#fromView=search&page=1&position=28&uuid=c73706b9-c633-4704-9131-5ffd741c6e21)
     * I created the favicon in paint.NET using this icon
 * Logo I created in paint.NET
+    * Flower from [Flaticon by Smashicons](https://www.flaticon.com/free-icon/flower_7505284?k=1714666228883&log-in=google)
 * Nav background from [pixabay by StockSnap](https://pixabay.com/photos/people-crowd-audience-party-colors-2608316/)
 
 ## Code
