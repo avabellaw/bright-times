@@ -304,7 +304,16 @@ I will be ignorning errors relating to JQuery that JSLint produces.
 | checkout-success.html | Passed | tickets || [View results](docs/validation/html/checkout-success.webp) |
 | user-tickets.html | Passed | tickets || [View results](docs/validation/html/user-tickets.webp) |
 | profile.html      | Passed | user-profile || [View results](docs/validation/html/user-profile.webp) |
- 
+
+### Python validation
+
+* I used the extension Flake8 to constatantly validate my Python code to PEP8 standards.
+* I used autoPEP8 to automatically format files.
+* I added "editor.rulers": [79]," to vscode's settings.json file. This displayed a ruler line where the character limit hit 79 characters.
+
+**Flake8 results**
+![Problems output](docs/validation/python/flake8.webp)
+
 # Bug fixes
 
 * Cripsy forms returns error "too many values to unpack (expected 2)"
