@@ -39,3 +39,7 @@ class AddressForm(forms.ModelForm, FormUtilsMixin):
     class Meta():
         model = Address
         fields = "__all__"
+
+    def clean_postcode(self):
+        postcode = self.cleaned_data['postcode']
+        return postcode.upper()
