@@ -123,7 +123,7 @@
                 <div class="position-relative">
                     <!-- Django.contrib messages -->
                     {% if messages %}
-                        <div class="toast-container top-0 end-0 p-3">
+                        <div id="toast-container" class="toast-container top-0 end-0 p-3">
                             {% for message in messages %}
                                 {% with message.level as level %}
                                     <!-- Error -->
@@ -178,12 +178,8 @@
                     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
                     crossorigin="anonymous"></script>
             <!-- Bootstrap toasts -->
-            <script>
-                // As this is only one line, and will only be used in the base.html, I decided not to create a js file for it.
-                $(document).ready(function(){
-                    $('.toast').toast('show');
-                });
-            </script>
+            <script src="{% static 'plugins/js/jquery.visible.min.js' %}"></script>
+            <script src="{% static 'js/sticky-django-messages.js' %}"></script>
         {% endblock %}
 
         {% block additional_js %}{% endblock %}
