@@ -271,7 +271,9 @@ I will be ignorning errors relating to JQuery that JSLint produces.
 | styles.css     | Passed        | management   | [View results](https://your-bright-times.s3.amazonaws.com/static/management/css/styles.css) |
 | styles.css     | Passed        | tickets   | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fstyles.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) |
 | checkout.css   | Passed       | tickets      | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fcheckout.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) |
-| checkout-success.css | Passed | tickets      | [View results]()
+| checkout-success.css | Passed | tickets      | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fcheckout-success.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | 
+| user-tickets.css    | Passed | tickets      | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fuser-tickets.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)| 
+
 # Bug fixes
 
 * Cripsy forms returns error "too many values to unpack (expected 2)"
