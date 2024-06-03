@@ -325,6 +325,8 @@ I will be ignorning errors relating to JQuery that JSLint produces.
 
 I have added Google Fonts font-faces to the end of my main styles.css file. This avoids having to make an additional request to Google APIs which improves performance. It saved approxametly 800ms according to Google Lighthouse, and eliminated it as a seperate render blocking resource.
 
+I created 2 additional versions of the nav background image. I then set the srcset attribute, of the image tag, so that the image will be selected based on viewport width. This greatly improves performance on mobile devices which is imperative for a mobile-first approach.
+
 Future improvements:
 * Adding an image processor for uploaded images.
     * This could process images into a next gen format such as webp.
