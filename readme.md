@@ -323,6 +323,8 @@ I will be ignorning errors relating to JQuery that JSLint produces.
 
 #### Google lighthouse
 
+I have added Google Fonts font-faces to the end of my main styles.css file. This avoids having to make an additional request to Google APIs which improves performance. It saved approxametly 800ms according to Google Lighthouse, and eliminated it as a seperate render blocking resource.
+
 Future improvements:
 * Adding an image processor for uploaded images.
     * This could process images into a next gen format such as webp.
