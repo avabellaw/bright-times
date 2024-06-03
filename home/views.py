@@ -24,13 +24,3 @@ def home(request):
         'recently_added': recently_added,
     }
     return render(request, 'home/index.html', context)
-
-
-def verify_stripe(request):
-    # This is temporary, and will be removed after verification
-    import os
-    from django.conf import settings
-    from django.http import FileResponse
-    file_path = os.path.join(settings.BASE_DIR,
-                             'apple-developer-merchantid-domain-association')
-    return FileResponse(open(file_path, 'rb'))
