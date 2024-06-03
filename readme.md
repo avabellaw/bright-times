@@ -303,6 +303,7 @@ I will be ignorning errors relating to JQuery that JSLint produces.
 | checkout.html | Passed apart from Stripe.js HTML errors | tickets || [View results](docs/validation/html/checkout.webp) |
 | checkout-success.html | Passed | tickets || [View results](docs/validation/html/checkout-success.webp) |
 | user-tickets.html | Passed | tickets || [View results](docs/validation/html/user-tickets.webp) |
+| profile.html      | Passed | user-profile || [View results](docs/validation/html/user-profile.webp) |
  
 # Bug fixes
 
