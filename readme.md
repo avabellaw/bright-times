@@ -259,6 +259,7 @@ The order total also adds an extra level of redundancy incase a calculation went
 * Sun icon from [freepik by Muzammal Hussain](https://www.freepik.com/icon/sun_13443601#fromView=search&page=1&position=28&uuid=c73706b9-c633-4704-9131-5ffd741c6e21)
     * I created the favicon in paint.NET using this icon
 * Logo I created in paint.NET
+* Nav background from [pixabay by StockSnap](https://pixabay.com/photos/people-crowd-audience-party-colors-2608316/)
 
 ## Code
 
@@ -269,4 +270,5 @@ The order total also adds an extra level of redundancy incase a calculation went
 
 ## GitHub
 
-* How to use GitHub roadmap from [GitHub docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-roadmap-layout)
+* How to use GitHub roadmap from [GitHub docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-roadmap-layout)stripe console erro "
+* 
