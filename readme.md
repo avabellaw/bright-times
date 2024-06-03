@@ -357,6 +357,36 @@ As expected, the more images are present the lower the performance. Processing t
 
 [Desktop results](docs/google-lighthouse/choose-or-create-venue.webp)
 
+**Create event**
+
+[Mobile results](docs/google-lighthouse/create-event-mobile.webp)
+
+[Desktop results](docs/google-lighthouse/create-event.webp)
+
+**Venue management**
+
+[Mobile results](docs/google-lighthouse/venue-management-mobile.webp)
+
+[Desktop results](docs/google-lighthouse/venue-management.webp)
+
+**Event management**
+
+[Mobile results](docs/google-lighthouse/event-management-mobile.webp)
+
+[Desktop results](docs/google-lighthouse/event-management.webp)
+
+**Venue manager admin**
+
+[Mobile results](docs/google-lighthouse/)
+
+[Desktop results](docs/google-lighthouse/)
+
+**Venue manager admin**
+
+[Mobile results](docs/google-lighthouse/venue-manager-admin-mobile.webp)
+
+[Desktop results](docs/google-lighthouse/venue-manager-admin.webp)
+
 # Bug fixes
 
 * Cripsy forms returns error "too many values to unpack (expected 2)"
