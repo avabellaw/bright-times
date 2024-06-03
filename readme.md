@@ -246,25 +246,6 @@ The order total also adds an extra level of redundancy incase a calculation went
 
 # Testing
 
-## Automatic tests
-
-It's especially important to have a test-driven approach when creating automatic tests. Creating the tests first ensures that the tests are going to work properly. I wrote a failing test, then wrote the code to get a passing test, and lastly optimised the test by thinking of ways the test could fail.
-
-**Events**
-
-I tested:
-* User can create event.
-* Access to event creation page.
-* Unauthorized access to event page.
-* Whether user is redirected to login page
-
-**Venues**
-
-I tested:
-* User can create venue.
-* That a venue manager is created with a venue when created by a regular user.
-* Venue manager is created with a venue when created by an admin.
-
 ## Code validation
 
 ### JavaScript validation using [JSHint](https://jshint.com/) and [JSLint](https://www.jslint.com/) 
@@ -337,6 +318,25 @@ I will be ignorning errors relating to JQuery that JSLint produces.
 **Flake8 results**
 
 ![Problems output](docs/validation/python/flake8.webp)
+
+## Automatic tests
+
+It's especially important to have a test-driven approach when creating automatic tests. Creating the tests first ensures that the tests are going to work properly. I wrote a failing test, then wrote the code to get a passing test, and lastly optimised the test by thinking of ways the test could fail.
+
+**Events**
+
+I tested:
+* User can create event.
+* Access to event creation page.
+* Unauthorized access to event page.
+* Whether user is redirected to login page
+
+**Venues**
+
+I tested:
+* User can create venue.
+* That a venue manager is created with a venue when created by a regular user.
+* Venue manager is created with a venue when created by an admin.
 
 ## Further testing
 
