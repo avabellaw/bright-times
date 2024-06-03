@@ -323,6 +323,13 @@ I will be ignorning errors relating to JQuery that JSLint produces.
 
 #### Google lighthouse
 
+Future improvements:
+* Adding an image processor for uploaded images.
+    * This could process images into a next gen format such as webp.
+    * Could carefully resize and adjust quality of images.
+    * Enable the site to have a smaller version of the image for when the bigger version isn't needed.
+        * This would increase the storage used but vastly improve performance while maintaining quality.
+
 **Mobile**
 
 * Homepage
