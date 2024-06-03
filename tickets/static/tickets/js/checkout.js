@@ -1,3 +1,6 @@
+// Code from Stripe has been taken and modified in this file
+// [https://docs.stripe.com/payments/quickstart]
+
 // This is your test publishable API key.
 const pub_key = document.getElementById("stripe_pub_key").value;
 const stripe = Stripe(pub_key);
@@ -23,19 +26,19 @@ async function initialize() {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "X-CSRFToken": csrf,
+            "X-CSRFToken": csrf
         },
-        body: JSON.stringify({ items }),
+        body: JSON.stringify({ items })
     });
     const { clientSecret } = await response.json();
 
     const appearance = {
-        theme: "stripe",
+        theme: "stripe"
     };
     elements = stripe.elements({ appearance, clientSecret });
 
     const paymentElementOptions = {
-        layout: "tabs",
+        layout: "tabs"
     };
 
     const paymentElement = elements.create("payment", paymentElementOptions);
@@ -52,15 +55,11 @@ async function handleSubmit(e) {
     const { error } = await stripe.confirmPayment({
         elements,
         confirmParams: {
-            return_url: return_url,
-        },
+            return_url: return_url
+        }
     });
 
-    // This point will only be reached if there is an immediate error when
-    // confirming the payment. Otherwise, your customer will be redirected to
-    // your `return_url`. For some payment methods like iDEAL, your customer will
-    // be redirected to an intermediate site first to authorize the payment, then
-    // redirected to the `return_url`.
+    // User will only get to this point if payment not successful
     if (error.type === "card_error" || error.type === "validation_error") {
         showMessage(error.message);
     } else {
@@ -94,7 +93,6 @@ async function checkStatus() {
             break;
         default:
             showMessage("Something went wrong.");
-            break;
     }
 }
 
