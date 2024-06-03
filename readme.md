@@ -291,14 +291,18 @@ I will be ignorning errors relating to JQuery that JSLint produces.
 | choose-or-create-venue.html  | Passed        | events           || [View results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Fevents%2Fchoose-or-create-venue%2F) |
 | create-event.html  | Passed        | events           || Direct input |
 | base.html          | Passed        | events           | This is validated as it's part of all events pages| N/A|
-| delete-confirmation.html | Passed   | allauth_override | This is validated with the management templates ||
 | base.html & detail-base.html & management-base.html | Passed | management | All validated as they're are the base for the respective management pages | N/A |
 | event-management.html | Passed | management | | [View results](docs/validation/html/event-management.webp) |
 | event-detail.html | Passed | management | Had to update forms.py and management-detail.js to stop adding readonly to file input fields | [View results](docs/validation/html/event-management-detail.webp) |
 | venue-management.html | Passed | management | Had to remove scope="row" | [View results](docs/validation/html/venue-management.webp) |
-|venue-detail.html | Passed | management || [View results](docs/validation/html/venue-management-detail.webp) |
-|venue-manager-admin.html | Passed | management || [View results](docs/validation/html/venue-manager-admin.webp) |
-|venue-manager-detail.html | Passed | management || [View results](docs/validation/html/venue-manager-detail.webp) |
+| venue-detail.html | Passed | management || [View results](docs/validation/html/venue-management-detail.webp) |
+| venue-manager-admin.html | Passed | management || [View results](docs/validation/html/venue-manager-admin.webp) |
+| venue-manager-detail.html | Passed | management || [View results](docs/validation/html/venue-manager-detail.webp) |
+| delete-confirmation.html | Passed   | allauth_override | This is validated with the management templates ||
+| buy-ticket.html | Passed | tickets || [View results](docs/validation/html/buy-ticket.webp) |
+| checkout.html | Passed apart from Stripe.js HTML errors | tickets || [View results](docs/validation/html/checkout.webp) |
+| checkout-success.html | Passed | tickets || [View results](docs/validation/html/checkout-success.webp) |
+| user-tickets.html | Passed | tickets || [View results](docs/validation/html/user-tickets.webp) |
  
 # Bug fixes
 
