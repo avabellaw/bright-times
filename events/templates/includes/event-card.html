@@ -48,5 +48,5 @@
                class="btn btn-dark">BUY TICKETS</a>
         </footer>
     </article>
-    <a class="stretched-link" href="{% url 'event-details' event.id %}"></a>
+    <a class="stretched-link" aria-label="Details page for event: {{ event.name }}" href="{% url 'event-details' event.id %}"></a>
 </div>
