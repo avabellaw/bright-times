@@ -87,6 +87,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+    # CSP policy
+    'csp.middleware.CSPMiddleware',
+
     # Allauth
     'allauth.account.middleware.AccountMiddleware',
 ]
@@ -188,6 +191,16 @@ if not os.environ.get('DEVELOPMENT', False):
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
         'CacheControl': 'max-age=94608000'
     }
+
+    # Add CSP policy
+    BOOTSTRAP_URL = "cdn.jsdelivr.net"
+    JQUERY_URL = "code.jquery.com"
+    CSP_DEFAULT_SRC = ("'self'", "fonts.gstatic.com")
+    CSP_SCRIPT_SRC = ("'self'", "ajax.googleapis.com", "'unsafe-inline'",
+                      BOOTSTRAP_URL, JQUERY_URL, STATIC_URL, MEDIA_URL)
+    CSP_IMG_SRC = ("'self'", "www.w3.org", "data:", STATIC_URL, MEDIA_URL)
+    CSP_STYLE_SRC = ("'self'", "fonts.googleapis.com",
+                     BOOTSTRAP_URL, "'unsafe-inline'", STATIC_URL, MEDIA_URL)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
