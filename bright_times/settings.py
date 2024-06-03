@@ -170,7 +170,7 @@ else:
 
 # Use AWS S3 for static and media files if [use] DEVELOPMENT resource == False
 # Default is False if doesn't exist
-if not os.environ.get('DEVELOPMENT', False):
+if not DEVELOPMENT:
     AWS_STORAGE_BUCKET_NAME = 'your-bright-times'
     AWS_S3_REGION_NAME = 'eu-north-1'
     AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
@@ -192,15 +192,22 @@ if not os.environ.get('DEVELOPMENT', False):
         'CacheControl': 'max-age=94608000'
     }
 
-    # Add CSP policy
-    BOOTSTRAP_URL = "cdn.jsdelivr.net"
-    JQUERY_URL = "code.jquery.com"
-    CSP_DEFAULT_SRC = ("'self'", "fonts.gstatic.com")
+# Add CSP policy
+BOOTSTRAP_URL = "cdn.jsdelivr.net"
+JQUERY_URL = "code.jquery.com"
+CSP_DEFAULT_SRC = ("'self'", "fonts.gstatic.com")
+if not DEVELOPMENT:
     CSP_SCRIPT_SRC = ("'self'", "ajax.googleapis.com", "'unsafe-inline'",
                       BOOTSTRAP_URL, JQUERY_URL, STATIC_URL, MEDIA_URL)
     CSP_IMG_SRC = ("'self'", "www.w3.org", "data:", STATIC_URL, MEDIA_URL)
     CSP_STYLE_SRC = ("'self'", "fonts.googleapis.com",
                      BOOTSTRAP_URL, "'unsafe-inline'", STATIC_URL, MEDIA_URL)
+else:
+    CSP_SCRIPT_SRC = ("'self'", "ajax.googleapis.com", "'unsafe-inline'",
+                      BOOTSTRAP_URL, JQUERY_URL)
+    CSP_IMG_SRC = ("'self'", "www.w3.org", "data:")
+    CSP_STYLE_SRC = ("'self'", "fonts.googleapis.com",
+                     BOOTSTRAP_URL, "'unsafe-inline'")
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
