@@ -90,7 +90,7 @@ article#event-details > section {
     }
 }
 
-a#buy-tickets {
+a.buy-tickets {
     /* Position buy tickets link above .stretched-link (event details) */
     z-index: 11;
 }

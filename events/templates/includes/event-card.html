@@ -43,9 +43,8 @@
         </div>
         <footer>
             <p class="tickets-left">{{ event.get_tickets_left }} Tickets left</p>
-            <a id="buy-tickets"
-               href="{% url 'buy-ticket' event.id %}"
-               class="btn btn-dark">BUY TICKETS</a>
+            <a href="{% url 'buy-ticket' event.id %}"
+               class="buy-tickets btn btn-dark">BUY TICKETS</a>
         </footer>
     </article>
     <a class="stretched-link" aria-label="Details page for event {{ event.name }}" href="{% url 'event-details' event.id %}"></a>
