@@ -274,6 +274,31 @@ I will be ignorning errors relating to JQuery that JSLint produces.
 | checkout-success.css | Passed | tickets      | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fcheckout-success.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | 
 | user-tickets.css    | Passed | tickets      | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fuser-tickets.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)| 
 
+### HTML validation using W3C Validation Service
+
+| HTML filename       | Results       | App name | Comments     | Link to results                         |
+|---------------------|---------------|----------|-----------------------------------------|--------------|
+| index.html          | Passed        | home     | No warnings  | [View results](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2F) |
+| base.html           | Passed        | root     | This is validated on every page as it's the base template. I had to add the nav background image as an inline style here to keep the image address dynamic. |
+| All toasts          | Passed        | root     | I have validation all toast.htmls through direct input ||
+| logout.html         | Passed        | allauth_override | | [View results](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Faccounts%2Flogout%2F)|
+| login.html          | Passed        | allauth_override | Have to be logged out. Originally got one error as the passwords aria-describedby ID didn't match up. This is because crispy forms changes the ID of helptext. I fixed this by overriding the form and updating the aria-describedby ID attribute. | [View results](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Faccounts%2Flogin%2F) |
+| signup.html        | Passed with 1 error        | allauth_override | Must be logged out. Fixed same aria-describedby error as login.html. There is 1 error because crispy_forms adds a ul as a child of a small element. | [View results](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Faccounts%2Fsignup%2F) |
+| email.html         | Passed        | allauth_override | This is allauth code but I removed the type="text/javascript" | Direct input |
+| events.html        | Passed        | events           | | [View results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Fevents%2F) |
+| event-card.html    | Passed        | events           | This is validated as it's apart of the events page | N/A
+| event-details.html | Passed        | events           || [View results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Fevents%2Fevent-details%2F1%2F0) |
+| choose-or-create-venue.html  | Passed        | events           || [View results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Fevents%2Fchoose-or-create-venue%2F) |
+| create-event.html  | Passed        | events           || Direct input |
+| base.html          | Passed        | events           | This is validated as it's part of all events pages| N/A|
+| delete-confirmation.html | Passed   | allauth_override | This is validated with the management templates ||
+| base.html & detail-base.html & management-base.html | Passed | management | All validated as they're are the base for the respective management pages | N/A |
+| event-management.html | Passed | management | | [View results](docs/validation/html/event-management.webp) |
+| event-detail.html | Passed | management || [View results](docs/validation/html/event-management-detail.webp) |
+|venue-management.html | Passed | management || [View results]() |
+|.html | Passed | management || [View results]() |
+|.html | Passed | management || [View results]() |
+ 
 # Bug fixes
 
 * Cripsy forms returns error "too many values to unpack (expected 2)"
