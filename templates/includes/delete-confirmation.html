@@ -18,7 +18,7 @@
             <div class="modal-body p-2">{{ body }}</div>
             <div class="modal-footer p-2 justify-content-center">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a href="{% block delete_btn_url %}{% endblock %}" class="btn btn-dark">Delete</a>
+                <a href="{{ delete_url }}" class="btn btn-dark">Delete</a>
             </div>
         </div>
     </div>

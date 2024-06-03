@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.shortcuts import redirect
 from django.conf import settings
-from django.contrib.auth.models import User
 from django.contrib import messages
 
 from utils.decorators import (login_required_message,
@@ -54,13 +53,16 @@ def venue_detail(request, venue_id):
     venue_form.add_class_to_all_fields('editable-field')
     address_form.add_class_to_all_fields('editable-field')
 
+    delete_url = reverse('delete-venue', args=[venue_id])
+
     template = 'management/venue/venue-detail.html'
 
     context = {
         'venue': venue,
         'venue_form': venue_form,
         'address_form': address_form,
-        'breadcrumbs': [{'name': venue.name}]
+        'breadcrumbs': [{'name': venue.name}],
+        'delete_url': delete_url,
     }
 
     return render(request, template, context)
@@ -110,12 +112,15 @@ def event_detail(request, event_id):
     event_form.make_read_only()
     event_form.add_class_to_all_fields('editable-field')
 
+    delete_url = reverse('delete-event', args=[event_id])
+
     template = 'management/event/event-detail.html'
 
     context = {
         'event': event,
         'event_form': event_form,
-        'breadcrumbs': [{'name': event.name}]
+        'breadcrumbs': [{'name': event.name}],
+        'delete_url': delete_url,
     }
 
     return render(request, template, context)
@@ -142,7 +147,8 @@ def venue_manager_admin(request):
 
     venues = get_venues_managed_by_user(request.user)
 
-    venue_managers = VenueManager.objects.filter(venue__in=venues).exclude(user=request.user)
+    venue_managers = VenueManager.objects.filter(
+        venue__in=venues).exclude(user=request.user)
 
     form = VenueManagerCreationForm(venues)
 
@@ -185,11 +191,14 @@ def venue_manager_admin_detail(request, manager_id):
         manager.save()
         messages.success(request, 'Role updated successfully.')
 
+    delete_url = reverse('delete-manager', args=[manager_id])
+
     template = 'management/venue-manager/venue-manager-detail.html'
 
     context = {
         'roles': settings.VENUE_MANAGER_ROLE,
         'manager': manager,
+        'delete_url': delete_url,
     }
 
     return render(request, template, context)

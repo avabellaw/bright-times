@@ -7,10 +7,6 @@
 {% url 'venue-management-detail' venue.id %}
 {% endblock %}
 
-{% block delete_btn_url %}
-    {% url 'delete-venue' venue.id %}
-{% endblock %}
-
 {% block form_items %}
     {{ venue_form|crispy }}
     {{ address_form|crispy }}

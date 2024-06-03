@@ -7,10 +7,6 @@
     {% url 'venue-manager-admin-detail' manager.id %}
 {% endblock %}
 
-{% block delete_btn_url %}
-    {% url 'delete-manager' manager.id %}
-{% endblock %}
-
 {% block form_items %}
     <p>
         <strong>User:</strong> {{ manager.user.username }}
