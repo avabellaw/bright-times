@@ -44,6 +44,7 @@ def venue_detail(request, venue_id):
             address = address_form.save()
             venue.address = address
             venue.save()
+            ToastMessage.updated_successfully(request, venue.name)
     else:
         venue_form = VenueForm(instance=venue)
         address_form = AddressForm(instance=venue.address)
@@ -106,6 +107,7 @@ def event_detail(request, event_id):
 
         if event_form.is_valid():
             event_form.save()
+            ToastMessage.updated_successfully(request, event.name)
     else:
         event_form = EventForm(instance=event)
 

@@ -274,6 +274,10 @@ class ToastMessage:
         messages.success(request, f'{name} deleted successfully.')
 
     @staticmethod
+    def updated_successfully(request, name):
+        messages.success(request, f'{name} updated successfully.')
+
+    @staticmethod
     def email_verification_required(request,
                                     attempted_action="access this page"):
         """You must verify email message
