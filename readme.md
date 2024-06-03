@@ -244,14 +244,14 @@ The order total also adds an extra level of redundancy incase a calculation went
 
 ## Code validation
 
-### JavaScript using [JSHint](https://jshint.com/) and [JSLint](https://www.jslint.com/) 
+### JavaScript validation using [JSHint](https://jshint.com/) and [JSLint](https://www.jslint.com/) 
 
 I will be ignorning errors relating to JQuery that JSLint produces.
 
 <details>
 <summary>JavaScript validation results</summary>
 
-| JS filename              | Results         | Appname     | Comments                          |
+| JS filename              | Results         | App name     | Comments                          |
 |--------------------------|-----------------|-------------|-----------------------------------|
 | scroll-events.js         | Passed          | events      |                                   |
 | management-detail.js     | Passed          | managemnet  |                                   |
@@ -261,6 +261,17 @@ I will be ignorning errors relating to JQuery that JSLint produces.
 
 </details>
 
+### CSS validation using W3C Validation Service
+
+| CSS filename              | Results       | App name | Link to results                         |
+|---------------------------|---------------|----------|-----------------------------------------|
+| styles.css                 | Passed        | root     | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Fcss%2Fstyles.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) |
+| event-card-styles.css     | Passed        | events   | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Fevents%2Fcss%2Fevent-card-styles.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) |
+| event-styles.css     | Passed        | events   | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Fevents%2Fcss%2Fevent-styles.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) |
+| styles.css     | Passed        | management   | [View results](https://your-bright-times.s3.amazonaws.com/static/management/css/styles.css) |
+| styles.css     | Passed        | tickets   | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fstyles.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) |
+| checkout.css   | Passed       | tickets      | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fcheckout.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) |
+| checkout-success.css | Passed | tickets      | [View results]()
 # Bug fixes
 
 * Cripsy forms returns error "too many values to unpack (expected 2)"
