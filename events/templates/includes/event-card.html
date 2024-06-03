@@ -12,7 +12,7 @@
         <header>
             <h3 class="event-card_title">{{ event.name }}</h3>
         </header>
-        <section class="event-card_details">
+        <div class="event-card_details">
             <p class="date">
                 <img src="{% static 'font-awesome/calendar-regular.svg' %}"
                      width="16"
@@ -40,7 +40,7 @@
                     {% endif %}
                 {% endwith %}
             </p>
-        </section>
+        </div>
         <footer>
             <p class="tickets-left">{{ event.get_tickets_left }} Tickets left</p>
             <a id="buy-tickets"
