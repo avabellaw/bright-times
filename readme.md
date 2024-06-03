@@ -321,7 +321,7 @@ I will be ignorning errors relating to JQuery that JSLint produces.
 
 ## Further testing
 
-#### Google lighthouse
+### Google lighthouse
 
 I have added Google Fonts font-faces to the end of my main styles.css file. This avoids having to make an additional request to Google APIs which improves performance. It saved approxametly 800ms according to Google Lighthouse, and eliminated it as a seperate render blocking resource.
 
@@ -332,13 +332,22 @@ Future improvements:
     * Enable the site to have a smaller version of the image for when the bigger version isn't needed.
         * This would increase the storage used but vastly improve performance while maintaining quality.
 
-**Mobile**
+**Homepage**
 
-* Homepage
-    * I added aria-labels to the stretched links as they had no discernible name.
-    * Changed the event card button's IDs to classes.
-    * Increased event-card_details font for legibility.
-    * Added a higher resolution image to the logo img srcset.
+[Mobile results](docs/google-lighthouse/index-mobile.webp)
+
+[Desktop results](docs/google-lighthouse/index.webp)
+
+* I added aria-labels to the stretched links as they had no discernible name.
+* Changed the event card button's IDs to classes.
+* Increased event-card_details font for legibility.
+* Added a higher resolution image to the logo img srcset.
+
+**Events**
+
+* Due to the lack of a h2 heading in events, I've changed the event cards title from a h3 to a h2. This ensures a heading isn't skipped which may confuse users using a screenreader.
+
+As expected, the more images are present the lower the performance. Processing the images would help solve this problem.
 
 # Bug fixes
 
