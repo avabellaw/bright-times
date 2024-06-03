@@ -132,7 +132,7 @@
 }
 
 .event-card_title {
-    font-size: calc(0.9em + .6vw);
+    font-size: 1.3em;
 }
 
 /* Event scrolling */
