@@ -108,6 +108,8 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = False
 ACCOUNT_USERNAME_MIN_LENGTH = 3
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
+ACCOUNT_FORMS = {'signup': 'allauth_override.forms.CustomSignupForm',
+                 'login': 'allauth_override.forms.CustomLoginForm'}
 
 # Alluth email
 

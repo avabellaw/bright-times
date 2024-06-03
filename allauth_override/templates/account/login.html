@@ -26,8 +26,8 @@
             </p>
             {% url 'account_login' as login_url %}
             <form action="{{ login_url }}" method="post">
-                {{ form|crispy }}
                 {% csrf_token %}
+                {{ form|crispy }}
                 <button type="submit" class="btn btn-dark">
                     {% trans "Sign In" %}
                 </button>
