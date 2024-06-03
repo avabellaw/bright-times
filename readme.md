@@ -297,7 +297,8 @@ I will be ignorning errors relating to JQuery that JSLint produces.
 | event-detail.html | Passed | management | Had to update forms.py and management-detail.js to stop adding readonly to file input fields | [View results](docs/validation/html/event-management-detail.webp) |
 | venue-management.html | Passed | management | Had to remove scope="row" | [View results](docs/validation/html/venue-management.webp) |
 |venue-detail.html | Passed | management || [View results](docs/validation/html/venue-management-detail.webp) |
-|.html | Passed | management || [View results]() |
+|venue-manager-admin.html | Passed | management || [View results](docs/validation/html/venue-manager-admin.webp) |
+|venue-manager-detail.html | Passed | management || [View results](docs/validation/html/venue-manager-detail.webp) |
  
 # Bug fixes
 
