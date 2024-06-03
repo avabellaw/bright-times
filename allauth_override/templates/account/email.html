@@ -96,7 +96,8 @@
 {% endblock content %}
 
 {% block extra_body %}
-    <script type="text/javascript">
+    <script>
+        // This is allauth's inline js
 (function() {
   var message = "{% trans 'Do you really want to remove the selected email address?' %}";
   var actions = document.getElementsByName('action_remove');
