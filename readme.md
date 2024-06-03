@@ -261,7 +261,7 @@ I will be ignorning errors relating to JQuery that JSLint produces.
 
 </details>
 
-### CSS validation using W3C Validation Service
+### CSS validation using [W3C Validation Service](https://jigsaw.w3.org/css-validator/)
 
 | CSS filename              | Results       | App name | Link to results                         |
 |---------------------------|---------------|----------|-----------------------------------------|
@@ -274,7 +274,7 @@ I will be ignorning errors relating to JQuery that JSLint produces.
 | checkout-success.css | Passed | tickets      | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fcheckout-success.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | 
 | user-tickets.css    | Passed | tickets      | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fuser-tickets.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)| 
 
-### HTML validation using W3C Validation Service
+### HTML validation using [W3C Validation Service](https://validator.w3.org/)
 
 | HTML filename       | Results       | App name | Comments     | Link to results                         |
 |---------------------|---------------|----------|-----------------------------------------|--------------|
