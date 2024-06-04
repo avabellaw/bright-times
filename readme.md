@@ -2,7 +2,7 @@
 
 Bright Times is a platform for exploring and keeping up-to-date on new and upcoming events. 
 
-This projects demonstrates my ability to create a full-stack application with eccommerce funtionality. It uses the Django framework along with HTML5, CSS3, JavaScript and ofcourse Python. I also use SQL to manage the database.
+This project demonstrates my ability to create a full-stack application with eCommerce functionality. It uses the Django framework along with HTML5, CSS3, JavaScript and of course Python. I also use SQL to manage the database.
 
 [View the live project here]()
 
@@ -10,7 +10,7 @@ This projects demonstrates my ability to create a full-stack application with ec
 
 ## Technologies used
 
-### Lanuages used
+### Languages used
 
 * HTML5
 * CSS3
@@ -21,58 +21,58 @@ This projects demonstrates my ability to create a full-stack application with ec
 
 * JQuery datetimepicker plugin
 * [JQuery.visible plugin](https://github.com/customd/jquery-visible)
-    * Allows you to detect if element is visible.
-    * I use this to set django messages container position to fixed when scrolled out of view.
+  * Allows you to detect if the element is visible.
+  * I use this to set the Django messages container position to fixed when scrolled out of view.
 * boto3
-    * To interact with AWS S3 bucket.
+  * To interact with AWS S3 bucket.
 * django-allauth
-    * User authentication, registration and management.
-    * To send and manage emails.
+  * User authentication, registration and management.
+  * To send and manage emails.
 * Stripe
-    * To implement the card payment system. 
+  * To implement the card payment system. 
 * djlint 
-    * For django-html auto formatting.
+  * For django-html auto-formatting.
 * Django 5
-    * Full python framework.
+  * Full Python framework.
 * Bootstrap 5
-    * CSS framework
+  * CSS framework
 * autopep8 extension/package
-    * Package to automatically format to PEP8 standards.
+  * Package to automatically format to PEP8 standards.
 * Google Fonts
 * Easy access to many fonts supplied from a CDN that is close to the user, increasing download speed.
 * Font Awesome
-    * Professional icons
+  * Professional icons
 * Git 
-    * Used for version control.
+  * Used for version control.
 * GitHub
-    * Used to store commits.
+  * Used to store commits.
 * Heroku
-    * Hosts the live project.
+  * Hosts the live project.
 * Visual Studio Code
-    * Used as the IDE for the project.
-    * I set a shortcut for Visual Code to format HTML/CSS/JS (ctrl+shift+f).
-        * This also worked for Python after installing autopep8.
+  * Used as the IDE for the project.
+  * I set a shortcut for Visual Code to format HTML/CSS/JS (ctrl+shift+f).
+    * This also worked for Python after installing autopep8.
 * Paint.NET
-    * Used to edit images for the project.
+  * Used to edit images for the project.
 * Figma
-    * Used to create the mockup of the website before developing.
+  * Used to create the mockup of the website before developing.
 * Lucid.app
-    * Used to create an Entity Relationship Diagram to model the data.
+  * Used to create an Entity Relationship Diagram to model the data.
 * Word 
-    * Used to present the project requirements in my own words, for project research, and brainstorming.
+  * Used to present the project requirements in my own words, for project research, and brainstorming.
 * Notepad and Notepad++
-    * Used for quick notes from my mentor and for notes while developing.
-    * Used for planning.
+  * Used for quick notes from my mentor and for notes while developing.
+  * Used for planning.
 * Chrome - Inspect element
-    * This was used to:
-        * Style the website and test new ideas to be copied into the project.
-        * Continuously test responsiveness by adjusting the screen size and by testing preset device dimensions.
-        * Bug fix.
+  * This was used to:
+    * Style the website and test new ideas to be copied into the project.
+    * Continuously test responsiveness by adjusting the screen size and by testing preset device dimensions.
+    * Bug fix.
 * Firefox, Microsoft Edge, Safari
-    * Used to test compatibility on other browsers.
+  * Used to test compatibility on other browsers.
 * [Responsinator](http://www.responsinator.com/) for testing on different screens.
 * [Grammarly](https://app.grammarly.com/)
-    * To help find and correct grammar and spelling mistakes.
+  * To help find and correct grammar and spelling mistakes.
 
 ## User Experience (UX)
 
@@ -82,9 +82,9 @@ This will be a website where you can discover an event that fits you.
 
 The audience is anyone who enjoys going to events but is going to have a majority of young adults. It appears to be common for the home button to be excluded in event websites as it's well known that the logo will take you to the homepage.
 
-The project will be designed using the 5 planes of UX design. I will ofcourse be taking a mobile-first approach. This is especially important for an events based website, as usersare more likely to be travelling while using it.
+The project will be designed using the 5 planes of UX design. I will of course be taking a mobile-first approach. This is especially important for an events-based website, as users are more likely to be travelling while using it.
 
-### Stragtegy Plane
+### Strategy Plane
 
 The audience will be diverse as events can be targeted towards a wide range of people.
 
@@ -98,7 +98,7 @@ Bright Times will be an event directory where users can find events and pay for 
 * Save events to view later.
 
 **Site owner goals**
-* Gain commision from ticket sales.
+* Gain commission from ticket sales.
 * Spread awareness of events.
 
 ### Research
@@ -118,19 +118,19 @@ Possible features to include:
 * Ability to subscribe to a reminder of an event.
 
 Future features:
-* Reacurring events.
+* Recurring events.
 
 ### User stories
 
 <!-- Turn this into a table -->
-1	User	I want to see events 	Find one I like and buy a ticket
-2	User	I want to see event details	Make an informed decision before buying a ticket
-3	User 	I want to sign up for an account	To buy tickets
-4	Staff member	I want confirmation of work at an event	Revisit event details and confirm im booked
-5	Venue manager	I want to list my venue	I can book events
-6	Venue manager	I want to list events for my venue	I can sell tickets
-7	Venue manager	I want to see how many people are signed up	To know how many people are coming
-8	Venue manager	I want to edit my venue and event details	To keep them up-to-date
+1   User    I want to see events    Find one I like and buy a ticket
+2   User    I want to see event details Make an informed decision before buying a ticket
+3   User    I want to sign up for an account    To buy tickets
+4   Staff member    I want confirmation of work at an event Revisit event details and confirm I'm booked
+5   Venue manager   I want to list my venue so I can book events
+6   Venue manager   I want to list events for my venue  I can sell tickets
+7   Venue manager   I want to see how many people are signed up To know how many people are coming
+8   Venue manager   I want to edit my venue and event details   To keep them up-to-date
 
 ## Structure plane
 
@@ -150,14 +150,14 @@ You can view my [Entity Relationship diagram on lucid chart here](https://lucid.
 These two models have a one-to-one relationship. A user profile model instance is created when a user is created. This is done using a signal on post_save.
 
 A user profile contains the first name, last name and Stripe customer ID of a user. This information is saved when it is inputted to create a ticket order.
-The first and last name can also be added beforehand.
+The first and last names can also be added beforehand.
 
 #### Venue and Address
 
-A venue is managed by the user who created it. Upon creatation, the user is added with the venue ID to a new venue manager instance.
+A venue is managed by the user who created it. Upon creation, the user is added with the venue ID to a new venue manager instance.
 
 Venue contains an Address foreign key.
-I decided to seperate the address from Venue to better organise the data. I considered a one-to-one relationship, however, a one-to-many relationship would enable a different venue under the same address to use the existing address record. Therefore, it allows for the future introduction of this feature. While aknowedging that this is a rare case, this would avoid duplicate address records.
+I decided to separate the address from the Venue to better organise the data. I considered a one-to-one relationship, however, a one-to-many relationship would enable a different venue under the same address to use the existing address record. Therefore, it allows for the future introduction of this feature. While acknowledging that this is a rare case, this would avoid duplicate address records.
 
 #### Venue Manager
 
@@ -167,19 +167,19 @@ This will allow me to filter by userID and VenueID and get a result as if using 
 #### Event
 
 An event contains the foreign keys to a:
-    * Venue
-    * Venue manager
+* Venue
+* Venue manager
 
-The original idea was to use a user ID to set the Event's created by. If you wanted the venue manager, you just use the user ID. However, a user can also have a ticket and therefore I believe it makes it more clear if created_by is set to the venue manager who created the event.
+The original idea was to use ID as the value for the event's created_by. If you wanted the venue manager, you just use the user ID. However, a user can also have a ticket and therefore I believe it makes it more clear if created_by is set to the venue manager who created the event.
 
 An event also contains the fields:
 * Name - The name/title of the event.
 * Description - A short description of the event.
 * About - The main content of the event.
 * Price - The price of the event
-    * I considered adding price to the Ticket model. This would allow for discounts.
-    * I decided that for the scope of this project, event containing the price sufficed.
-* Image URL - The url of the image stored in the media folder.
+  * I considered adding price to the Ticket model. This would allow for discounts.
+  * I decided that for the scope of this project, the event model containing the price sufficed.
+* Image URL - The URL of the image stored in the media folder.
 * Created on - Automatically upon event creation.
 * Ticket end date/time - Datetime that the sale of tickets end
 * Start and end date/time - One field for the start date/time and one for the end date/time 
@@ -191,54 +191,54 @@ It also contains the foreign key of a ticket order. Multiple tickets can be crea
 
 #### Ticket Order
 
-* Ticket order has it's primary key as a UUID. 
-    * This makes guessing the checkout-success page url practically impossible. 
-    * A UUID is unique as it's mathematically impossible to get the same one twice. Although techincally it is a non-zero chance.
+* Ticket order has its primary key as a UUID. 
+  * This makes guessing the checkout-success page URL practically impossible. 
+  * A UUID is unique as it's mathematically impossible to get the same one twice. Although technically it is a non-zero chance.
 * Order date.
-    * Contains the date on creation. Useful information for the customer and for debugging.
+  * Contains the date of creation. Useful information for the customer and debugging.
 * Quantity and price redundancy.
-    * Although this information is redundant, it will help debugging in future.
-    * This way, the quantity and price will never change regardless of the event or ticket instances.
-    * The information can be easily matched with the information on Stripe's end too.
+  * Although this information is redundant, it will help debugging in future.
+  * This way, the quantity and price will never change regardless of the event or ticket instances.
+  * The information can be easily matched with the information on Stripe's end too.
 
 
 **Future adaptations**
 
-* Change about field into a rich text field.
-    * This will allow the user to add images and style their text.
+* Change the About field into a rich text field.
+  * This will allow the user to add images and style their text.
 
 
 ## Skeleton plane
 
-I decided to keep not seperate venue into a seperate app. This can be done in future but, at present, venue is simple enough to not require it. A venue is used to create an event.
+I decided to not separate Venue into its own app. This may be required in future if the Venue model becomes more complex. A venue is used to create an event.
 
-A ticket is a simple model linking an event with a user. I have decided not to seperate this either.
+A ticket is a simple model linking an event with a user. I have decided not to separate this either.
 
 ## Surface plane
 
-I wanted to use a bright colour. Either yellow/orange to represent the sun or a calm blue representing trust. 
+I wanted to use a bright colour. Either yellow/orange to represent the sun or a calm blue to represent trust. 
 
 [cvent - how to choose event website color:](https://www.cvent.com/en/blog/events/how-to-choose-event-website-color)
-Yellow. Bright and sunny, yellow is the color of optimism.
+"Yellow. Bright and sunny, yellow is the color of optimism.
 Green. This is the color of growth and health.
-Blue. The color of trust, blue conveys tranquility, serenity, and peace.
+Blue. The color of trust, blue conveys tranquillity, serenity, and peace."
 
 # Stripe payments
 
 I followed the Stripe documentation and a guide by testdriven as [mentioned in the code credits](#Code).
 
-I also used the walkthrough project for additional guidence.
+I also used the walkthrough project for additional guidance.
 
-PaymentIntent is created with a customer ID if user profile has one. If not, a new customer object is created.
-The customer object contains the email for the receipt. The reciept will only be sent once Stripe is set to live mode.
+A PaymentIntent is created containing the customer ID of either an existing customer or a newly created one.
+The customer object contains the email for the receipt. The receipt will only be sent once Stripe is set to live mode.
 
 The Stripe PaymentIntent is also created with a description of the ticket ordered and quantity. 
 
-When the stripe payment is completed, the return url is the create_order view. This confirms the payment intent and ensures it's not already been created. It then creates the order and the tickets associated with it.
+When the stripe payment is completed, the return URL is for the create_order view. This confirms the payment intent and ensures it has not already been created. It then creates the order and the tickets associated with it.
 
 Quantity, price and total price are added to the TicketOrder model. This is redundant information but is useful for debugging in future.
 If an order were to go wrong, you would have the quantity and price of the ticket at order creation.
-The order total also adds an extra level of redundancy incase a calculation went wrong. It ensures that this information will match up with stripe records in one way or another. Order total is also useful for auditing data or creating reports.
+The order total also adds a level of redundancy that can cover future mistakes or bugs. It ensures that the system's information will match up with the Stripe records in one way or another. Order total is also useful for auditing data or creating reports.
 
 # Security features
 
@@ -250,68 +250,68 @@ The order total also adds an extra level of redundancy incase a calculation went
 
 ### JavaScript validation using [JSHint](https://jshint.com/) and [JSLint](https://www.jslint.com/) 
 
-I will be ignorning errors relating to JQuery that JSLint produces.
+I will be dismissing JSLint errors relating to JQuery.
 
 <details>
 <summary>JavaScript validation results</summary>
 
-| JS filename              | Results         | App name     | Comments                          |
+| JS filename              | Results         | App name     | Comments                          |
 |--------------------------|-----------------|-------------|-----------------------------------|
-| scroll-events.js         | Passed          | events      |                                   |
-| management-detail.js     | Passed          | managemnet  |                                   |
-| sticky-django-messages.js| Passed          | Root        |                                   |
-| checkout.js              | Passed          | tickets     | I'm ignoring the line too long message for return_url. I've also not alphabeticalized the names of properties as the order makes logical sense.                 |
-| update-total-cost.js     | Passed          | tickets     |                                   |
+| scroll-events.js         | Passed          | events      |                                   |
+| management-detail.js     | Passed          | managemnet  |                                   |
+| sticky-django-messages.js| Passed          | Root        |                                   |
+| checkout.js              | Passed          | tickets     | I'm ignoring the line too long message for return_url. I've also not alphabetized the names of properties as the order makes logical sense.                 |
+| update-total-cost.js     | Passed          | tickets     |                                   |
 
 </details>
 
 ### CSS validation using [W3C Validation Service](https://jigsaw.w3.org/css-validator/)
 
-| CSS filename              | Results       | App name | Link to results                         |
+| CSS filename              | Results       | App name | Link to results                         |
 |---------------------------|---------------|----------|-----------------------------------------|
-| styles.css                 | Passed        | root     | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Fcss%2Fstyles.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) |
-| event-card-styles.css     | Passed        | events   | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Fevents%2Fcss%2Fevent-card-styles.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) |
-| event-styles.css     | Passed        | events   | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Fevents%2Fcss%2Fevent-styles.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) |
-| styles.css     | Passed        | management   | [View results](https://your-bright-times.s3.amazonaws.com/static/management/css/styles.css) |
-| styles.css     | Passed        | tickets   | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fstyles.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) |
-| checkout.css   | Passed       | tickets      | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fcheckout.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) |
-| checkout-success.css | Passed | tickets      | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fcheckout-success.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | 
-| user-tickets.css    | Passed | tickets      | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fuser-tickets.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)| 
+| styles.css                 | Passed        | root     | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Fcss%2Fstyles.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) |
+| event-card-styles.css     | Passed        | events   | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Fevents%2Fcss%2Fevent-card-styles.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) |
+| event-styles.css     | Passed        | events   | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Fevents%2Fcss%2Fevent-styles.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) |
+| styles.css     | Passed        | management   | [View results](https://your-bright-times.s3.amazonaws.com/static/management/css/styles.css) |
+| styles.css     | Passed        | tickets   | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fstyles.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) |
+| checkout.css   | Passed       | tickets      | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fcheckout.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) |
+| checkout-success.css | Passed | tickets      | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fcheckout-success.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) | 
+| user-tickets.css    | Passed | tickets      | [View results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyour-bright-times.s3.amazonaws.com%2Fstatic%2Ftickets%2Fcss%2Fuser-tickets.css&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)| 
 
 ### HTML validation using [W3C Validation Service](https://validator.w3.org/)
 
-| HTML filename       | Results       | App name | Comments     | Link to results                         |
+| HTML filename       | Results       | App name | Comments     | Link to results                         |
 |---------------------|---------------|----------|-----------------------------------------|--------------|
-| index.html          | Passed        | home     | No warnings  | [View results](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2F) |
-| base.html           | Passed        | root     | This is validated on every page as it's the base template. I had to add the nav background image as an inline style here to keep the image address dynamic. |
-| All toasts          | Passed        | root     | I have validation all toast.htmls through direct input ||
-| logout.html         | Passed        | allauth_override | | [View results](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Faccounts%2Flogout%2F)|
-| login.html          | Passed        | allauth_override | Have to be logged out. Originally got one error as the passwords aria-describedby ID didn't match up. This is because crispy forms changes the ID of helptext. I fixed this by overriding the form and updating the aria-describedby ID attribute. | [View results](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Faccounts%2Flogin%2F) |
-| signup.html        | Passed with 1 error        | allauth_override | Must be logged out. Fixed same aria-describedby error as login.html. There is 1 error because crispy_forms adds a ul as a child of a small element. | [View results](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Faccounts%2Fsignup%2F) |
-| email.html         | Passed        | allauth_override | This is allauth code but I removed the type="text/javascript" | Direct input |
-| events.html        | Passed        | events           | | [View results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Fevents%2F) |
-| event-card.html    | Passed        | events           | This is validated as it's apart of the events page | N/A
-| event-details.html | Passed        | events           || [View results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Fevents%2Fevent-details%2F1%2F0) |
-| choose-or-create-venue.html  | Passed        | events           || [View results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Fevents%2Fchoose-or-create-venue%2F) |
-| create-event.html  | Passed        | events           || Direct input |
-| base.html          | Passed        | events           | This is validated as it's part of all events pages| N/A|
-| base.html & detail-base.html & management-base.html | Passed | management | All validated as they're are the base for the respective management pages | N/A |
+| index.html          | Passed        | home     | No warnings  | [View results](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2F) |
+| base.html           | Passed        | root     | This is validated on every page as it's the base template. I had to add the nav background image as an inline style here to keep the image address dynamic. |
+| All toasts          | Passed        | root     | I have validated all the HTML files under the toast directory through direct input ||
+| logout.html         | Passed        | allauth_override | | [View results](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Faccounts%2Flogout%2F)|
+| login.html          | Passed        | allauth_override | Have to be logged out. Originally got one error as the passwords aria-describedby ID didn't match up. This is because crispy forms change the ID of helptext. I fixed this by overriding the form and updating the aria-describedby ID attribute. | [View results](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Faccounts%2Flogin%2F) |
+| signup.html        | Passed with 1 error        | allauth_override | Must be logged out. Fixed the same aria-describedby error as login.html. There is 1 error because crispy_forms adds a ul as a child of a small element. | [View results](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Faccounts%2Fsignup%2F) |
+| email.html         | Passed        | allauth_override | This is allauth code but I removed the type="text/javascript" | Direct input |
+| events.html        | Passed        | events           | | [View results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Fevents%2F) |
+| event-card.html    | Passed        | events           | This is validated as it's apart of the events page | N/A
+| event-details.html | Passed        | events           || [View results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Fevents%2Fevent-details%2F1%2F0) |
+| choose-or-create-venue.html  | Passed        | events           || [View results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Fevents%2Fchoose-or-create-venue%2F) |
+| create-event.html  | Passed        | events           || Direct input |
+| base.html          | Passed        | events           | This is validated as it's part of all events pages| N/A|
+| base.html & detail-base.html & management-base.html | Passed | management | All validated as they are the base for the respective management pages | N/A |
 | event-management.html | Passed | management | | [View results](docs/validation/html/event-management.webp) |
 | event-detail.html | Passed | management | Had to update forms.py and management-detail.js to stop adding readonly to file input fields | [View results](docs/validation/html/event-management-detail.webp) |
 | venue-management.html | Passed | management | Had to remove scope="row" | [View results](docs/validation/html/venue-management.webp) |
 | venue-detail.html | Passed | management || [View results](docs/validation/html/venue-management-detail.webp) |
 | venue-manager-admin.html | Passed | management || [View results](docs/validation/html/venue-manager-admin.webp) |
 | venue-manager-detail.html | Passed | management || [View results](docs/validation/html/venue-manager-detail.webp) |
-| delete-confirmation.html | Passed   | allauth_override | This is validated with the management templates ||
+| delete-confirmation.html | Passed   | allauth_override | This is validated with the management templates ||
 | buy-ticket.html | Passed | tickets || [View results](docs/validation/html/buy-ticket.webp) |
 | checkout.html | Passed apart from Stripe.js HTML errors | tickets || [View results](docs/validation/html/checkout.webp) |
 | checkout-success.html | Passed | tickets || [View results](docs/validation/html/checkout-success.webp) |
 | user-tickets.html | Passed | tickets || [View results](docs/validation/html/user-tickets.webp) |
-| profile.html      | Passed | user-profile || [View results](docs/validation/html/user-profile.webp) |
+| profile.html      | Passed | user-profile || [View results](docs/validation/html/user-profile.webp) |
 
 ### Python validation
 
-* I used the extension Flake8 to constatantly validate my Python code to PEP8 standards.
+* I used the extension Flake8 to persistently validate my Python code to PEP8 standards.
 * I used autoPEP8 to automatically format files.
 * I added "editor.rulers": [79]," to vscode's settings.json file. This displayed a ruler line where the character limit hit 79 characters.
 
@@ -326,15 +326,15 @@ It's especially important to have a test-driven approach when creating automatic
 **Events**
 
 I tested:
-* User can create event.
+* User can create an Event.
 * Access to event creation page.
-* Unauthorized access to event page.
-* Whether user is redirected to login page
+* Unauthorized access to the Event page.
+* Whether the user is redirected to the login page
 
 **Venues**
 
 I tested:
-* User can create venue.
+* User can create a Venue.
 * That a venue manager is created with a venue when created by a regular user.
 * Venue manager is created with a venue when created by an admin.
 
@@ -342,16 +342,16 @@ I tested:
 
 ### Test plan
 
-I have continually tested new features and repeatadly attempted to think of ways I can break them after implementation. I've especially tested responsiveness as it's important that a webpage looks great on all devices.
+I have continually tested new features and repeatedly attempted to think of ways I can break them after implementation. I've especially tested responsiveness as a webpage must look great on all devices.
 
 The first part of manual testing will be testing the user stories. This ensures that the essential functionality works how it is intended for the user.
-I also worked off of user stories while developing the project. This means that testing them covers a large portion of the functionality behind the project.  
+I also worked off of user stories while developing the project. This means that testing them covers a large portion of the functionality behind the project.  
 
 ### Testing user stories
 
 ### Testing security
 
-* I ensured that a logged in user can't access the login, signup or register pages.
+* I ensured that a logged-in user can't access the login, signup or register pages.
 
 ## Verifying input/output
 
@@ -359,18 +359,18 @@ I also worked off of user stories while developing the project. This means that 
 
 #### Google lighthouse
 
-I have added Google Fonts font-faces to the end of my main styles.css file. This avoids having to make an additional request to Google APIs which improves performance. It saved approxametly 800ms according to Google Lighthouse, and eliminated it as a seperate render blocking resource.
+I have added Google Fonts font-faces to the end of my main styles.css file. This avoids having to make an additional request to Google APIs which improves performance. It saved approximately 800ms according to Google Lighthouse and eliminated it as a separate render-blocking resource.
 
-I created 2 additional versions of the nav background image. I then set the srcset attribute, of the image tag, so that the image will be selected based on viewport width. This greatly improves performance on mobile devices which is imperative for a mobile-first approach.
+I created 2 additional versions of the nav background image. I then set the srcset attribute, of the image tag, so that the image will be selected based on the viewport width. This greatly improves performance on mobile devices which is imperative for a mobile-first approach.
 
-Google lighthouse covers the majority of the performance testing objectives as it gives a helpful insight into what can be made more efficient.
+Google Lighthouse covers the majority of the performance testing objectives as it gives a helpful insight into what can be made more efficient.
 
 Future improvements:
 * Adding an image processor for uploaded images.
-    * This could process images into a next gen format such as webp.
-    * Could carefully resize and adjust quality of images.
-    * Enable the site to have a smaller version of the image for when the bigger version isn't needed.
-        * This would increase the storage used but vastly improve performance while maintaining quality.
+  * This could process images into a next-gen format such as webp.
+  * Could carefully resize and adjust the quality of images.
+  * Enable the site to have a smaller version of the image for when the bigger version isn't needed.
+    * This would increase the storage used but vastly improve performance while maintaining quality.
 
 **Homepage**
 
@@ -381,15 +381,15 @@ Future improvements:
 * I added aria-labels to the stretched links as they had no discernible name.
 * Changed the event card button's IDs to classes.
 * Increased event-card_details font for legibility.
-* Added a higher resolution image to the logo img srcset.
+* Added a higher resolution image to the logo img tag srcset.
 
 **Events**
 
-* Due to the lack of a h2 heading in events, I've changed the event cards title from a h3 to a h2. This ensures a heading isn't skipped which may confuse users using a screenreader.
+* Due to the lack of an h2 heading in events, I've changed the event card's title from a h3 to a h2. This ensures a heading isn't skipped which may confuse users using a screenreader.
 
 As expected, the more images are present the lower the performance. Processing the images would help solve this problem.
 
-**Choose or create venue**
+**Choose or create a venue**
 
 [Mobile results](docs/google-lighthouse/choose-or-create-venue-mobile.webp)
 
@@ -437,15 +437,15 @@ As expected, the more images are present the lower the performance. Processing t
 
 # Bug fixes
 
-* Cripsy forms returns error "too many values to unpack (expected 2)"
+* Crispy forms returns the error "too many values to unpack (expected 2)"
   * [https://stackoverflow.com/questions/37244808/valueerror-too-many-values-to-unpack-expected-2-in-django](Make choices a tuple of 2)
 
 # Known bugs
 
-* Quantity button on buy ticket page flickers when you go under 1 or over 10 (using the up/down arrows).
-    * This is to allow the JavaScript validation to show the error message.
-    * I originally had the min/max values set but this would mean the validation message wasn't triggered.
-    * Besides, I believe the flickering back to a valid number enforces the validation further.
+* The Quantity button on the buy ticket page flickers when you go under 1 or over 10 (using the up/down arrows).
+  * This is to allow the JavaScript validation to show the error message.
+  * I originally had the min/max values set but this would mean the validation message wasn't triggered.
+  * Besides, I believe the flickering back to a valid number enforces the validation further.
 
 # Credits
 
@@ -455,9 +455,9 @@ As expected, the more images are present the lower the performance. Processing t
 * Calendar icon from [fontawesome](https://fontawesome.com/icons/calendar?f=classic&s=regular)
 * Venue icon from [thenounproject by Vicons Design](https://thenounproject.com/icon/venue-79187/)
 * Sun icon from [freepik by Muzammal Hussain](https://www.freepik.com/icon/sun_13443601#fromView=search&page=1&position=28&uuid=c73706b9-c633-4704-9131-5ffd741c6e21)
-    * I created the favicon in paint.NET using this icon
+  * I created the favicon in paint.NET using this icon
 * Logo I created in paint.NET
-    * Flower from [Flaticon by Smashicons](https://www.flaticon.com/free-icon/flower_7505284?k=1714666228883&log-in=google)
+  * Flower from [Flaticon by Smashicons](https://www.flaticon.com/free-icon/flower_7505284?k=1714666228883&log-in=google)
 * Nav background from [pixabay by StockSnap](https://pixabay.com/photos/people-crowd-audience-party-colors-2608316/)
 
 ## Code
@@ -469,5 +469,4 @@ As expected, the more images are present the lower the performance. Processing t
 
 ## GitHub
 
-* How to use GitHub roadmap from [GitHub docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-roadmap-layout)stripe console erro "
-* 
+* How to use GitHub roadmap from [GitHub docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-roadmap-layout) 
