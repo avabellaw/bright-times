@@ -338,13 +338,32 @@ I tested:
 * That a venue manager is created with a venue when created by a regular user.
 * Venue manager is created with a venue when created by an admin.
 
-## Further testing
+## Manual testing
 
-### Google lighthouse
+### Test plan
+
+I have continually tested new features and repeatadly attempted to think of ways I can break them after implementation. I've especially tested responsiveness as it's important that a webpage looks great on all devices.
+
+The first part of manual testing will be testing the user stories. This ensures that the essential functionality works how it is intended for the user.
+I also worked off of user stories while developing the project. This means that testing them covers a large portion of the functionality behind the project.  
+
+### Testing user stories
+
+### Testing security
+
+* I ensured that a logged in user can't access the login, signup or register pages.
+
+## Verifying input/output
+
+### Further testing
+
+#### Google lighthouse
 
 I have added Google Fonts font-faces to the end of my main styles.css file. This avoids having to make an additional request to Google APIs which improves performance. It saved approxametly 800ms according to Google Lighthouse, and eliminated it as a seperate render blocking resource.
 
 I created 2 additional versions of the nav background image. I then set the srcset attribute, of the image tag, so that the image will be selected based on viewport width. This greatly improves performance on mobile devices which is imperative for a mobile-first approach.
+
+Google lighthouse covers the majority of the performance testing objectives as it gives a helpful insight into what can be made more efficient.
 
 Future improvements:
 * Adding an image processor for uploaded images.
