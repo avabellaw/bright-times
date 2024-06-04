@@ -195,17 +195,18 @@ if not DEVELOPMENT:
 # Add CSP policy
 BOOTSTRAP_URL = "cdn.jsdelivr.net"
 JQUERY_URL = "code.jquery.com"
-CSP_DEFAULT_SRC = ("'self'", "fonts.gstatic.com")
+STRIPE_URL = "https://js.stripe.com/v3/"
+CSP_DEFAULT_SRC = ("'self'", "fonts.gstatic.com", STRIPE_URL)
 if not DEVELOPMENT:
     CSP_SCRIPT_SRC = ("'self'", "cdnjs.cloudflare.com", "ajax.googleapis.com",
-                      "'unsafe-inline'", BOOTSTRAP_URL, JQUERY_URL, STATIC_URL,
+                      "'unsafe-inline'", STRIPE_URL, BOOTSTRAP_URL, JQUERY_URL, STATIC_URL,
                       MEDIA_URL)
     CSP_IMG_SRC = ("'self'", "www.w3.org", "data:", STATIC_URL, MEDIA_URL)
     CSP_STYLE_SRC = ("'self'", "fonts.googleapis.com", "cdnjs.cloudflare.com",
                      BOOTSTRAP_URL, "'unsafe-inline'", STATIC_URL, MEDIA_URL)
 else:
     CSP_SCRIPT_SRC = ("'self'", "cdnjs.cloudflare.com", "ajax.googleapis.com",
-                      "'unsafe-inline'", BOOTSTRAP_URL, JQUERY_URL)
+                      "'unsafe-inline'", STRIPE_URL, BOOTSTRAP_URL, JQUERY_URL)
     CSP_IMG_SRC = ("'self'", "www.w3.org", "data:")
     CSP_STYLE_SRC = ("'self'", "fonts.googleapis.com", "cdnjs.cloudflare.com",
                      BOOTSTRAP_URL, "'unsafe-inline'")
