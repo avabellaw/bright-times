@@ -198,7 +198,8 @@ JQUERY_URL = "code.jquery.com"
 CSP_DEFAULT_SRC = ("'self'", "fonts.gstatic.com")
 if not DEVELOPMENT:
     CSP_SCRIPT_SRC = ("'self'", "cdnjs.cloudflare.com", "ajax.googleapis.com",
-                      "'unsafe-inline'", BOOTSTRAP_URL, JQUERY_URL, STATIC_URL, MEDIA_URL)
+                      "'unsafe-inline'", BOOTSTRAP_URL, JQUERY_URL, STATIC_URL,
+                      MEDIA_URL)
     CSP_IMG_SRC = ("'self'", "www.w3.org", "data:", STATIC_URL, MEDIA_URL)
     CSP_STYLE_SRC = ("'self'", "fonts.googleapis.com", "cdnjs.cloudflare.com",
                      BOOTSTRAP_URL, "'unsafe-inline'", STATIC_URL, MEDIA_URL)
@@ -214,16 +215,20 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation\
+            .UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation\
+            .MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation\
+            .CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation\
+            .NumericPasswordValidator',
     },
 ]
 
