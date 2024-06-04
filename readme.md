@@ -4,7 +4,7 @@ Bright Times is a platform for exploring and keeping up-to-date on new and upcom
 
 This project demonstrates my ability to create a full-stack application with eCommerce functionality. It uses the Django framework along with HTML5, CSS3, JavaScript and of course Python. I also use SQL to manage the database.
 
-[View the live project here]()
+[View the live project here](https://your-bright-times-547094b0ac48.herokuapp.com/)
 
 ![]()
 
