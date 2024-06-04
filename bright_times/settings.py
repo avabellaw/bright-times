@@ -197,16 +197,16 @@ BOOTSTRAP_URL = "cdn.jsdelivr.net"
 JQUERY_URL = "code.jquery.com"
 CSP_DEFAULT_SRC = ("'self'", "fonts.gstatic.com")
 if not DEVELOPMENT:
-    CSP_SCRIPT_SRC = ("'self'", "cdnjs.cloudflare.com", "ajax.googleapis.com", "'unsafe-inline'",
-                      BOOTSTRAP_URL, JQUERY_URL, STATIC_URL, MEDIA_URL)
+    CSP_SCRIPT_SRC = ("'self'", "cdnjs.cloudflare.com", "ajax.googleapis.com",
+                      "'unsafe-inline'", BOOTSTRAP_URL, JQUERY_URL, STATIC_URL, MEDIA_URL)
     CSP_IMG_SRC = ("'self'", "www.w3.org", "data:", STATIC_URL, MEDIA_URL)
-    CSP_STYLE_SRC = ("'self'", "fonts.googleapis.com",
+    CSP_STYLE_SRC = ("'self'", "fonts.googleapis.com", "cdnjs.cloudflare.com",
                      BOOTSTRAP_URL, "'unsafe-inline'", STATIC_URL, MEDIA_URL)
 else:
-    CSP_SCRIPT_SRC = ("'self'", "cdnjs.cloudflare.com", "ajax.googleapis.com", "'unsafe-inline'",
-                      BOOTSTRAP_URL, JQUERY_URL)
+    CSP_SCRIPT_SRC = ("'self'", "cdnjs.cloudflare.com", "ajax.googleapis.com",
+                      "'unsafe-inline'", BOOTSTRAP_URL, JQUERY_URL)
     CSP_IMG_SRC = ("'self'", "www.w3.org", "data:")
-    CSP_STYLE_SRC = ("'self'", "fonts.googleapis.com",
+    CSP_STYLE_SRC = ("'self'", "fonts.googleapis.com", "cdnjs.cloudflare.com",
                      BOOTSTRAP_URL, "'unsafe-inline'")
 
 # Password validation
