@@ -137,7 +137,10 @@
 
 /* Event scrolling */
 
-.scroll-container.hide 
+.scroll-control-container.hide,
+.scroll-control-container.hide .scroll-control {
+    display: none;
+}
 
 .col.scroll-control-container {
     display: flex;

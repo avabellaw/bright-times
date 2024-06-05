@@ -49,6 +49,7 @@
             margin-bottom: 2em;
             background: linear-gradient(50deg, var(--primary-colour), #ffffff00);
             position: relative;
+            padding: 0.4em 0;
         }
 
         .navbar-brand >img {
