@@ -31,7 +31,7 @@
                       enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ event_form|crispy }}
-                    <button class="btn btn-dark" type="submit">Create Event</button>
+                    <button id="submit-btn" class="btn btn-dark" type="submit">Create Event</button>
                 </form>
             </div>
         </div>
