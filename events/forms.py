@@ -31,6 +31,22 @@ class EventForm(forms.ModelForm, FormUtilsMixin):
                 attrs=datetime_attributes),
         }
 
+    def clean(self):
+        super().clean()
+        start_date = self.cleaned_data.get("start_date_time")
+        end_date = self.cleaned_data.get("end_date_time")
+        ticket_end_date = self.cleaned_data.get("ticket_end_date_time")
+
+        if start_date > end_date:
+            self.add_error("end_date_time", "End date must be after the\
+                    start date")
+
+        if ticket_end_date > start_date:
+            self.add_error("ticket_end_date_time", "Ticket end date must be\
+                before or equal to the start date")
+
+        return self.cleaned_data
+
 
 class VenueForm(forms.ModelForm, FormUtilsMixin):
     class Meta():
