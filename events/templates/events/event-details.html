@@ -1,5 +1,6 @@
 {% extends 'events/base.html' %}
 {% load static %}
+{% load management %}
 
 {% block title %}BrightTimes - {{ event.name }}{% endblock %}
 
@@ -26,6 +27,15 @@
                     <header>
                         <h1>{{ event.name }}</h1>
                         <h2 class="text-muted">Hosted at {{ event.venue.name }}</h2>
+                        {% if user.is_authenticated %}
+                            {% manager_role event.venue.id request.user.id as role %}
+                            {% if role != None %}
+                                <h3 id="venue-manager-message">You are a venue manager ({{ role }})</h3>
+                                {% if role == 'OWNER' or role == 'MANAGER' %}
+                                    <a href="{% url 'event-management-detail' event.id %}" class="btn" id="venue-manager-btn">Edit event</a>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
                         <p id="event-desc">{{ event.desc }}</p>
                     </header>
                     <section>

@@ -90,6 +90,14 @@ article#event-details > section {
     }
 }
 
+#venue-manager-message {
+    color: #7102a0;
+}
+#venue-manager-btn {
+    background-color: #7102a0;
+    color: white;
+}
+
 a.buy-tickets {
     /* Position buy tickets link above .stretched-link (event details) */
     z-index: 11;
