@@ -101,11 +101,11 @@ Bright Times will be an event directory where users can find events and pay for 
 * Gain commission from ticket sales.
 * Spread awareness of events.
 
-### Research
+#### Research
 
 [Research conducted for this project can be found here](docs/research/Research.md)
 
-## Scope Plane
+### Scope Plane
 
 Features to include:
 * Login functionality - provided by alluth.
@@ -120,7 +120,7 @@ Possible features to include:
 Future features:
 * Recurring events.
 
-### User stories
+#### User stories
 
 <!-- Turn this into a table -->
 1   User    I want to see events    Find one I like and buy a ticket
@@ -132,7 +132,7 @@ Future features:
 7   Venue manager   I want to see how many people are signed up To know how many people are coming
 8   Venue manager   I want to edit my venue and event details   To keep them up-to-date
 
-## Structure plane
+### Structure plane
 
 I will include the following pages:
 * Homepage
@@ -141,30 +141,30 @@ I will include the following pages:
 
 Under the header, there will be hierarchical navigation.
 
-### Data model
+#### Data model
 
 You can view my [Entity Relationship diagram on lucid chart here](https://lucid.app/lucidchart/f61018a0-575d-4ff6-9d12-8b56e48e9e94/edit?viewport_loc=-529%2C-519%2C2828%2C1231%2C0_0&invitationId=inv_a3700010-1732-4eac-8bfb-6a86e7ff4a7a)
 
-#### User and User Profile
+##### User and User Profile
 
 These two models have a one-to-one relationship. A user profile model instance is created when a user is created. This is done using a signal on post_save.
 
 A user profile contains the first name, last name and Stripe customer ID of a user. This information is saved when it is inputted to create a ticket order.
 The first and last names can also be added beforehand.
 
-#### Venue and Address
+##### Venue and Address
 
 A venue is managed by the user who created it. Upon creation, the user is added with the venue ID to a new venue manager instance.
 
 Venue contains an Address foreign key.
 I decided to separate the address from the Venue to better organise the data. I considered a one-to-one relationship, however, a one-to-many relationship would enable a different venue under the same address to use the existing address record. Therefore, it allows for the future introduction of this feature. While acknowledging that this is a rare case, this would avoid duplicate address records.
 
-#### Venue Manager
+##### Venue Manager
 
 Django doesn't support composite primary keys so the junction table VenueManager still has a primary key. I have set the meta so that the combination of User ID and Venue ID is unique. The primary key will be useful for indexing in future anyway.
 This will allow me to filter by userID and VenueID and get a result as if using a composite ID.
 
-#### Event
+##### Event
 
 An event contains the foreign keys to a:
 * Venue
@@ -184,12 +184,12 @@ An event also contains the fields:
 * Ticket end date/time - Datetime that the sale of tickets end
 * Start and end date/time - One field for the start date/time and one for the end date/time 
 
-#### Ticket
+##### Ticket
 
 A ticket is a junction table between an event and a user.
 It also contains the foreign key of a ticket order. Multiple tickets can be created under one order.
 
-#### Ticket Order
+##### Ticket Order
 
 * Ticket order has its primary key as a UUID. 
   * This makes guessing the checkout-success page URL practically impossible. 
@@ -208,13 +208,13 @@ It also contains the foreign key of a ticket order. Multiple tickets can be crea
   * This will allow the user to add images and style their text.
 
 
-## Skeleton plane
+### Skeleton plane
 
 I decided to not separate Venue into its own app. This may be required in future if the Venue model becomes more complex. A venue is used to create an event.
 
 A ticket is a simple model linking an event with a user. I have decided not to separate this either.
 
-## Surface plane
+### Surface plane
 
 I wanted to use a bright colour. Either yellow/orange to represent the sun or a calm blue to represent trust. 
 
@@ -222,6 +222,12 @@ I wanted to use a bright colour. Either yellow/orange to represent the sun or a 
 "Yellow. Bright and sunny, yellow is the color of optimism.
 Green. This is the color of growth and health.
 Blue. The color of trust, blue conveys tranquillity, serenity, and peace."
+
+### Future improvements
+
+* The datetime picker in event creation
+  * A range picker for start and end event datetimes.
+  * A better validation message than an alert if the datetimes are set.
 
 # Stripe payments
 
@@ -243,6 +249,7 @@ The order total also adds a level of redundancy that can cover future mistakes o
 # Security features
 
 * I have added a CSP policy to help protect against cross-site scripting attacks using django-csp.
+* All passwords are stored in the databse as their hashed versions.
 
 # Testing
 
@@ -440,12 +447,23 @@ As expected, the more images are present the lower the performance. Processing t
 * Crispy forms returns the error "too many values to unpack (expected 2)"
   * [https://stackoverflow.com/questions/37244808/valueerror-too-many-values-to-unpack-expected-2-in-django](Make choices a tuple of 2)
 
-# Known bugs
+# Known issues/bugs
 
 * The Quantity button on the buy ticket page flickers when you go under 1 or over 10 (using the up/down arrows).
   * This is to allow the JavaScript validation to show the error message.
   * I originally had the min/max values set but this would mean the validation message wasn't triggered.
   * Besides, I believe the flickering back to a valid number enforces the validation further.
+* Needs redirect after user email confirmation.
+  * If the user gets the page asking you to confirm there email, then opens the link elsewhere, this page won't be updated.
+  * You can click the back button to get back to the prevous page.
+  * Could add a link on the confirmation page that redirects back to the previous page.
+* Arrows on the homepage events scroll should be hidden if there aren't enough events.
+  * In theory, there should be enough events for this to not be a problem in production.
+  * But in case there is, the .hide class should be applied to the scroll-control-container.
+    * This would be based on the viewport width.
+    * Could also fire an even when the event-cards-scroll container changes size. It can then check if the scrollHeight is greater than the clientHeight and then apply the hide class when necessary.
+* The event and venue management systems are under the profile navigation items.
+  * This may cause confusion when the user tries to edit an event/venue directly on event/venue details.
 
 # Credits
 
