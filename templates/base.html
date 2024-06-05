@@ -75,7 +75,9 @@
                                         </li>
                                         <li class="nav-item {% if user.is_authenticated %}dropdown{% endif %}">
                                             {% if not user.is_authenticated %}
+                                            {% if request.resolver_match.url_name != 'account_login' and request.resolver_match.url_name != 'account_signup' %}
                                                 <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                                            {% endif %}
                                             {% else %}
                                                 <div class="account-dropdown-container">
                                                     <div class="img-container">
