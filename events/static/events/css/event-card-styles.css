@@ -137,6 +137,8 @@
 
 /* Event scrolling */
 
+.scroll-container.hide 
+
 .col.scroll-control-container {
     display: flex;
     position: relative;
