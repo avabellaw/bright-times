@@ -14,7 +14,7 @@
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-        font-size: calc(.65rem + 0.3vw + 0.25vh);
+        font-size: calc(.65rem + 0.45vw + 0.25vh);
     }
     
     .container_fit-content {
@@ -155,6 +155,15 @@
 
     main {
         margin-bottom: 2em;
+    }
+
+    .form {
+        font-size: 1.2em;
+    }
+
+    .form label {
+        margin-top: 0.5em;
+        margin-bottom: 0.6em;
     }
 
 /* End General styles */

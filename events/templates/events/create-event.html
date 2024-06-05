@@ -1,5 +1,6 @@
 {% extends 'events/base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block additional_css %}
     {{ block.super }}
@@ -26,6 +27,7 @@
                 <h2>Venue: {{ venue.name }}</h2>
                 <form action="{% url 'create-event' venue.id %}"
                       method="post"
+                      class="form"
                       enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ event_form|crispy }}
@@ -39,10 +41,5 @@
 {% block js %}
     {{ block.super }}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
-    <script >$(".datetimepicker").datetimepicker({
-        inline:true,
-        step:15,
-        format:'Y-m-d H:i',
-    });
-    </script>
+    <script src="{% static 'events/js/datetimepicker.js' %}"></script>
 {% endblock %}

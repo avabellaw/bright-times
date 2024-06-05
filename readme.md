@@ -460,6 +460,11 @@ As expected, the more images are present the lower the performance. Processing t
   * Flower from [Flaticon by Smashicons](https://www.flaticon.com/free-icon/flower_7505284?k=1714666228883&log-in=google)
 * Nav background from [pixabay by StockSnap](https://pixabay.com/photos/people-crowd-audience-party-colors-2608316/)
 
+### Live site event images
+
+* Live music from [pexels by Chris F](https://www.pexels.com/photo/assorted-wine-bottles-1283219/)
+* Isle house from [pexels by David Bash](https://www.pexels.com/photo/white-and-black-concrete-house-969260/)
+
 ## Code
 
 * Test a view from [docs.djangoproject](https://docs.djangoproject.com/en/5.0/intro/tutorial05/#test-a-view)

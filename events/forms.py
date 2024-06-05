@@ -19,7 +19,7 @@ class FormUtilsMixin():
 class EventForm(forms.ModelForm, FormUtilsMixin):
     class Meta():
         model = Event
-        exclude = ['venue', 'created_by_venue_manager']
+        fields = ['name', 'desc', 'about', 'price', 'image', 'start_date_time', 'end_date_time', 'ticket_end_date_time']
 
         datetime_attributes = {'type': 'datetime-local',
                                'class': 'datetimepicker'}
