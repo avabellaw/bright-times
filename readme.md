@@ -113,12 +113,11 @@ Features to include:
 * Users will be able to view their tickets.
 * Users will be able to browse events, they will also be able to browse by location.
 
-Possible features to include:
-* Notify users of upcoming events by email.
-* Ability to subscribe to a reminder of an event.
-
 Future features:
 * Recurring events.
+* Notify users of upcoming events by email.
+* Ability to subscribe to a reminder of an event.
+* The ability to search events.
 
 #### User stories
 
@@ -238,6 +237,8 @@ This helps me track what needs to be done and add any bugs that I notice to be a
 [You can view this by clicking here](https://github.com/avabellaw/bright-times/issues)
 
 # Stripe payments
+
+**The confirmation of payment email is only sent when using a live stripe key**
 
 I followed the Stripe documentation and a guide by testdriven as [mentioned in the code credits](#Code).
 
