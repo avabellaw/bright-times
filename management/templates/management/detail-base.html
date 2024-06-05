@@ -16,6 +16,8 @@
             <div class="col">
                 <form action="{% block form_action %}{% endblock%}" id="detail-form" method="post">
                     {% csrf_token %}
+                    
+                    {% block additional_content %}{% endblock %}
 
                     <div id="form-items">
                         {% block form_items %}{% endblock %}

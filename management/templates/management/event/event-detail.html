@@ -7,6 +7,10 @@
     {% url 'event-management-detail' event.id %}
 {% endblock %}
 
+{% block additional_content %}
+    <a href="{% url 'event-details' event.id %}"><p class="text-center">View event: {{ event.name }}</p></a>
+{% endblock %}
+
 {% block form_items %}
     {{ event_form|crispy }}
     {{ address_form|crispy }}

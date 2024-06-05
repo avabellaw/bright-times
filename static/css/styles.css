@@ -167,6 +167,10 @@
         margin-bottom: 0.6em;
     }
 
+    a.btn, button.btn {
+        font-size: 1.2rem;
+    }
+
 /* End General styles */
 
 /* Allauth */
