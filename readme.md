@@ -229,6 +229,14 @@ Blue. The color of trust, blue conveys tranquillity, serenity, and peace."
   * A range picker for start and end event datetimes.
   * A better validation message than an alert if the datetimes are set.
 
+# GitHub issues/project tab
+
+I have added features that need to be implemented into the GitHub issues section on GitHub.
+
+This helps me track what needs to be done and add any bugs that I notice to be actioned later.
+
+[You can view this by clicking here](https://github.com/avabellaw/bright-times/issues)
+
 # Stripe payments
 
 I followed the Stripe documentation and a guide by testdriven as [mentioned in the code credits](#Code).
@@ -464,6 +472,101 @@ As expected, the more images are present the lower the performance. Processing t
     * Could also fire an even when the event-cards-scroll container changes size. It can then check if the scrollHeight is greater than the clientHeight and then apply the hide class when necessary.
 * The event and venue management systems are under the profile navigation items.
   * This may cause confusion when the user tries to edit an event/venue directly on event/venue details.
+
+### Deployment
+
+#### Preparing for production
+
+You will need to reach out to companies or advertise on social media to attract people that may want to host their events on your website.
+
+**AWS S3 bucket**
+_The project is currently configured to use an AWS general purpose bucket. The configuration could be updated to use a different service provider_
+
+This is required to hold the static and media files.
+It will need:
+* To have public read access
+* A user group with the appropiate permissions. Remember to give the least amount of access required.
+* A user for the user group that will be assigned to the bucket.
+
+You will also need to add the CORS configuration to the AWS bucket.
+
+Lastly, you will need a Postgres database for Django to use. Once one has been created, you can add the database url to the project enviroment variables.
+
+#### Deployment dependencies 
+
+To deploy to Heroku, a Procfile and requirements.txt file is needed.
+
+**Procfile** 
+* Tells Heroku how to run the app.
+* It contains "web: python run.py"
+
+**requirements.txt**
+* lists the dependencies needed to be installed by Heroku for the project.
+* Generate this file by running "pip freeze --local > requirements.txt"
+* Install the project's packages in a virtual Python environment. This will mean your requirements file only has the project's dependencies.
+	* It is best practice to do this for all projects.
+
+I have kept both these files **only** on the production branch. Both branches are identical apart from these two files.
+
+#### Heroku
+
+I deployed to Heroku using the following steps:
+
+1. Create a production branch based on "main". The main branch will be merged into this branch to deploy to production.
+2. On the production branch, run "pip freeze --local > requirements.txt" to create the requirements file.
+3. On the production branch, add a UTF-8 encoded file, named "Procfile" with no extension.
+    * Enter "web: python run.py" into the Procfile
+4. On Heroku, add a new project.
+5. Within the new project, go to the "Deploy" tab. 
+6. Choose "GitHub" and connect the repo containing the project. Set the branch to "production".
+7. Add all the environment variables.
+    * ALLOWED_HOST - The domain name the project is on.
+    * AWS_ACCESS_KEY_ID
+    * AWS_SECRET_ACCESS_KEY
+    * DATABASE_URL - The postgres database url created earlier.
+    * DJANGO_SECRET_KEY - Make sure this is unique and not from a development instance.
+    * EMAIL_HOST_FROM_EMAIL - The host email that django will send emails from.
+    * EMAIL_HOST_PASSWORD - The host email's password.
+    * STRIPE_PUB_KEY
+    * STRIPE_SECRET_KEY
+8. Under "More" in the top-right, click "Run Console".
+9. Enter "python manage.py migrate".
+10. This will apply all the database migrations based on the migration files.
+11. Click "Open App" to view the deployed project.
+
+#### Forking the GitHub Repository
+
+By forking the GitHub Repository we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository.
+
+1. Log in to GitHub and locate the GitHub Repository.
+2. At the top of the Repository just above the "Settings" Button on the menu, locate the "Fork" Button.
+3. You should now have a copy of the original repository in your GitHub account.
+
+#### Making a Local Clone
+
+1. Log in to GitHub and locate the GitHub Repository.
+2. Under the repository name, click "Clone or download".
+3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
+4. Open Git Bash.
+5. Change the current working directory to the location where you want the cloned directory to be made.
+6. Type `git clone`, and then paste the URL you copied in Step 3.
+
+```
+$ git clone https://github.com/avabellaw/bright-times
+```
+
+7. Press Enter. Your local clone will be created.
+
+```
+$ git clone https://github.com/avabellaw/bright-times
+> Cloning into `CI-Clone`...
+> remote: Counting objects: 10, done.
+> remote: Compressing objects: 100% (8/8), done.
+> remove: Total 10 (delta 1), reused 10 (delta 1)
+> Unpacking objects: 100% (10/10), done.
+```
+
+[Click Here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) to retrieve pictures for some of the buttons and more detailed explanations of the above process.
 
 # Credits
 
