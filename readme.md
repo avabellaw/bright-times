@@ -6,7 +6,7 @@ This project demonstrates my ability to create a full-stack application with eCo
 
 [View the live project here](https://your-bright-times-547094b0ac48.herokuapp.com/)
 
-![]()
+![Multi device website presentation](docs/multi-device-presentation.webp)
 
 ## Technologies used
 
