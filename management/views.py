@@ -15,6 +15,23 @@ from .templatetags import management
 ToastMessage = settings.TOAST_MESSAGE
 
 
+class Breadcrumbs:
+    @staticmethod
+    def venue_management():
+        return [{'name': 'Venue management',
+                'url': reverse('venue-management')}]
+
+    @staticmethod
+    def event_management():
+        return [{'name': 'Event management',
+                'url': reverse('event-management')}]
+
+    @staticmethod
+    def venue_manager_admin():
+        return [{'name': 'Venue manager admin',
+                'url': reverse('venue-manager-admin')}]
+
+
 # Venue management views
 
 @login_required_message
@@ -24,8 +41,11 @@ def venue_management(request):
 
     template = 'management/venue/venue-management.html'
 
+    breadcrumbs = Breadcrumbs.venue_management()
+
     context = {
         'venues': venues,
+        'breadcrumbs': breadcrumbs,
     }
 
     return render(request, template, context)
@@ -59,11 +79,13 @@ def venue_detail(request, venue_id):
 
     template = 'management/venue/venue-detail.html'
 
+    breadcrumbs = Breadcrumbs.venue_management() + [{'name': venue.name}]
+
     context = {
         'venue': venue,
         'venue_form': venue_form,
         'address_form': address_form,
-        'breadcrumbs': [{'name': venue.name}],
+        'breadcrumbs': breadcrumbs,
         'delete_url': delete_url,
     }
 
@@ -91,8 +113,11 @@ def event_management(request):
 
     template = 'management/event/event-management.html'
 
+    breadcrumbs = Breadcrumbs.event_management()
+
     context = {
         'events': events,
+        'breadcrumbs': breadcrumbs
     }
 
     return render(request, template, context)
@@ -119,10 +144,12 @@ def event_detail(request, event_id):
 
     template = 'management/event/event-detail.html'
 
+    breadcrumbs = Breadcrumbs.event_management() + [{'name': event.name}]
+
     context = {
         'event': event,
         'event_form': event_form,
-        'breadcrumbs': [{'name': event.name}],
+        'breadcrumbs': breadcrumbs,
         'delete_url': delete_url,
     }
 
@@ -176,9 +203,12 @@ def venue_manager_admin(request):
         else:
             messages.error(request, 'Please correct the form errors.')
 
+    breadcrumbs = Breadcrumbs.venue_manager_admin()
+
     context = {
         'venue_managers': venue_managers,
         'form': form,
+        'breadcrumbs': breadcrumbs
     }
 
     return render(request, template, context)
@@ -204,10 +234,13 @@ def venue_manager_admin_detail(request, manager_id):
 
     template = 'management/venue-manager/venue-manager-detail.html'
 
+    breadcrumbs = Breadcrumbs.venue_manager_admin() + [{'name': manager.user}]
+
     context = {
         'roles': settings.VENUE_MANAGER_ROLE,
         'manager': manager,
         'delete_url': delete_url,
+        'breadcrumbs': breadcrumbs
     }
 
     return render(request, template, context)
