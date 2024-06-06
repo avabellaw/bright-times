@@ -1,10 +1,20 @@
 {% extends 'management/detail-base.html' %}
 {% load crispy_forms_tags %}
+{% load management %}
 
 {% block page_header %}Event Management Detail{% endblock %}
 
 {% block form_action %}
     {% url 'event-management-detail' event.id %}
+{% endblock %}
+
+{% block control_options %}
+{% get_manager_instance event.venue.id user as manager %}
+    {% if manager.role != "STAFF" or event.created_by_venue_manager == manager %}
+        {{ block.super }}
+    {% else %}
+        <p class="text-danger m-0">You can't edit this event.</p>
+    {% endif %}
 {% endblock %}
 
 {% block additional_content %}

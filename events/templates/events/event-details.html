@@ -28,10 +28,10 @@
                         <h1>{{ event.name }}</h1>
                         <h2 class="text-muted">Hosted at {{ event.venue.name }}</h2>
                         {% if user.is_authenticated %}
-                            {% manager_role event.venue.id request.user.id as role %}
-                            {% if role != None %}
-                                <h3 id="venue-manager-message">You are a venue manager ({{ role }})</h3>
-                                {% if role == 'OWNER' or role == 'MANAGER' %}
+                            {% get_manager_instance event.venue.id request.user.id as manager %}
+                            {% if manager.role != None %}
+                                <h3 id="venue-manager-message">You are a venue manager ({{ manager.role }})</h3>
+                                {% if manager.role == 'OWNER' or manager.role == 'MANAGER' or event.created_by_venue_manager == manager %}
                                     <a href="{% url 'event-management-detail' event.id %}" class="btn" id="venue-manager-btn">Edit event</a>
                                 {% endif %}
                             {% endif %}
