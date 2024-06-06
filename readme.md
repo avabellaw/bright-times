@@ -78,15 +78,11 @@ This project demonstrates my ability to create a full-stack application with eCo
 
 ### Project Goals
 
-This will be a website where you can discover an event that fits you. 
-
 The audience is anyone who enjoys going to events but is going to have a majority of young adults. It appears to be common for the home button to be excluded in event websites as it's well known that the logo will take you to the homepage.
 
 The project will be designed using the 5 planes of UX design. I will of course be taking a mobile-first approach. This is especially important for an events-based website, as users are more likely to be travelling while using it.
 
 ### Strategy Plane
-
-The audience will be diverse as events can be targeted towards a wide range of people.
 
 Bright Times will be an event directory where users can find events and pay for tickets.
 
@@ -131,8 +127,10 @@ I will include the following pages:
 * Homepage
 * Events page
 * Profile page
+* Create or choose venue page
+* Create event page
 
-Under the header, there will be hierarchical navigation.
+Under the header, there will be hierarchical navigation for events and management.
 
 #### Data model
 
@@ -140,12 +138,14 @@ You can view my [Entity Relationship diagram on lucid chart here](https://lucid.
 
 ##### User and User Profile
 
-These two models have a one-to-one relationship. A user profile model instance is created when a user is created. This is done using a signal on post_save.
+These models have a one-to-one relationship. A user profile model instance is created when a user is created. This is done using a signal on post_save.
 
 A user profile contains the first name, last name and Stripe customer ID of a user. This information is saved when it is inputted to create a ticket order.
 The first and last names can also be added beforehand.
 
 ##### Venue and Address
+
+I decided to not separate Venue into its own app. This may be required in future if the Venue model becomes more complex. 
 
 A venue is managed by the user who created it. Upon creation, the user is added with the venue ID to a new venue manager instance. 
 
@@ -206,9 +206,11 @@ It has a one-to-many relationship with ticket order.
 
 ### Skeleton plane
 
-I decided to not separate Venue into its own app. This may be required in future if the Venue model becomes more complex. A venue is used to create an event.
+You can view my [Figma wireframe here](https://www.figma.com/design/StTL7s8rc66p8usgLlk2MW/BrightTimes-Wireframe?node-id=7-27&t=POjMdC9DfHpek74P-1)
 
-A ticket is a simple model linking an event with a user. I have decided not to separate this either.
+I decided not to categorize events by location. 
+
+I also added Create Event to the navbar, to promote the creation of new events.
 
 ### Surface plane
 
