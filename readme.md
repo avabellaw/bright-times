@@ -307,8 +307,8 @@ I will be dismissing JSLint errors relating to JQuery.
 | events.html        | Passed        | events           | | [View results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Fevents%2F) |
 | event-card.html    | Passed        | events           | This is validated as it's apart of the events page | N/A
 | event-details.html | Passed        | events           || [View results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Fevents%2Fevent-details%2F1%2F0) |
-| choose-or-create-venue.html  | Passed        | events           || [View results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyour-bright-times-547094b0ac48.herokuapp.com%2Fevents%2Fchoose-or-create-venue%2F) |
-| create-event.html  | Passed        | events           || Direct input |
+| choose-or-create-venue.html  | Passed        | events           || [View results](docs/validation/html/create-or-choose-venue.webp) |
+| create-event.html  | Passed        | events           || [View results](docs/validation/html/create-event.webp) |
 | base.html          | Passed        | events           | This is validated as it's part of all events pages| N/A|
 | base.html & detail-base.html & management-base.html | Passed | management | All validated as they are the base for the respective management pages | N/A |
 | event-management.html | Passed | management | | [View results](docs/validation/html/event-management.webp) |
