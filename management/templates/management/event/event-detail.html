@@ -19,6 +19,7 @@
 
 {% block additional_content %}
     <a href="{% url 'event-details' event.id %}"><p class="text-center">View event: {{ event.name }}</p></a>
+    <p class="text-muted">Tickets sold: {{ event.get_tickets_sold }}</p>
 {% endblock %}
 
 {% block form_items %}
