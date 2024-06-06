@@ -339,7 +339,7 @@ I will be dismissing JSLint errors relating to JQuery.
 
 ## Automatic tests
 
-It's especially important to have a test-driven approach when creating automatic tests. Creating the tests first ensures that the tests are going to work properly. I wrote a failing test, then wrote the code to get a passing test, and lastly optimised the test by thinking of ways the test could fail.
+It's especially important to have a test-driven approach when creating automatic tests. Creating the tests first ensures that the tests are going to work properly. I wrote a failing test, then wrote the code to get a passing test, and lastly optimised the test by exploring ways the test could fail.
 
 **Events**
 
@@ -366,6 +366,8 @@ The first part of manual testing will be testing the user stories. This ensures 
 I also worked off of user stories while developing the project. This means that testing them covers a large portion of the functionality behind the project.  
 
 ### Testing user stories
+
+#### Event
 
 **1. As a user I want to view events to buy a ticket.**
 
@@ -433,6 +435,33 @@ A staff member cannot edit or delete events they don't own.
 This is a staff member's event that they created. They can edit and delete it.
 
 ![staff member's event](docs/user-stories/staff-members-event-7.webp)
+
+### Venue 
+
+**8. As an owner, I want to be able to create a venue, so I can create events from it**
+
+Creating a venue will automatically make you an owner of it.
+
+I tested that I could create a venue and then I created an event form it.
+
+**9. As an owner, I want to edit and delete venues to keep them up-to-date**
+**10. As an owner, I want to view a list of venues to manage them**
+
+![Venue management page for owners](docs/user-stories/venue-management-9.webp)
+
+![Edit venue controls](docs/user-stories/venue-management-detail-9.webp)
+
+![After editing venue](docs/user-stories/venue-management-detail-after-9.webp)
+
+![Delete modal](docs/user-stories/venue-confirm-delete.webp)
+
+![Deleted venue](docs/user-stories/venue-management-delete-9.webp)
+
+**11. As an owner, I want to set a venue capacity to sell tickets based on it**
+
+I tested that I correct capacity was set on creation, and that I could edit it later.
+
+
 
 ### Testing security
 
