@@ -261,6 +261,8 @@ The order total also adds a level of redundancy that can cover future mistakes o
 
 * I have added a CSP policy to help protect against cross-site scripting attacks using django-csp.
 * All passwords are stored in the databse as their hashed versions.
+* Users have to verify their email before buying a ticket.
+* Users have to use a strong password.
 
 # Testing
 
@@ -360,10 +362,9 @@ I tested:
 
 ### Test plan
 
-I have continually tested new features and repeatedly attempted to think of ways I can break them after implementation. I've especially tested responsiveness as a webpage must look great on all devices.
+I have continually tested new features and repeatedly thought of ways I could break them after implementation. I've paid close attentiong to testing responsiveness as a webpage must look great on all devices.
 
-The first part of manual testing will be testing the user stories. This ensures that the essential functionality works how it is intended for the user.
-I also worked off of user stories while developing the project. This means that testing them covers a large portion of the functionality behind the project.  
+The majority of the manual testing at the end of the project is through testing the user stories.
 
 ### Testing user stories
 
@@ -501,12 +502,59 @@ The ticket details such as date and time is shown on the user ticket. They can c
 
 Clicking on the ticket will bring the user to the event's details.
 
+#### Management
+
+**15. As an owner, I want to add staff that can create events**
+
+A new venue manager can be added on the venue manager admin page.
+
+![Venue manager admin](docs/user-stories/venue-manager-admin-15.webp)
+
+**16. As an owner, I want to be able to add a manager**
+
+![Add a manager](docs/user-stories/add-a-manager-15.webp)
+
+**17. As an owner, I want to view events that I manage and update or delete them**
+
+![Event management](docs/user-stories/event-mangement-17.webp)
+
+![Event management detail](docs/user-stories/event-management-detail-17.webp)
+
+**18. As a manager, I want to be able to adjust the venue manager positions**
+
+Managers cannot create or edit owners.
+
+![can edit owner](docs/user-stories/cant-edit-owner-18.webp)
+
+But they can create and edit other managers or staff.
+
+![New staff member](docs/user-stories/new-staff-member-18.webp)
+
+![Edit/delete staff memeber](docs/user-stories/edit-delete-staff-18.webp)
+
+#### Accounts
+
+**19. As a user, I want to sign up for an account to buy a ticket**
+
+Users can find the signup page by clicking the link on the login page. A user will only need to signup once, so the login functionality takes priority.
+
+![Login page](docs/user-stories/sign-in-19.webp)
+
+![Sign up page](docs/user-stories/sign-up-19.webp)
+
+**20. As a user, I want to be able to login and save information to my profile**
+
+A user can then change their email in the profile section .
+A user can also use the 'forgot my password' link on the login page to change their password.
+
+![Profile section](docs/user-stories/profile-20.webp)
+
+
 ### Testing security
 
 * I ensured that a logged-in user can't access the login, signup or register pages.
 * I looked up multiple users in the database to check that their password is hashed.
-
-## Verifying input/output
+* I tested that resources were blocked by the CSP policy.
 
 ### Further testing
 
