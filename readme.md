@@ -394,6 +394,34 @@ A venue manager will also see a button allowing them to access the edit/delete e
 
 ![event details venue manager](docs/user-stories/event-details-venue-manager-2.webp)
 
+**3. As a Venue manager	I want to list events for my venue so I can sell tickets**
+
+Any venue manager can create an event from the venues they're managing.
+
+![Choose venue](docs/user-stories/choose-venue-3.webp)
+
+![Selected venue](docs/user-stories/venue-selected-3.webp)
+
+**4. As a Venue manager I want to see how many people have bought tickets so I can know how many people are coming**
+
+In event management, a venue manager can see how many tickets have been sold.
+
+![Tickets sold](docs/user-stories/tickets-sold-4.webp)
+
+**5. As an owner or manager, I want to edit and delete events**
+
+A venue manager owner or manager can go to the event management page from an event.
+
+![edit event](docs/user-stories/edit-events-5.webp)
+
+And then edit or delete them there.
+
+![edit/delete event](docs/user-stories/edit-delete-event-5.webp)
+
+A staff member cannot edit or delete events they don't own.
+
+![staff edit/delete event](docs/user-stories/staff-edit-delete-event-5.webp)
+
 ### Testing security
 
 * I ensured that a logged-in user can't access the login, signup or register pages.
