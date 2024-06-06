@@ -408,7 +408,13 @@ In event management, a venue manager can see how many tickets have been sold.
 
 ![Tickets sold](docs/user-stories/tickets-sold-4.webp)
 
-**5. As an owner or manager, I want to edit and delete events**
+**5. As a venue manager, I want to see if I'm the manager of an event so I can be reminded without looking in event management**
+
+![management confirmation](docs/user-stories/management-confirmation-6.webp)
+
+![management confirmation for owner](docs/user-stories/management-confirmation-owner-6.webp)
+
+**6. As an owner or manager, I want to edit and delete events**
 
 A venue manager owner or manager can go to the event management page from an event.
 
@@ -421,6 +427,12 @@ And then edit or delete them there.
 A staff member cannot edit or delete events they don't own.
 
 ![staff edit/delete event](docs/user-stories/staff-edit-delete-event-5.webp)
+
+**7. As a staff level venue manager, I want to edit and delete my own events**
+
+This is a staff member's event that they created. They can edit and delete it.
+
+![staff member's event](docs/user-stories/staff-members-event-7.webp)
 
 ### Testing security
 
