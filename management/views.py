@@ -10,6 +10,7 @@ from .helpers import is_user_manager_of_venue, get_venues_managed_by_user
 from events.models import Venue, Event, VenueManager
 from events.forms import VenueForm, AddressForm, EventForm
 from .forms import VenueManagerCreationForm
+from .templatetags import management
 
 ToastMessage = settings.TOAST_MESSAGE
 
@@ -162,6 +163,12 @@ def venue_manager_admin(request):
         form = VenueManagerCreationForm(venues, request.POST)
 
         if form.is_valid():
+            venue = form.cleaned_data['venue']
+            user_role = management.manager_role(venue, request.user)
+
+            if request.POST['role'] == 'OWNER' and not user_role == "OWNER":
+                messages.error(request, 'Only owner can create a new owners.')
+                return redirect('venue-manager-admin')
             form.save()
             messages.success(request, f'{form.venue_manager} added \
                 successfully.')

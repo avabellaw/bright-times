@@ -2,8 +2,9 @@
 {% load crispy_forms_tags %}
 {% load management %}
 
-{% block page_header %}Venue Management Detail{% endblock %}
-
+{% block page_header %}
+    Venue Management Detail
+{% endblock %}
 
 {% block control_options %}
 {% manager_role venue.id user as role %}
