@@ -22,7 +22,7 @@ ToastMessage = settings.TOAST_MESSAGE
 
 @login_required_message
 def user_tickets(request):
-    tickets = Ticket.objects.filter(user=request.user)
+    tickets = Ticket.objects.filter(user=request.user).order_by('-order__order_date')
 
     template = 'tickets/user-tickets.html'
 
