@@ -123,15 +123,7 @@ Future features:
 
 #### User stories
 
-<!-- Turn this into a table -->
-1   User    I want to see events    Find one I like and buy a ticket
-2   User    I want to see event details Make an informed decision before buying a ticket
-3   User    I want to sign up for an account    To buy tickets
-4   Staff member    I want confirmation of work at an event Revisit event details and confirm I'm booked
-5   Venue manager   I want to list my venue so I can book events
-6   Venue manager   I want to list events for my venue  I can sell tickets
-7   Venue manager   I want to see how many people are signed up To know how many people are coming
-8   Venue manager   I want to edit my venue and event details   To keep them up-to-date
+![User stories](docs/user-stories/user-stories.webp)
 
 ### Structure plane
 
