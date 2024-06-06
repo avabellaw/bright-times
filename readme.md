@@ -147,7 +147,7 @@ The first and last names can also be added beforehand.
 
 ##### Venue and Address
 
-A venue is managed by the user who created it. Upon creation, the user is added with the venue ID to a new venue manager instance.
+A venue is managed by the user who created it. Upon creation, the user is added with the venue ID to a new venue manager instance. 
 
 Venue contains an Address foreign key.
 I decided to separate the address from the Venue to better organise the data. I considered a one-to-one relationship, however, a one-to-many relationship would enable a different venue under the same address to use the existing address record. Therefore, it allows for the future introduction of this feature. While acknowledging that this is a rare case, this would avoid duplicate address records.
@@ -157,11 +157,13 @@ I decided to separate the address from the Venue to better organise the data. I 
 Django doesn't support composite primary keys so the junction table VenueManager still has a primary key. I have set the meta so that the combination of User ID and Venue ID is unique. The primary key will be useful for indexing in future anyway.
 This will allow me to filter by userID and VenueID and get a result as if using a composite ID.
 
+The venue managar table is a junction table for venue and user.
+
 ##### Event
 
 An event contains the foreign keys to a:
-* Venue
-* Venue manager
+* Venue - The venue it's created from.
+* Venue manager - The venue manager who created it.
 
 The original idea was to use ID as the value for the event's created_by. If you wanted the venue manager, you just use the user ID. However, a user can also have a ticket and therefore I believe it makes it more clear if created_by is set to the venue manager who created the event.
 
@@ -181,6 +183,7 @@ An event also contains the fields:
 
 A ticket is a junction table between an event and a user.
 It also contains the foreign key of a ticket order. Multiple tickets can be created under one order.
+It has a one-to-many relationship with ticket order.
 
 ##### Ticket Order
 
@@ -245,8 +248,7 @@ The Stripe PaymentIntent is also created with a description of the ticket ordere
 
 When the stripe payment is completed, the return URL is for the create_order view. This confirms the payment intent and ensures it has not already been created. It then creates the order and the tickets associated with it.
 
-Quantity, price and total price are added to the TicketOrder model. This is redundant information but is useful for debugging in future.
-If an order were to go wrong, you would have the quantity and price of the ticket at order creation.
+Quantity, price and total price are added to the TicketOrder model. This is redundant information but is useful for debugging in future. This is because, if an order were to go wrong, you would have the quantity and price of the ticket at order creation.
 The order total also adds a level of redundancy that can cover future mistakes or bugs. It ensures that the system's information will match up with the Stripe records in one way or another. Order total is also useful for auditing data or creating reports.
 
 # Security features
