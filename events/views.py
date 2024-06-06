@@ -105,7 +105,7 @@ def create_event(request, venue_id):
 
             messages.success(request, MESSAGE)
 
-            return redirect('events')
+            return redirect('event-details', event_id=event.id)
         else:
             ToastMessage.form_validation_error(request)
     else:
