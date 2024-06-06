@@ -196,20 +196,21 @@ if not DEVELOPMENT:
 BOOTSTRAP_URL = "cdn.jsdelivr.net"
 JQUERY_URL = "code.jquery.com"
 STRIPE_URL = "https://js.stripe.com/v3/"
+GOOGLE_PAY_URL = "pay.google.com"
 CSP_DEFAULT_SRC = ("'self'", "fonts.gstatic.com", STRIPE_URL)
+CSP_SCRIPT_SRC = ("'self'", "cdnjs.cloudflare.com", "ajax.googleapis.com",
+                  "'unsafe-inline'", STRIPE_URL, BOOTSTRAP_URL, JQUERY_URL,
+                  GOOGLE_PAY_URL)
+CSP_IMG_SRC = ("'self'", "www.w3.org", "data:")
+CSP_STYLE_SRC = ("'self'", "fonts.googleapis.com", "cdnjs.cloudflare.com",
+                 BOOTSTRAP_URL, "'unsafe-inline'")
+
 if not DEVELOPMENT:
-    CSP_SCRIPT_SRC = ("'self'", "cdnjs.cloudflare.com", "ajax.googleapis.com",
-                      "'unsafe-inline'", STRIPE_URL, BOOTSTRAP_URL, JQUERY_URL, STATIC_URL,
-                      MEDIA_URL)
-    CSP_IMG_SRC = ("'self'", "www.w3.org", "data:", STATIC_URL, MEDIA_URL)
-    CSP_STYLE_SRC = ("'self'", "fonts.googleapis.com", "cdnjs.cloudflare.com",
-                     BOOTSTRAP_URL, "'unsafe-inline'", STATIC_URL, MEDIA_URL)
-else:
-    CSP_SCRIPT_SRC = ("'self'", "cdnjs.cloudflare.com", "ajax.googleapis.com",
-                      "'unsafe-inline'", STRIPE_URL, BOOTSTRAP_URL, JQUERY_URL)
-    CSP_IMG_SRC = ("'self'", "www.w3.org", "data:")
-    CSP_STYLE_SRC = ("'self'", "fonts.googleapis.com", "cdnjs.cloudflare.com",
-                     BOOTSTRAP_URL, "'unsafe-inline'")
+    CSP_SCRIPT_SRC = CSP_SCRIPT_SRC + (STATIC_URL, MEDIA_URL)
+    CSP_SCRIPT_SRC = CSP_SCRIPT_SRC + (STATIC_URL, MEDIA_URL)
+    CSP_IMG_SRC = CSP_IMG_SRC + (STATIC_URL, MEDIA_URL)
+    CSP_STYLE_SRC = CSP_STYLE_SRC + (STATIC_URL, MEDIA_URL)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
