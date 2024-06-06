@@ -1,7 +1,16 @@
 {% extends 'management/detail-base.html' %}
 {% load crispy_forms_tags %}
+{% load management %}
 
 {% block page_header %}Venue Manager Admin{% endblock %}
+
+{% block control_options %}
+    {% manager_role manager.venue.id user as role %}
+    {% if role == "OWNER" %}{{ block.super }}
+    {% else %}
+    <p class="text-danger m-0">You can't edit a venue owner</p >
+    {% endif %}
+{% endblock %}
 
 {% block form_action %}
     {% url 'venue-manager-admin-detail' manager.id %}

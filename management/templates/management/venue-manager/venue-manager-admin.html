@@ -1,6 +1,6 @@
 {% extends 'management/management-base.html' %}
 {% load static %}
-
+{% load management %}
 {% load crispy_forms_tags %}
 
 {% block title %}
@@ -19,6 +19,7 @@
                 <div class="header col-4">Venue</div>
                 <div class="header col-4 col-md-3">Role</div>
             </div>
+
             {% for manager in venue_managers %}
                 <a class="row" href="{% url 'venue-manager-admin-detail' manager.id %}">
                     <div class="d-none d-md-block col-md-1" scope="row">{{ forloop.counter }}</div>
@@ -39,23 +40,24 @@
         </div>
     </div>
     <hr class="mt-5 mb-5">
-    <form action="{% url 'venue-manager-admin' %}" method="post">
-        {% csrf_token %}
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h2>Add a new venue manager:</h2>
+    {% if user.is_venue_admin %}
+        <form action="{% url 'venue-manager-admin' %}" method="post">
+            {% csrf_token %}
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h2>Add a new venue manager:</h2>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-dark ml-2">Add manager</button>
+                    </div>
                 </div>
             </div>
-            <br>
-            <div class="row">
-                <div class="col">
-                    {{ form|crispy }}
-               
-                    <button type="submit" class="btn btn-dark ml-2">Add manager</button>
-                </div>
-            </div>
-        </div>
-    </form>
-    <br>
+        </form>
+        <br>
+    {% endif %}
 {% endblock %}

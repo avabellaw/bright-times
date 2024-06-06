@@ -1,7 +1,16 @@
 {% extends 'management/detail-base.html' %}
 {% load crispy_forms_tags %}
+{% load management %}
 
 {% block page_header %}Venue Management Detail{% endblock %}
+
+
+{% block control_options %}
+{% manager_role venue.id user as role %}
+    {% if role == "OWNER" %}
+        {{ block.super }}
+    {% endif %}
+{% endblock %}
 
 {% block form_action %}
 {% url 'venue-management-detail' venue.id %}

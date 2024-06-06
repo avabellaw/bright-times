@@ -6,9 +6,11 @@
     <div class="container container_max-width-md table-detail">
         <div class="row">
             <div class="col text-center">
+                {% block control_options %}
                 <button id="edit-btn" data-editing="false" class="btn btn-dark">Edit</button>
                 <a href="{{ request.path }}" id="cancel-btn" class="btn btn-dark d-none">Cancel</a>
                 {% include "includes/delete-confirmation.html" with title="Confirm delete" body="Are you sure you want to delete this object?" delete_url=delete_url %}
+                {% endblock %}
             </div>
         </div>
         <br>

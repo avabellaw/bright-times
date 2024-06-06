@@ -1,6 +1,5 @@
 
 from django.template import Library
-from django.http import request
 from events.models import VenueManager
 
 register = Library()
@@ -14,3 +13,10 @@ def manager_role(venue_id, user):
     except VenueManager.DoesNotExist:
         return None
     return venue_manager.role
+
+
+@register.simple_tag
+def is_venue_admin(venue_id, user):
+    role = manager_role(venue_id, user)
+
+    return True if role == 'ADMIN' or role == 'OWNER' else False

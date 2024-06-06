@@ -9,11 +9,17 @@ def user_context(request):
         manager_objects = VenueManager.objects.filter(user=user)
         user.is_venue_manager = len(manager_objects) > 0
         user.is_venue_admin = False
+        user.is_venue_owner = False
 
-        roles = [manager.role for manager in manager_objects]
-
-        if "OWNER" in roles or "MANAGER" in roles:
-            user.is_venue_admin = True
+        for obj in manager_objects:
+            if obj.role == 'OWNER':
+                user.is_venue_owner = True
+                user.is_venue_admin = True
+                break
+            if obj.role == 'MANAGER':
+                user.is_venue_admin = True
+                user.is_venue_owner = False
+                break
 
         user_events = Event.objects.filter(venue__managers=user)
         user.has_events = len(user_events) > 0
