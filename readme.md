@@ -51,7 +51,7 @@ This project demonstrates my ability to create a full-stack application with eCo
 * Visual Studio Code
   * Used as the IDE for the project.
   * I set a shortcut for Visual Code to format HTML/CSS/JS (ctrl+shift+f).
-    * This also worked for Python after installing autopep8.
+    * This also worked for Python after installing autopep8.
 * Paint.NET
   * Used to edit images for the project.
 * Figma
@@ -65,9 +65,9 @@ This project demonstrates my ability to create a full-stack application with eCo
   * Used for planning.
 * Chrome - Inspect element
   * This was used to:
-    * Style the website and test new ideas to be copied into the project.
-    * Continuously test responsiveness by adjusting the screen size and by testing preset device dimensions.
-    * Bug fix.
+    * Style the website and test new ideas to be copied into the project.
+    * Continuously test responsiveness by adjusting the screen size and by testing preset device dimensions.
+    * Bug fix.
 * Firefox, Microsoft Edge, Safari
   * Used to test compatibility on other browsers.
 * [Responsinator](http://www.responsinator.com/) for testing on different screens.
@@ -227,8 +227,8 @@ Blue. The color of trust, blue conveys tranquillity, serenity, and peace."
 ### Future improvements
 
 * The datetime picker in event creation
-  * A range picker for start and end event datetimes.
-  * A better validation message than an alert if the datetimes are set.
+  * A range picker for start and end event date/times.
+  * A better validation message than an alert if the date/times are set.
 
 # GitHub issues/project tab
 
@@ -260,7 +260,7 @@ The order total also adds a level of redundancy that can cover future mistakes o
 # Security features
 
 * I have added a CSP policy to help protect against cross-site scripting attacks using django-csp.
-* All passwords are stored in the databse as their hashed versions.
+* All passwords are stored in the database as their hashed versions.
 * Users have to verify their email before buying a ticket.
 * Users have to use a strong password.
 
@@ -362,7 +362,7 @@ I tested:
 
 ### Test plan
 
-I have continually tested new features and repeatedly thought of ways I could break them after implementation. I've paid close attentiong to testing responsiveness as a webpage must look great on all devices.
+I have continually tested new features and repeatedly thought of ways I could break them after implementation. I've paid close attention to testing responsiveness as a webpage must look great on all devices.
 
 The majority of the manual testing at the end of the project is through testing the user stories.
 
@@ -370,7 +370,7 @@ The majority of the manual testing at the end of the project is through testing 
 
 #### Events
 
-**1. As a user I want to view events to buy a ticket.**
+**1. As a user, I want to view events to buy a ticket.**
 
 The user can see events by clicking on the events tab.
 
@@ -397,7 +397,7 @@ A venue manager will also see a button allowing them to access the edit/delete e
 
 ![event details venue manager](docs/user-stories/event-details-venue-manager-2.webp)
 
-**3. As a Venue manager	I want to list events for my venue so I can sell tickets**
+**3. As a Venue manager, I want to list events for my venue so I can sell tickets**
 
 Any venue manager can create an event from the venues they're managing.
 
@@ -405,13 +405,13 @@ Any venue manager can create an event from the venues they're managing.
 
 ![Selected venue](docs/user-stories/venue-selected-3.webp)
 
-**4. As a Venue manager I want to see how many people have bought tickets so I can know how many people are coming**
+**4. As a Venue manager, I want to see how many people have bought tickets so I can know how many people are coming**
 
 In event management, a venue manager can see how many tickets have been sold.
 
 ![Tickets sold](docs/user-stories/tickets-sold-4.webp)
 
-**5. As a venue manager, I want to see if I'm the manager of an event so I can be reminded without looking in event management**
+**5. As a venue manager, I want to see if I'm the manager of an event so I can be reminded without looking at the event management page**
 
 ![management confirmation](docs/user-stories/management-confirmation-6.webp)
 
@@ -431,7 +431,7 @@ A staff member cannot edit or delete events they don't own.
 
 ![staff edit/delete event](docs/user-stories/staff-edit-delete-event-5.webp)
 
-**7. As a staff level venue manager, I want to edit and delete my own events**
+**7. As a staff-level venue manager, I want to edit and delete my own events**
 
 This is a staff member's event that they created. They can edit and delete it.
 
@@ -443,7 +443,7 @@ This is a staff member's event that they created. They can edit and delete it.
 
 Creating a venue will automatically make you an owner of it.
 
-I tested that I could create a venue and then I created an event form it.
+I tested that I could create a venue and then I created an event from it.
 
 **9. As an owner, I want to edit and delete venues to keep them up-to-date**
 **10. As an owner, I want to view a list of venues to manage them**
@@ -460,7 +460,7 @@ I tested that I could create a venue and then I created an event form it.
 
 **11. As an owner, I want to set a venue capacity to sell tickets based on it**
 
-I tested that I correct capacity was set on creation, and that I could edit it later.
+I tested that I correct capacity was set on creation and that I could edit it later.
 
 #### Tickets
 
@@ -472,13 +472,13 @@ Clicking the button brings you to the buy ticket page or the user will be inform
 
 ![buy ticket page](docs/user-stories/buy-ticket-12.webp)
 
-The first and last name will already be filled in if the user has bought a ticket already. It will also be filled out if the user has added their information to their profile.
+The first and last names will already be filled in if the user has bought a ticket already. It will also be filled out if the user has added their information to their profile.
 
 The cost is calculated and automatically based on quantity and event price.
 
 ![buy ticket page updated cost](docs/user-stories/buy-ticket-updated-cost-12.webp)
 
-The user is directed to the stripe checkout page where they can pay for the ticket using card, Paypal, Google Pay or Link.
+The user is directed to the stripe checkout page where they can pay for the ticket using a card, Paypal, Google Pay or Link.
 
 ![Stripe checkout](docs/user-stories/stripe-checkout-12.webp)
 
@@ -486,19 +486,19 @@ The user is finally directed to the checkout success page, with the ticket order
 
 ![Checkout success](docs/user-stories/checkout-success-12.webp)
 
-**13. As a user, I want to view my tickets to ensure it exists and check the information**
+**13. As a user, I want to view my tickets to ensure they exist and to check the ticket/order information**
 
 The user can navigate to the user tickets page by going to the account dropdown in the nav bar.
 
 ![User tickets nav item](docs/user-stories/user-tickets-nav-13.webp)
 
-The user can then view order details such as when the order was placed and it's order number.
+The user can then view order details such as when the order was placed and its order number.
 
 ![User tickets order](docs/user-stories/user-tickets-13.webp)
 
 **14. As a user, I want to see the ticket event details to get up-to-date information on it.**
 
-The ticket details such as date and time is shown on the user ticket. They can click this ticket to be taken to the event details page.
+The ticket details such as date and time are shown on the user ticket. They can click this ticket to be taken to the event details page.
 
 Clicking on the ticket will bring the user to the event's details.
 
@@ -536,15 +536,15 @@ But they can create and edit other managers or staff.
 
 **19. As a user, I want to sign up for an account to buy a ticket**
 
-Users can find the signup page by clicking the link on the login page. A user will only need to signup once, so the login functionality takes priority.
+Users can find the signup page by clicking the link on the login page. A user will only need to sign up once, so the login functionality takes priority.
 
 ![Login page](docs/user-stories/sign-in-19.webp)
 
 ![Sign up page](docs/user-stories/sign-up-19.webp)
 
-**20. As a user, I want to be able to login and save information to my profile**
+**20. As a user, I want to be able to log in and save information to my profile**
 
-A user can then change their email in the profile section .
+A user can then change their email in the profile section.
 A user can also use the 'forgot my password' link on the login page to change their password.
 
 ![Profile section](docs/user-stories/profile-20.webp)
@@ -571,7 +571,7 @@ Future improvements:
   * This could process images into a next-gen format such as webp.
   * Could carefully resize and adjust the quality of images.
   * Enable the site to have a smaller version of the image for when the bigger version isn't needed.
-    * This would increase the storage used but vastly improve performance while maintaining quality.
+    * This would increase the storage used but vastly improve performance while maintaining quality.
 
 **Homepage**
 
@@ -648,36 +648,36 @@ As expected, the more images are present the lower the performance. Processing t
   * I originally had the min/max values set but this would mean the validation message wasn't triggered.
   * Besides, I believe the flickering back to a valid number enforces the validation further.
 * Needs redirect after user email confirmation.
-  * If the user gets the page asking you to confirm there email, then opens the link elsewhere, this page won't be updated.
-  * You can click the back button to get back to the prevous page.
+  * If the user gets the page asking you to confirm their email, and then opens the link elsewhere, this page won't be updated.
+  * You can click the back button to get back to the previous page.
   * Could add a link on the confirmation page that redirects back to the previous page.
 * Arrows on the homepage events scroll should be hidden if there aren't enough events.
   * In theory, there should be enough events for this to not be a problem in production.
   * But in case there is, the .hide class should be applied to the scroll-control-container.
     * This would be based on the viewport width.
-    * Could also fire an even when the event-cards-scroll container changes size. It can then check if the scrollHeight is greater than the clientHeight and then apply the hide class when necessary.
+    * Could also fire an event when the event-cards-scroll container changes size. It can then check if the scrollHeight is greater than the clientHeight and then apply the hide class when necessary.
 * The event and venue management systems are under the profile navigation items.
   * This may cause confusion when the user tries to edit an event/venue directly on event/venue details.
-* Currently, confirmation emails will go to users spam mail inbox. It production, you would need a proper domain and mail server to send emails from.
+* Currently, confirmation emails will go to the user's spam mail inbox. In production, you would need a proper domain and mail server to send emails from.
 
 ### Deployment
 
 #### Preparing for production
 
-You will need to reach out to companies or advertise on social media to attract people that may want to host their events on your website.
+You will need to reach out to companies or advertise on social media to attract people who may want to host their events on your website.
 
 **AWS S3 bucket**
-_The project is currently configured to use an AWS general purpose bucket. The configuration could be updated to use a different service provider_
+_The project is currently configured to use an AWS general-purpose bucket. The configuration could be updated to use a different service provider_
 
 This is required to hold the static and media files.
 It will need:
 * To have public read access
-* A user group with the appropiate permissions. Remember to give the least amount of access required.
+* A user group with the appropriate permissions. Remember to give the least amount of access required.
 * A user for the user group that will be assigned to the bucket.
 
 You will also need to add the CORS configuration to the AWS bucket.
 
-Lastly, you will need a Postgres database for Django to use. Once one has been created, you can add the database url to the project enviroment variables.
+Lastly, you will need a Postgres database for Django to use. Once one has been created, you can add the database URL to the project environment variables.
 
 #### Deployment dependencies 
 
@@ -691,7 +691,7 @@ To deploy to Heroku, a Procfile and requirements.txt file is needed.
 * lists the dependencies needed to be installed by Heroku for the project.
 * Generate this file by running "pip freeze --local > requirements.txt"
 * Install the project's packages in a virtual Python environment. This will mean your requirements file only has the project's dependencies.
-	* It is best practice to do this for all projects.
+    * It is best practice to do this for all projects.
 
 I have kept both these files **only** on the production branch. Both branches are identical apart from these two files.
 
@@ -702,7 +702,7 @@ I deployed to Heroku using the following steps:
 1. Create a production branch based on "main". The main branch will be merged into this branch to deploy to production.
 2. On the production branch, run "pip freeze --local > requirements.txt" to create the requirements file.
 3. On the production branch, add a UTF-8 encoded file, named "Procfile" with no extension.
-    * Enter "web: python run.py" into the Procfile
+    * Enter "web: python run.py" into the Procfile
 4. On Heroku, add a new project.
 5. Within the new project, go to the "Deploy" tab. 
 6. Choose "GitHub" and connect the repo containing the project. Set the branch to "production".
@@ -710,15 +710,15 @@ I deployed to Heroku using the following steps:
     * ALLOWED_HOST - The domain name the project is on.
     * AWS_ACCESS_KEY_ID
     * AWS_SECRET_ACCESS_KEY
-    * DATABASE_URL - The postgres database url created earlier.
+    * DATABASE_URL - The Postgres database URL that was created earlier.
     * DJANGO_SECRET_KEY - Make sure this is unique and not from a development instance.
-    * EMAIL_HOST_FROM_EMAIL - The host email that django will send emails from.
+    * EMAIL_HOST_FROM_EMAIL - The host email that Django will send emails from.
     * EMAIL_HOST_PASSWORD - The host email's password.
     * STRIPE_PUB_KEY
     * STRIPE_SECRET_KEY
 8. Under "More" in the top-right, click "Run Console".
 9. Enter "python manage.py migrate".
-10. This will apply all the database migrations based on the migration files.
+10. This will apply all of the database migrations based on the migration files.
 11. Click "Open App" to view the deployed project.
 
 #### Forking the GitHub Repository
