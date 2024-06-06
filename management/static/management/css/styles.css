@@ -25,6 +25,12 @@
     padding: 0.5em;
 }
 
+.management-table a.row {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .management-table .row:last-child {
     margin-bottom: 1em;
 }
