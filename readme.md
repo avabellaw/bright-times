@@ -572,6 +572,7 @@ As expected, the more images are present the lower the performance. Processing t
     * Could also fire an even when the event-cards-scroll container changes size. It can then check if the scrollHeight is greater than the clientHeight and then apply the hide class when necessary.
 * The event and venue management systems are under the profile navigation items.
   * This may cause confusion when the user tries to edit an event/venue directly on event/venue details.
+* Currently, confirmation emails will go to users spam mail inbox. It production, you would need a proper domain and mail server to send emails from.
 
 ### Deployment
 
