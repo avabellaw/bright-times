@@ -696,6 +696,6 @@ $ git clone https://github.com/avabellaw/bright-times
 * Create a user profile when a user is created from [medium.com](https://medium.com/@abdullafajal/automating-user-profile-creation-with-default-data-using-django-signals-50abef9ce529)
 * Implemented stripe payments using the [stripe documentation for checkouts](https://docs.stripe.com/checkout/quickstart?lang=python), [stripe documentation for payment intents](https://docs.stripe.com/api/payment_intents/create), and this guide from [testdriven.io](https://testdriven.io/blog/django-stripe-tutorial/)
 
-## GitHub
+# Acknowledgements
 
-* How to use GitHub roadmap from [GitHub docs](https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/customizing-the-roadmap-layout) 
+I would like to thank my tutor Ashley Oliver and my mentor Darío Carrasquel, for all the guidance I have received while studying with Code Institute.
