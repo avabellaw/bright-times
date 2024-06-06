@@ -78,7 +78,7 @@ This project demonstrates my ability to create a full-stack application with eCo
 
 ### Project Goals
 
-The target audience will be wide-ranging due to the many different types of events that exist, however, a large portion of will consist of young adults.
+The target audience will be wide-ranging due to the many different types of events that exist, however, there will be more young adults than other age groups.
 
 The project will be designed using the 5 planes of UX design. I will of course be taking a mobile-first approach. This is especially important for an events-based website, as users are more likely to be travelling while using it.
 
@@ -132,7 +132,7 @@ I will include the following pages:
 
 Under the header, there will be hierarchical navigation for events and management.
 
-It appears to be common for the home button to be excluded in event websites as it's well known that the logo will take you to the homepage.
+I will be excluding the home button from the nav as this appears to be common on event websites. It's well known that the logo will take you to the homepage.
 
 #### Data model
 
@@ -149,17 +149,19 @@ The first and last names can also be added beforehand.
 
 I decided to not separate Venue into its own app. This may be required in future if the Venue model becomes more complex. 
 
-A venue is managed by the user who created it. Upon creation, the user is added with the venue ID to a new venue manager instance. 
+A venue is managed by the user who created it. Upon creation, the user's ID and the venue ID will be added as foreign keys to a new venue manager instance with the role "OWNER". 
 
 Venue contains an Address foreign key.
-I decided to separate the address from the Venue to better organise the data. I considered a one-to-one relationship, however, a one-to-many relationship would enable a different venue under the same address to use the existing address record. Therefore, it allows for the future introduction of this feature. While acknowledging that this is a rare case, this would avoid duplicate address records.
+I decided to separate the address from the Venue to better organise the data.
+I considered a one-to-one relationship, however, a one-to-many relationship would enable a different venue under the same address to use the existing address record. Therefore, it allows for the future introduction of this feature. While acknowledging that this is a rare case, this would avoid duplicate address records.
 
 ##### Venue Manager
 
-Django doesn't support composite primary keys so the junction table VenueManager still has a primary key. I have set the meta so that the combination of User ID and Venue ID is unique. The primary key will be useful for indexing in future anyway.
+Django doesn't support composite primary keys so the junction table VenueManager still has a primary key. I have set the meta so that the combination of User ID and Venue ID is unique. Nevertheless, the primary key will be useful for indexing in future.
+
 This will allow me to filter by userID and VenueID and get a result as if using a composite ID.
 
-The venue managar table is a junction table for venue and user.
+The venue manager table is a junction table for venue and user.
 
 ##### Event
 
@@ -185,7 +187,7 @@ An event also contains the fields:
 
 A ticket is a junction table between an event and a user.
 It also contains the foreign key of a ticket order. Multiple tickets can be created under one order.
-It has a one-to-many relationship with ticket order.
+It has a one-to-many relationship with a ticket order.
 
 ##### Ticket Order
 
@@ -223,7 +225,7 @@ I wanted to use a bright colour. Either yellow/orange to represent the sun or a 
 Green. This is the color of growth and health.
 Blue. The color of trust, blue conveys tranquillity, serenity, and peace."
 
-I ended up choosing to go with the colour purple. It gives off a feeling of extravagence and it is a very comforting colour.
+My final decision was to go with the colour purple. It gives off a feeling of extravagance and it is a very comforting colour.
 
 ### Future improvements
 
