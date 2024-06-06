@@ -118,6 +118,8 @@ Future features:
 * Notify users of upcoming events by email.
 * Ability to subscribe to a reminder of an event.
 * The ability to search events.
+* Ability to view events relating to a specific venue.
+* A category for events by location.
 
 #### User stories
 
@@ -365,9 +367,37 @@ I also worked off of user stories while developing the project. This means that 
 
 ### Testing user stories
 
+**1. As a user I want to view events to buy a ticket.**
+
+The user can see events by clicking on the events tab.
+
+![Events](docs/user-stories/view-events-1.webp)
+
+A user can also see events on the homepage in categories.
+
+![homepage events](docs/user-stories/homepage-events-1.webp)
+
+**2. As a user I want to view event details**
+
+Each event card has a stretched-link to allow them to view event details by clicking on it (unless clicking the buy ticket button).
+
+In event details, the user will find all the important information about the event:
+* Description 
+* Date and time 
+* Location 
+* When tickets end
+* How much tickets cost
+
+![event details](docs/user-stories/event-details-2.webp) 
+
+A venue manager will also see a button allowing them to access the edit/delete event page.
+
+![event details venue manager](docs/user-stories/event-details-venue-manager-2.webp)
+
 ### Testing security
 
 * I ensured that a logged-in user can't access the login, signup or register pages.
+* I looked up multiple users in the database to check that their password is hashed.
 
 ## Verifying input/output
 
@@ -586,6 +616,8 @@ $ git clone https://github.com/avabellaw/bright-times
 
 * Live music from [pexels by Chris F](https://www.pexels.com/photo/assorted-wine-bottles-1283219/)
 * Isle house from [pexels by David Bash](https://www.pexels.com/photo/white-and-black-concrete-house-969260/)
+* Ghoul feeding from [vecteezy]
+* Orchestra from [pexels by Matheus Viana](https://www.pexels.com/photo/people-watching-play-on-stage-2372945/)
 
 ## Code
 
