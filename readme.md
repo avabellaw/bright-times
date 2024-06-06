@@ -78,7 +78,7 @@ This project demonstrates my ability to create a full-stack application with eCo
 
 ### Project Goals
 
-The audience is anyone who enjoys going to events but is going to have a majority of young adults. It appears to be common for the home button to be excluded in event websites as it's well known that the logo will take you to the homepage.
+The target audience will be wide-ranging due to the many different types of events that exist, however, a large portion of will consist of young adults.
 
 The project will be designed using the 5 planes of UX design. I will of course be taking a mobile-first approach. This is especially important for an events-based website, as users are more likely to be travelling while using it.
 
@@ -131,6 +131,8 @@ I will include the following pages:
 * Create event page
 
 Under the header, there will be hierarchical navigation for events and management.
+
+It appears to be common for the home button to be excluded in event websites as it's well known that the logo will take you to the homepage.
 
 #### Data model
 
@@ -220,6 +222,8 @@ I wanted to use a bright colour. Either yellow/orange to represent the sun or a 
 "Yellow. Bright and sunny, yellow is the color of optimism.
 Green. This is the color of growth and health.
 Blue. The color of trust, blue conveys tranquillity, serenity, and peace."
+
+I ended up choosing to go with the colour purple. It gives off a feeling of extravagence and it is a very comforting colour.
 
 ### Future improvements
 
