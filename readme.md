@@ -367,7 +367,7 @@ I also worked off of user stories while developing the project. This means that 
 
 ### Testing user stories
 
-#### Event
+#### Events
 
 **1. As a user I want to view events to buy a ticket.**
 
@@ -436,7 +436,7 @@ This is a staff member's event that they created. They can edit and delete it.
 
 ![staff member's event](docs/user-stories/staff-members-event-7.webp)
 
-### Venue 
+#### Venues
 
 **8. As an owner, I want to be able to create a venue, so I can create events from it**
 
@@ -461,7 +461,45 @@ I tested that I could create a venue and then I created an event form it.
 
 I tested that I correct capacity was set on creation, and that I could edit it later.
 
+#### Tickets
 
+**12. As a user, I want to buy a ticket to go to the event**
+
+The buy tickets buttons are found on the event cards and the event details page.
+
+Clicking the button brings you to the buy ticket page or the user will be informed that they need to confirm their email first.
+
+![buy ticket page](docs/user-stories/buy-ticket-12.webp)
+
+The first and last name will already be filled in if the user has bought a ticket already. It will also be filled out if the user has added their information to their profile.
+
+The cost is calculated and automatically based on quantity and event price.
+
+![buy ticket page updated cost](docs/user-stories/buy-ticket-updated-cost-12.webp)
+
+The user is directed to the stripe checkout page where they can pay for the ticket using card, Paypal, Google Pay or Link.
+
+![Stripe checkout](docs/user-stories/stripe-checkout-12.webp)
+
+The user is finally directed to the checkout success page, with the ticket order now created.
+
+![Checkout success](docs/user-stories/checkout-success-12.webp)
+
+**13. As a user, I want to view my tickets to ensure it exists and check the information**
+
+The user can navigate to the user tickets page by going to the account dropdown in the nav bar.
+
+![User tickets nav item](docs/user-stories/user-tickets-nav-13.webp)
+
+The user can then view order details such as when the order was placed and it's order number.
+
+![User tickets order](docs/user-stories/user-tickets-13.webp)
+
+**14. As a user, I want to see the ticket event details to get up-to-date information on it.**
+
+The ticket details such as date and time is shown on the user ticket. They can click this ticket to be taken to the event details page.
+
+Clicking on the ticket will bring the user to the event's details.
 
 ### Testing security
 
