@@ -3,6 +3,7 @@ from decimal import Decimal
 
 
 def get_ticket_order(request):
+    """returns the ticket order from the session as an object"""
     ticket_order = request.session.get('ticket_order')
 
     event_id = ticket_order.get('item_id')
@@ -26,6 +27,7 @@ class TicketOrder():
         self.email = email
 
     def validate_payment_intent(self, payment_intent):
+        """Return does the payment intent match the ticket order session"""
         is_amount_correct = payment_intent['amount'] == int(self.total * 100)
         is_currency_correct = payment_intent['currency'] == 'gbp'
         return is_amount_correct and is_currency_correct
