@@ -14,7 +14,6 @@
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-        font-size: calc(.65rem + 0.30vw + 0.25vh);
     }
     
     .container_fit-content {
@@ -71,7 +70,7 @@
         }
 
         .navbar {
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: 500;
             text-transform: capitalize;
             
@@ -158,17 +157,9 @@
         margin-bottom: 2em;
     }
 
-    .form {
-        font-size: 1.2em;
-    }
-
     .form label {
         margin-top: 0.5em;
         margin-bottom: 0.6em;
-    }
-
-    a.btn, button.btn {
-        font-size: 1.2rem;
     }
 
 /* End General styles */
