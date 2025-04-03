@@ -67,6 +67,8 @@
         .navbar .dropdown-menu {
             animation: slowExpandUL 0.3s ease-in-out;
             overflow: hidden;
+            left: unset;
+            right: 0;
         }
 
         .navbar {
