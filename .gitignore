@@ -12,3 +12,4 @@ venv/
 .idea
 .djlintrc
 media/
+docker.env
