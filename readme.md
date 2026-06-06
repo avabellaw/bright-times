@@ -8,6 +8,8 @@ This project demonstrates my ability to create a full-stack application with eCo
 
 ![Multi device website presentation](docs/multi-device-presentation.webp)
 
+**Key note** Production branch no longer exists. This is now the main branch with a dev branch for development.
+
 ## Technologies used
 
 ### Languages used
@@ -682,6 +684,19 @@ You will also need to add the CORS configuration to the AWS bucket.
 
 Lastly, you will need a Postgres database for Django to use. Once one has been created, you can add the database URL to the project environment variables.
 
+#### Deploy on docker/nginx
+
+[baeldung - gunicorn server docker](https://www.baeldung.com/ops/gunicorn-server-docker)
+[sliplane - pipeline deploy docker](https://sliplane.io/blog/building-a-pipeline-to-deploy-docker-containers-to-a-vps)
+
+1. Build docker image or get image from GitHub
+   ```bash 
+   docker build -t bright-times-app .
+   ```
+2. Edit docker.env file and fill in for ```docker run``` command.
+3. Run image ```docker run --env-file=docker.env -it -p 8080:8080 bright-times```
+4. 
+
 #### Deployment dependencies 
 
 To deploy to Heroku, a Procfile and requirements.txt file is needed.
@@ -696,15 +711,15 @@ To deploy to Heroku, a Procfile and requirements.txt file is needed.
 * Install the project's packages in a virtual Python environment. This will mean your requirements file only has the project's dependencies.
     * It is best practice to do this for all projects.
 
-I have kept both these files **only** on the production branch. Both branches are identical apart from these two files.
+I have kept both these files **only** on the [Now main branch] production branch. Both branches are identical apart from these two files.
 
 #### Heroku
 
 I deployed to Heroku using the following steps:
 
-1. Create a production branch based on "main". The main branch will be merged into this branch to deploy to production.
-2. On the production branch, run "pip freeze --local > requirements.txt" to create the requirements file.
-3. On the production branch, add a UTF-8 encoded file, named "Procfile" with no extension.
+1. Create a [Now main branch] production branch based on "main". The main branch will be merged into this branch to deploy to production.
+2. On the [Now main branch] production branch, run "pip freeze --local > requirements.txt" to create the requirements file.
+3. On the [Now main branch] production branch, add a UTF-8 encoded file, named "Procfile" with no extension.
     * Enter "web: python run.py" into the Procfile
 4. On Heroku, add a new project.
 5. Within the new project, go to the "Deploy" tab. 
